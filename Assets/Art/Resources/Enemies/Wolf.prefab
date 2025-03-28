@@ -102,7 +102,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hitPoints: 95
   currencyWorth: 35
-  BaseHitPoints: 95
 --- !u!114 &8762406705713231985
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -117,6 +116,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rb: {fileID: 1525012146938862334}
   moveSpeed: 2.3
+  hpDamage: 3
 --- !u!50 &1525012146938862334
 Rigidbody2D:
   serializedVersion: 4

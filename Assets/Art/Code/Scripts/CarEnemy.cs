@@ -12,6 +12,7 @@ public class CarEnemy : MonoBehaviour
 
     [Header("Attributes")]
     [SerializeField] private float moveSpeed = 2f;
+    [SerializeField] private int hpDamage = 2;
 /*     [SerializeField] private int spawnCount = 10; */
 
     private Transform target;
@@ -28,7 +29,7 @@ public class CarEnemy : MonoBehaviour
             pathIndex++;
 
             if (pathIndex == LevelManager.main.path.Length) {
-                LevelManager.playerHealthReduce(20);
+                LevelManager.playerHealthReduce(hpDamage);
                 EnemySpawner.onEnemyDestroy.Invoke();
                 Destroy(gameObject);
                 //Debug.Log(LevelManager.playerHealth);

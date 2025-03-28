@@ -11,6 +11,7 @@ public class SpiderEnemy : MonoBehaviour
 
     [Header("Attributes")]
     [SerializeField] private float moveSpeed = 2f;
+    [SerializeField] private int hpDamage = 2;
 
     private Transform target;
     private int pathIndex = 0;
@@ -26,7 +27,7 @@ public class SpiderEnemy : MonoBehaviour
             pathIndex++;
 
             if (pathIndex == LevelManager.main.path.Length) {
-                LevelManager.playerHealthReduce(4);
+                LevelManager.playerHealthReduce(hpDamage);
                 EnemySpawner.onEnemyDestroy.Invoke();
                 Destroy(gameObject);
                 //Debug.Log(LevelManager.playerHealth);

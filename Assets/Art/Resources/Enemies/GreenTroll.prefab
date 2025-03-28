@@ -102,6 +102,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rb: {fileID: 2418987801391096634}
   moveSpeed: 2.2
+  hpDamage: 7
 --- !u!114 &7218780102819742979
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -116,7 +117,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hitPoints: 100
   currencyWorth: 35
-  BaseHitPoints: 100
 --- !u!70 &2006866896396978298
 CapsuleCollider2D:
   m_ObjectHideFlags: 0

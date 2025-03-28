@@ -180,3 +180,4 @@ MonoBehaviour:
   moveSpeed: 2.2
   floatLength: 0.5
   floatSpeed: 2
+  hpDamage: 3

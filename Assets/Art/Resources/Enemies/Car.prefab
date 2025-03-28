@@ -102,6 +102,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rb: {fileID: 2275634009410102537}
   moveSpeed: 2.2
+  hpDamage: 20
 --- !u!50 &2275634009410102537
 Rigidbody2D:
   serializedVersion: 4
@@ -143,7 +144,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hitPoints: 450
   currencyWorth: 80
-  BaseHitPoints: 450
 --- !u!70 &4637652826422866435
 CapsuleCollider2D:
   m_ObjectHideFlags: 0

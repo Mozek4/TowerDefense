@@ -10,6 +10,7 @@ public static SnakeMovement Instance {get; private set;}
 
     [Header("Attributes")]
     [SerializeField] private float moveSpeed = 2f;
+    [SerializeField] private int hpDamage = 2;
 
     private Transform target;
     private int pathIndex = 0;
@@ -25,7 +26,7 @@ public static SnakeMovement Instance {get; private set;}
             pathIndex++;
 
             if (pathIndex == LevelManager.main.path.Length) {
-                LevelManager.playerHealthReduce(5);
+                LevelManager.playerHealthReduce(hpDamage);
                 EnemySpawner.onEnemyDestroy.Invoke();
                 Destroy(gameObject);
                 Debug.Log(LevelManager.playerHealth);
