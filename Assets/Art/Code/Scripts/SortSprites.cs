@@ -1,18 +1,26 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class SortSprites : MonoBehaviour
 {
-    private SpriteRenderer spriteRenderer;
+    public SpriteRenderer[] extraRenderers; // sem přetáhneš střelce
+    public int offset = 1;
 
-    private void Start()
+    private SpriteRenderer sr;
+
+    void Awake()
     {
-        spriteRenderer = GetComponent<SpriteRenderer>();
+        sr = GetComponent<SpriteRenderer>();
     }
 
-    private void Update()
+    void LateUpdate()
     {
-        spriteRenderer.sortingOrder = Mathf.RoundToInt(transform.position.y * -100);
+        int baseOrder = Mathf.RoundToInt(transform.position.y * -100);
+        sr.sortingOrder = baseOrder;
+
+        foreach (var extra in extraRenderers)
+        {
+            if (extra != null)
+                extra.sortingOrder = baseOrder + offset;
+        }
     }
 }

@@ -18,8 +18,8 @@ public class EnemySpawner : MonoBehaviour {
     [SerializeField] private int baseEnemies = 8;
     [SerializeField] private float enemiesPerSecond = 0.5f;
     [SerializeField] private float timeBetweenWaves = 5f;
-    [SerializeField] private float difficultyScalingFactor = 0.75f;
-    [SerializeField] private float enemiesPerSecondCap = 15f;
+    [SerializeField] private float difficulty = 0.75f;
+    [SerializeField] private float enemiesPerSecondLimit = 15f;
 
     [Header("Events")]
     public static UnityEvent onEnemyDestroy = new UnityEvent();
@@ -88,7 +88,7 @@ public class EnemySpawner : MonoBehaviour {
     private void Start() {
         StartCoroutine(StartWave());
         if (panel == null) {
-             panel = GameObject.Find("Panel");
+            panel = GameObject.Find("Game Over");
         }
         panel.SetActive(false);
 
@@ -155,8 +155,6 @@ public class EnemySpawner : MonoBehaviour {
         }
         if (currentWave == 30 && !enemies.Contains(tank)) {
             enemies.Add(tank);
-            enemies.Remove(greenTroll);
-            enemies.Add(armoredGreenTroll);
         }
         if (currentWave == 35 && !enemies.Contains(witch)) {
             enemies.Add(witch);
@@ -171,14 +169,9 @@ public class EnemySpawner : MonoBehaviour {
         }
         if (currentWave == 50 && !enemies.Contains(miniRobot)) {
             enemies.Add(miniRobot);
-            enemies.Remove(blueTroll);
-            enemies.Add(armoredBlueTroll);
         }
         if (currentWave == 55 && !enemies.Contains(redTroll)) {
             enemies.Add(redTroll);
-        }
-        if (currentWave == 60 && !enemies.Contains(armoredRedTroll)) {
-            enemies.Add(armoredRedTroll);
         }
     }
 
@@ -201,11 +194,11 @@ public class EnemySpawner : MonoBehaviour {
     }
 
     private int EnemiesPerWave() {
-        return Mathf.RoundToInt(baseEnemies * Mathf.Pow(currentWave, difficultyScalingFactor));
+        return Mathf.RoundToInt(baseEnemies * Mathf.Pow(currentWave, difficulty));
     }
 
     private float EnemiesPerSecond() {
-        return Math.Clamp(enemiesPerSecond * Mathf.Pow(currentWave, difficultyScalingFactor),0f, enemiesPerSecondCap);
+        return Math.Clamp(enemiesPerSecond * Mathf.Pow(currentWave, difficulty),0f, enemiesPerSecondLimit);
     }
 
     private void EndGame(){

@@ -360,6 +360,7 @@ MonoBehaviour:
   upgradeRangeButton: {fileID: 4425187239405100861}
   sellTower: {fileID: 2412989167429093257}
   rangeIndicator: {fileID: -6820073388370535333}
+  cannonShot: {fileID: 8300000, guid: ccfb2b571f4829743a4b13fa865402fc, type: 3}
   targetingRange: 4
   rotationSpeed: 200
   bps: 0.55

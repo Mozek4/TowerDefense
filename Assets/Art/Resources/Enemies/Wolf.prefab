@@ -102,6 +102,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hitPoints: 95
   currencyWorth: 35
+  enemyScore: 20
+  death: {fileID: 0}
 --- !u!114 &8762406705713231985
 MonoBehaviour:
   m_ObjectHideFlags: 0

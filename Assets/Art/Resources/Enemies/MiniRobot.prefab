@@ -103,6 +103,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hitPoints: 150
   currencyWorth: 60
+  enemyScore: 55
+  death: {fileID: 8300000, guid: cacc14f02d5fab644a74ed0a1870f106, type: 3}
 --- !u!114 &5812799977424315614
 MonoBehaviour:
   m_ObjectHideFlags: 0

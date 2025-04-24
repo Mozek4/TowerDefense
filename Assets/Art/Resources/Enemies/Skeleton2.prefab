@@ -124,6 +124,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rb: {fileID: 6834997717310453001}
   moveSpeed: 1.7
+  hpDamage: 2
 --- !u!114 &589695110812279931
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -138,7 +139,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hitPoints: 20
   currencyWorth: 20
-  BaseHitPoints: 20
+  enemyScore: 5
+  death: {fileID: 8300000, guid: a458c78b184725e4a983b6a0076d5972, type: 3}
 --- !u!50 &6834997717310453001
 Rigidbody2D:
   serializedVersion: 4

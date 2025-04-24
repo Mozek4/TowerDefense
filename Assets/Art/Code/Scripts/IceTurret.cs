@@ -124,7 +124,7 @@ public class IceTurret : MonoBehaviour
 
     private void SellTower() {
         Destroy(gameObject);
-        LevelManager.main.currency += towerSellCost;
+        LevelManager.main.gold += towerSellCost;
         CloseUpgradeUI();
     }
     

@@ -32,7 +32,9 @@ public class EnemyMovement : MonoBehaviour
                 Destroy(gameObject);
                 //Debug.Log(LevelManager.playerHealth);
                 return;
-            } else {
+            } 
+            else 
+            {
                 target = LevelManager.main.path[pathIndex];
                 RotateByDirection();
             }
@@ -54,7 +56,7 @@ public class EnemyMovement : MonoBehaviour
 
     private void RotateByDirection() {
         if (pathIndex == 6) {
-            transform.rotation = Quaternion.Euler(180, 0, 180);
+            transform.rotation = Quaternion.Euler(0, 180, 0);
         }
     }
 }

@@ -15,6 +15,7 @@ public class MageTower : MonoBehaviour
     [SerializeField] private Button upgradeRangeButton;
     [SerializeField] private Button sellTower;
     [SerializeField] private LineRenderer rangeIndicator;
+    //[SerializeField] private AudioClip shot;
 
     [Header("Attribute")]
     [SerializeField] private float targetingRange = 5f;
@@ -74,7 +75,7 @@ public class MageTower : MonoBehaviour
         }
     }
     private void Shoot() {
-            
+        //AudioSource.PlayClipAtPoint(shot, transform.position, 0.8f);
         GameObject bulletObj = Instantiate(bulletPrefab, firingPoint.position, Quaternion.identity);
         Bullet bulletScript = bulletObj.GetComponent<Bullet>();
         bulletScript.SetTarget(target);
@@ -123,7 +124,7 @@ public class MageTower : MonoBehaviour
     }
 
     private void UpgradeBps() {
-        if (CalculateBpsCost() > LevelManager.main.currency) {
+        if (CalculateBpsCost() > LevelManager.main.gold) {
             return;
         }
         LevelManager.main.SpendCurrency(CalculateBpsCost());
@@ -133,7 +134,7 @@ public class MageTower : MonoBehaviour
     }
 
     private void UpgradeRange() {
-        if (CalculateRangeCost() > LevelManager.main.currency) {
+        if (CalculateRangeCost() > LevelManager.main.gold) {
             return;
         }
         LevelManager.main.SpendCurrency(CalculateRangeCost());
@@ -160,7 +161,7 @@ public class MageTower : MonoBehaviour
 
     private void SellTower () {
         Destroy(gameObject);
-        LevelManager.main.currency += towerSellCost;
+        LevelManager.main.gold += towerSellCost;
         CloseUpgradeUI();
     }
 

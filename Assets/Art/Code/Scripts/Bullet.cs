@@ -12,7 +12,7 @@ public class Bullet : MonoBehaviour {
     [SerializeField] private int bulletDamage = 1;
 
     private Transform target;
-    private float BulletTimeToLive = 2.5f;
+    private float bulletTimeToLive = 2.5f;
 
     public void SetTarget(Transform _target) {
         target = _target;
@@ -33,6 +33,6 @@ public class Bullet : MonoBehaviour {
         }
     }
     private void Start () {
-        Destroy (gameObject, BulletTimeToLive);
+        Destroy (gameObject, bulletTimeToLive);
     }
 }

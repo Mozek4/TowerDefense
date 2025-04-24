@@ -1,15 +1,18 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Runtime.CompilerServices;
+using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.UI;
 
 public class Plot : MonoBehaviour
 {
 
     [Header("References")]
     [SerializeField] private SpriteRenderer sr;
-    [SerializeField] private Color hoverColor;
+    [SerializeField] private float hoverBrightness = 2;
 
     private GameObject towerObject;
     public Turret turret;
@@ -23,7 +26,7 @@ public class Plot : MonoBehaviour
         startColor = sr.color;
     }
     private void OnMouseEnter() {
-        sr.color = hoverColor;
+        sr.color = startColor * hoverBrightness;
     }
 
     private void OnMouseExit() {
@@ -55,23 +58,12 @@ public class Plot : MonoBehaviour
         }
         Tower towerToBuild = BuildManager.main.GetSelectedTower();
 
-        if (towerToBuild.cost > LevelManager.main.currency) {
-            Debug.Log("Cant afford");
+        if (towerToBuild.cost > LevelManager.main.gold) {  
             return;
         }
         LevelManager.main.SpendCurrency(towerToBuild.cost);
 
         towerObject = Instantiate(towerToBuild.prefab, transform.position, Quaternion.identity);
-
-    if (towerObject.GetComponent<Turret>() != null) {
-        turret = towerObject.GetComponent<Turret>();
-        }
-    if (towerObject.GetComponent<MageTower>() != null) {
-        mage = towerObject.GetComponent<MageTower>();
-        }
-    if (towerObject.GetComponent<Crossbowman>() != null) {
-        crossbowman = towerObject.GetComponent<Crossbowman>();
-        }
     }
 }
 

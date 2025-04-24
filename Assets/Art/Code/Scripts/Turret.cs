@@ -17,6 +17,7 @@ public class Turret : MonoBehaviour
     [SerializeField] private Button upgradeRangeButton;
     [SerializeField] private Button sellTower;
     [SerializeField] private LineRenderer rangeIndicator;
+    [SerializeField] private AudioClip cannonShot;
 
     [Header("Attribute")]
     [SerializeField] private float targetingRange = 5f;
@@ -78,6 +79,7 @@ public class Turret : MonoBehaviour
         }
     }
     private void Shoot() {
+        AudioSource.PlayClipAtPoint(cannonShot, transform.position, 2f);
         GameObject bulletObj = Instantiate(bulletPrefab, firingPoint.position, Quaternion.identity);
         Bullet bulletScript = bulletObj.GetComponent<Bullet>();
         bulletScript.SetTarget(target);
@@ -131,7 +133,7 @@ public class Turret : MonoBehaviour
     }
 
     private void UpgradeBps() {
-        if (CalculateBpsCost() > LevelManager.main.currency) {
+        if (CalculateBpsCost() > LevelManager.main.gold) {
             return;
         }
         LevelManager.main.SpendCurrency(CalculateBpsCost());
@@ -141,7 +143,7 @@ public class Turret : MonoBehaviour
     }
 
     private void UpgradeRange() {
-        if (CalculateRangeCost() > LevelManager.main.currency) {
+        if (CalculateRangeCost() > LevelManager.main.gold) {
             return;
         }
         LevelManager.main.SpendCurrency(CalculateRangeCost());
@@ -168,7 +170,7 @@ public class Turret : MonoBehaviour
 
     private void SellTower () {
         Destroy(gameObject);
-        LevelManager.main.currency += towerSellCost;
+        LevelManager.main.gold += towerSellCost;
         CloseUpgradeUI();
     }
 }

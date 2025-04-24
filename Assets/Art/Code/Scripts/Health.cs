@@ -7,6 +7,10 @@ public class Health : MonoBehaviour {
     [Header("Attributes")]
     [SerializeField] public int hitPoints = 2;
     [SerializeField] private int currencyWorth = 50;
+    [SerializeField] private int enemyScore;
+
+    [Header("References")]
+    [SerializeField] private AudioClip death;
 /*     [SerializeField] public int BaseHitPoints; */
     private bool isDestroyed = false;
 
@@ -16,13 +20,15 @@ public class Health : MonoBehaviour {
 
     public void TakeDamage(int dmg) {
         hitPoints -= dmg;
-        Debug.Log(hitPoints);
+        //Debug.Log(hitPoints);
 
         if (hitPoints <= 0 && !isDestroyed) {
             EnemySpawner.onEnemyDestroy.Invoke();
             LevelManager.main.IncreaseCurrency(currencyWorth);
             isDestroyed = true;
             Destroy(gameObject);
+            LevelManager.main.score = LevelManager.main.score + enemyScore;
+            AudioSource.PlayClipAtPoint(death, transform.position, 0.8f);
         }
     }
 /*     private void ResetHealth() {

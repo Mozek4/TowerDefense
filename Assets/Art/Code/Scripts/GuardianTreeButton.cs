@@ -21,8 +21,8 @@ public class GuardianTreeButton : MonoBehaviour
     }
 
     private void BuyGuardianTree() {
-        if (LevelManager.main.currency > GuardianTreeCost) {
-            LevelManager.main.currency -= GuardianTreeCost;
+        if (LevelManager.main.gold > GuardianTreeCost) {
+            LevelManager.main.gold -= GuardianTreeCost;
             if (isTreeGrown != null) {
                 GuardianButton.gameObject.SetActive(false);
                 GuardianTree.SetActive(true);

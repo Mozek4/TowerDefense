@@ -132,7 +132,7 @@ public class Crossbowman : MonoBehaviour
     }
 
     private void UpgradeBps() {
-        if (CalculateBpsCost() > LevelManager.main.currency) {
+        if (CalculateBpsCost() > LevelManager.main.gold) {
             return;
         }
         LevelManager.main.SpendCurrency(CalculateBpsCost());
@@ -143,7 +143,7 @@ public class Crossbowman : MonoBehaviour
     }
 
     private void UpgradeRange() {
-        if (CalculateRangeCost() > LevelManager.main.currency) {
+        if (CalculateRangeCost() > LevelManager.main.gold) {
             return;
         }
         LevelManager.main.SpendCurrency(CalculateRangeCost());
@@ -171,7 +171,7 @@ public class Crossbowman : MonoBehaviour
 
     private void SellTower () {
         Destroy(gameObject);
-        LevelManager.main.currency += towerSellCost;
+        LevelManager.main.gold += towerSellCost;
         CloseUpgradeUI();
     }
 }

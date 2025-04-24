@@ -29,13 +29,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7256946072103471947}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: -1, z: 0, w: 0}
+  m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
   m_LocalPosition: {x: -6.556, y: 0.014, z: 0}
   m_LocalScale: {x: 0.3, y: 0.3, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 180, y: 0, z: 180}
+  m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
 --- !u!212 &6430743361674256891
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -179,3 +179,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hitPoints: 155
   currencyWorth: 60
+  enemyScore: 40
+  death: {fileID: 8300000, guid: a79fb0fbfc05f9f4482217a34b310cde, type: 3}

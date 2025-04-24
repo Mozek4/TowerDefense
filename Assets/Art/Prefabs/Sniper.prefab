@@ -26,7 +26,7 @@ Transform:
   m_GameObject: {fileID: 1681078714452618213}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 1, w: 0}
-  m_LocalPosition: {x: -0.01, y: 0.18, z: -0.0004656501}
+  m_LocalPosition: {x: -0.0001, y: 0.18, z: -0.0001}
   m_LocalScale: {x: 0.25, y: 0.25, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -94,6 +94,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1345891314822478827}
   - component: {fileID: 5301302592138582644}
+  - component: {fileID: 5743430036870481010}
   m_Layer: 0
   m_Name: SniperBase
   m_TagString: Untagged
@@ -168,6 +169,21 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &5743430036870481010
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1858255210839037566}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3833d0d7111b4654cac8be55309c7d10, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  extraRenderers:
+  - {fileID: 1208284113412786689}
+  offset: 1
 --- !u!1 &2792987683209212904
 GameObject:
   m_ObjectHideFlags: 0

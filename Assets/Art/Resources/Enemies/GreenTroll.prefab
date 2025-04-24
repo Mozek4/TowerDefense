@@ -117,6 +117,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hitPoints: 100
   currencyWorth: 35
+  enemyScore: 30
+  death: {fileID: 8300000, guid: 3904641ba4070854b8fc2b010c8beaab, type: 3}
 --- !u!70 &2006866896396978298
 CapsuleCollider2D:
   m_ObjectHideFlags: 0

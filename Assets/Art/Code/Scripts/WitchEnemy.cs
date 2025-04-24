@@ -17,6 +17,7 @@ public class WitchEnemy : MonoBehaviour
     private float baseSpeed;
 
     private void Start() {
+        transform.rotation = Quaternion.Euler(0, 180, 0);
         baseSpeed = moveSpeed;
         target = LevelManager.main.path[pathIndex];
     }

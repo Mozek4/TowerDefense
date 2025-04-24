@@ -66,7 +66,7 @@ public class ElectroSpiritMovement : MonoBehaviour
 
     private void RotateByDirection() {
         if (pathIndex == 6) {
-            transform.rotation = Quaternion.Euler(180, 0, 180);
+            transform.rotation = Quaternion.Euler(0, 180, 0);
         }
     }
 }

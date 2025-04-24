@@ -116,7 +116,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hitPoints: 500
   currencyWorth: 120
-  BaseHitPoints: 500
+  death: {fileID: 8300000, guid: a458c78b184725e4a983b6a0076d5972, type: 3}
 --- !u!50 &7259807859832038511
 Rigidbody2D:
   serializedVersion: 4
