@@ -1281,7 +1281,7 @@ GameObject:
   m_Component:
   - component: {fileID: 9220344926506931223}
   - component: {fileID: 9220344926506931224}
-  - component: {fileID: 1072346735218316076}
+  - component: {fileID: 3791059096997264394}
   m_Layer: 0
   m_Name: MageTowerBase
   m_TagString: Untagged
@@ -1357,7 +1357,7 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &1072346735218316076
+--- !u!114 &3791059096997264394
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1369,5 +1369,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3833d0d7111b4654cac8be55309c7d10, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  extraRenderers: []
+  extraRenderers:
+  - {fileID: 3985280086843789869}
   offset: 1
