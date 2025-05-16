@@ -19,14 +19,14 @@ public class Crossbowman : MonoBehaviour
     [SerializeField] private LineRenderer rangeIndicator;
 
     [Header("Attribute")]
-    [SerializeField] private float targetingRange = 5f;
+    [SerializeField] private float range = 5f;
     [SerializeField] private float rotationSpeed = 5f;
-    [SerializeField] private float bps = 1f;
+    [SerializeField] private float aps = 1f;
     [SerializeField] private int baseTargetingRangeUpgradeCost = 100;
-    [SerializeField] private int baseBpsUpgradeCost = 100;
+    [SerializeField] private int baseApsUpgradeCost = 100;
 
-    private float targetingRangeBase = 5f;
-    private float bpsBase = 1f;
+    private float rangeBase = 5f;
+    private float apsBase = 1f;
 
     private Transform target;
     private float timeUntilFire;
@@ -38,8 +38,8 @@ public class Crossbowman : MonoBehaviour
 
     private void Start() {
         towerSellCost = LevelManager.main.towerCost;
-        bpsBase = bps;
-        targetingRangeBase = targetingRange;
+        apsBase = aps;
+        rangeBase = range;
         upgradeBpsButton.onClick.AddListener(UpgradeBps);
         upgradeRangeButton.onClick.AddListener(UpgradeRange);
         sellTower.onClick.AddListener(SellTower);
@@ -72,7 +72,7 @@ public class Crossbowman : MonoBehaviour
 
             timeUntilFire += Time.deltaTime;
         
-            if (timeUntilFire >= 1f/bps) {
+            if (timeUntilFire >= 1f/aps) {
                 Shoot();
                 timeUntilFire = 0f;
             }  
@@ -85,7 +85,7 @@ public class Crossbowman : MonoBehaviour
     }
 
     private void FindTarget() {
-        RaycastHit2D[] hits = Physics2D.CircleCastAll(transform.position, targetingRange, Vector2.zero, 0f, enemyMask);
+        RaycastHit2D[] hits = Physics2D.CircleCastAll(transform.position, range, Vector2.zero, 0f, enemyMask);
 
         if (hits.Length > 0) {
             target = hits[0].transform;
@@ -93,7 +93,7 @@ public class Crossbowman : MonoBehaviour
 
     }
     private bool CheckTargetIsInRange() {
-        return Vector2.Distance(target.position, transform.position) <= targetingRange;
+        return Vector2.Distance(target.position, transform.position) <= range;
     }
     private void RotateTowardsTarget() {
         float angle = Mathf.Atan2(target.position.y - transform.position.y, target.position.x - transform.position.x) * Mathf.Rad2Deg - 90f;
@@ -122,8 +122,8 @@ public class Crossbowman : MonoBehaviour
         for (int i = 0; i <= segments; i++)
         {
             float angle = Mathf.Deg2Rad * (i * angleStep);
-            float x = Mathf.Cos(angle) * targetingRange;
-            float y = Mathf.Sin(angle) * targetingRange;
+            float x = Mathf.Cos(angle) * range;
+            float y = Mathf.Sin(angle) * range;
             positions[i] = new Vector3(x, y, 0);
         }
 
@@ -137,9 +137,9 @@ public class Crossbowman : MonoBehaviour
         }
         LevelManager.main.SpendCurrency(CalculateBpsCost());
         bpsLevel ++;
-        bps = CalculateBPS();
+        aps = CalculateBPS();
         CloseUpgradeUI();
-        Debug.Log(bps);
+        Debug.Log(aps);
     }
 
     private void UpgradeRange() {
@@ -148,13 +148,13 @@ public class Crossbowman : MonoBehaviour
         }
         LevelManager.main.SpendCurrency(CalculateRangeCost());
         rangeLevel++;
-        targetingRange = CalculateRange();
+        range = CalculateRange();
         CloseUpgradeUI();
-        Debug.Log(targetingRange);
+        Debug.Log(range);
     }
 
     public int CalculateBpsCost() {
-        return Mathf.RoundToInt(baseBpsUpgradeCost * Mathf.Pow(bpsLevel, 1.1f));
+        return Mathf.RoundToInt(baseApsUpgradeCost * Mathf.Pow(bpsLevel, 1.1f));
     }
 
     public int CalculateRangeCost () {
@@ -162,11 +162,11 @@ public class Crossbowman : MonoBehaviour
     }
     
     private float CalculateBPS() {
-        return bpsBase * Mathf.Pow(bpsLevel, 0.4f);
+        return apsBase * Mathf.Pow(bpsLevel, 0.4f);
     }
     
     private float CalculateRange() {
-        return targetingRangeBase * Mathf.Pow(rangeLevel, 0.15f);
+        return rangeBase * Mathf.Pow(rangeLevel, 0.15f);
     }
 
     private void SellTower () {

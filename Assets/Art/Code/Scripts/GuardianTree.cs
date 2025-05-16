@@ -13,8 +13,8 @@ public class GuardianTree : MonoBehaviour
     [SerializeField] private Transform firingPoint2;
 
     [Header("Attribute")]
-    [SerializeField] private float targetingRange = 5f;
-    [SerializeField] private float bps = 1f;
+    [SerializeField] private float range = 5f;
+    [SerializeField] private float aps = 1f;
 
     private Transform target1;
     private Transform target2;
@@ -39,7 +39,7 @@ public class GuardianTree : MonoBehaviour
 
         timeUntilFire += Time.deltaTime;
         
-            if (timeUntilFire >= 1f/bps) {
+            if (timeUntilFire >= 1f/aps) {
                 Shoot();
                 timeUntilFire = 0f;
             }  
@@ -58,7 +58,7 @@ public class GuardianTree : MonoBehaviour
     }
 
     private void FindFirstTarget() {
-        RaycastHit2D[] hits = Physics2D.CircleCastAll(transform.position, targetingRange, Vector2.zero, 0f, enemyMask);
+        RaycastHit2D[] hits = Physics2D.CircleCastAll(transform.position, range, Vector2.zero, 0f, enemyMask);
 
         for (int i = 0; i < hits.Length; i++) {
             if (hits[i].transform != target2) {
@@ -68,7 +68,7 @@ public class GuardianTree : MonoBehaviour
         }
     }
     private void FindSecondTarget() {
-        RaycastHit2D[] hits = Physics2D.CircleCastAll(transform.position, targetingRange, Vector2.zero, 0f, enemyMask);
+        RaycastHit2D[] hits = Physics2D.CircleCastAll(transform.position, range, Vector2.zero, 0f, enemyMask);
 
         for (int i = 0; i < hits.Length; i++) {
             if (hits[i].transform != target1) {
@@ -78,11 +78,11 @@ public class GuardianTree : MonoBehaviour
         }
     }
     private bool CheckFirstTargetIsInRange() {
-        return target1 != null && Vector2.Distance(target1.position, transform.position) <= targetingRange;
+        return target1 != null && Vector2.Distance(target1.position, transform.position) <= range;
     }
 
     private bool CheckSecondTargetIsInRange() {
-            return target2 != null && Vector2.Distance(target2.position, transform.position) <= targetingRange;
+            return target2 != null && Vector2.Distance(target2.position, transform.position) <= range;
     }
 
     //private void OnDrawGizmos() {

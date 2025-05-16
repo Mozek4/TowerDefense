@@ -13,9 +13,9 @@ public class IceTurret : MonoBehaviour
     [SerializeField] private LineRenderer rangeIndicator;
 
     [Header("Attribute")]
-    [SerializeField] private float targetingRange = 5f;
+    [SerializeField] private float range = 5f;
     [SerializeField] private float aps = 1f;
-    [SerializeField] private float freezeTime = 1f;
+    [SerializeField] private float slowTime = 1f;
 
     private int towerSellCost;
 
@@ -32,13 +32,13 @@ public class IceTurret : MonoBehaviour
         timeUntilFire += Time.deltaTime;
         
         if (timeUntilFire >= 1f/aps) {
-            FreezeEnemies();
+            SlowEnemies();
             timeUntilFire = 0f;
         }  
     }
 
-    private void FreezeEnemies() {
-        RaycastHit2D[] hits = Physics2D.CircleCastAll(transform.position, targetingRange, Vector2.zero, 0f, enemyMask);
+    private void SlowEnemies() {
+        RaycastHit2D[] hits = Physics2D.CircleCastAll(transform.position, range, Vector2.zero, 0f, enemyMask);
 
         if (hits.Length > 0) {
             for(int i = 0; i < hits.Length; i++) {
@@ -76,31 +76,31 @@ public class IceTurret : MonoBehaviour
     }
 
     private IEnumerator ResetEnemySpeed(EnemyMovement em) {
-        yield return new WaitForSeconds(freezeTime);
+        yield return new WaitForSeconds(slowTime);
 
         em.ResetSpeed();
     }
 
      private IEnumerator ResetEnemySpeed1(CarEnemy cm) {
-        yield return new WaitForSeconds(freezeTime);
+        yield return new WaitForSeconds(slowTime);
 
         cm.ResetSpeed();
     }
 
     private IEnumerator ResetEnemySpeed2(SpiderEnemy sm) {
-        yield return new WaitForSeconds(freezeTime);
+        yield return new WaitForSeconds(slowTime);
 
         sm.ResetSpeed();
     }
 
         private IEnumerator ResetEnemySpeed3(BossMovement bm) {
-        yield return new WaitForSeconds(freezeTime);
+        yield return new WaitForSeconds(slowTime);
 
         bm.ResetSpeed();
     }
 
         private IEnumerator ResetEnemySpeed4(WitchEnemy wm) {
-        yield return new WaitForSeconds(freezeTime);
+        yield return new WaitForSeconds(slowTime);
 
         wm.ResetSpeed();
     }
@@ -113,8 +113,8 @@ public class IceTurret : MonoBehaviour
         for (int i = 0; i <= segments; i++)
         {
             float angle = Mathf.Deg2Rad * (i * angleStep);
-            float x = Mathf.Cos(angle) * targetingRange;
-            float y = Mathf.Sin(angle) * targetingRange;
+            float x = Mathf.Cos(angle) * range;
+            float y = Mathf.Sin(angle) * range;
             positions[i] = new Vector3(x, y, 0);
         }
 

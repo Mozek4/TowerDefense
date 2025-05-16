@@ -13,7 +13,7 @@ public class BushTurret : MonoBehaviour
 
     [Header("Attribute")]
     [SerializeField] private float damage = 10f;
-    [SerializeField] private float targetingRange = 5f;
+    [SerializeField] private float range = 5f;
     [SerializeField] private float aps = 1f;
 
     private int towerSellCost;
@@ -37,7 +37,7 @@ public class BushTurret : MonoBehaviour
     }
 
     private void DamageEnemies() {
-        RaycastHit2D[] hits = Physics2D.CircleCastAll(transform.position, targetingRange, Vector2.zero, 0f, enemyMask);
+        RaycastHit2D[] hits = Physics2D.CircleCastAll(transform.position, range, Vector2.zero, 0f, enemyMask);
 
         for(int i = 0; i < hits.Length; i++) {
             Health Health = hits[i].transform.GetComponent<Health>();
@@ -55,8 +55,8 @@ public class BushTurret : MonoBehaviour
         for (int i = 0; i <= segments; i++)
         {
             float angle = Mathf.Deg2Rad * (i * angleStep);
-            float x = Mathf.Cos(angle) * targetingRange;
-            float y = Mathf.Sin(angle) * targetingRange;
+            float x = Mathf.Cos(angle) * range;
+            float y = Mathf.Sin(angle) * range;
             positions[i] = new Vector3(x, y, 0);
         }
 

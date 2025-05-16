@@ -28,7 +28,7 @@ public class Health : MonoBehaviour {
             isDestroyed = true;
             Destroy(gameObject);
             LevelManager.main.score = LevelManager.main.score + enemyScore;
-            AudioSource.PlayClipAtPoint(death, transform.position, 0.8f);
+            AudioSource.PlayClipAtPoint(death, Camera.main.transform.position, 0.1f);
         }
     }
 /*     private void ResetHealth() {
