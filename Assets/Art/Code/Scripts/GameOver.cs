@@ -11,9 +11,11 @@ public class GameOver : MonoBehaviour
         LevelManager.playerHealth = 100;
         Time.timeScale =1;
     }
-    public void ExitToMenu() {
+    public void ExitToMenu()
+    {
         LevelManager.playerHealth = 100;
         SceneManager.LoadScene("Menu");
         Time.timeScale = 1;
+        PlayerData.instance.AddDiamonds(LevelManager.main.score / 20);
     }
 }

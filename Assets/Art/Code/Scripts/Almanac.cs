@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -13,6 +14,8 @@ public class OpenAlmanac : MonoBehaviour
     [SerializeField] private Button CloseAlmanacButton2;
     [SerializeField] private Button GoToTowersButton;
     [SerializeField] private Button GoToMonsterButton;
+    [SerializeField] private GameObject VillageButton;
+    [SerializeField] private GameObject DiamondCounter;
 
     private void Start()
     {
@@ -25,21 +28,29 @@ public class OpenAlmanac : MonoBehaviour
         TowersAlmanac.SetActive(false);
     }
 
-    private void OpenEnemiesAlmanac() {
+    private void OpenEnemiesAlmanac()
+    {
         EnemiesAlmanac.SetActive(true);
-    }
-    
-    private void CloseEnemiesAlmanac() {
-        EnemiesAlmanac.SetActive(false);
-        TowersAlmanac.SetActive(false);
+        VillageButton.SetActive(false);
+        DiamondCounter.SetActive(false);
     }
 
-    private void GoToTowers() {
+    private void CloseEnemiesAlmanac()
+    {
+        EnemiesAlmanac.SetActive(false);
+        TowersAlmanac.SetActive(false);
+        VillageButton.SetActive(true);
+        DiamondCounter.SetActive(true);
+    }
+
+    private void GoToTowers()
+    {
         EnemiesAlmanac.SetActive(false);
         TowersAlmanac.SetActive(true);
     }
 
-    private void GoToMonsters() {
+    private void GoToMonsters()
+    {
         EnemiesAlmanac.SetActive(true);
         TowersAlmanac.SetActive(false);
     }

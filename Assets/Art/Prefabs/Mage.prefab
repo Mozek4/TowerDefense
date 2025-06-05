@@ -469,8 +469,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0.017000198, y: 0.14900017}
-  m_SizeDelta: {x: 250, y: 200}
+  m_AnchoredPosition: {x: 0, y: 0.015}
+  m_SizeDelta: {x: 250, y: 205}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!223 &8053962892126864993
 Canvas:
@@ -593,10 +593,10 @@ MonoBehaviour:
   upgradeRangeButton: {fileID: 766428858868341474}
   sellTower: {fileID: 6514843990021937275}
   rangeIndicator: {fileID: -6529010810389422483}
-  targetingRange: 5.5
-  bps: 0.95
-  baseTargetingRangeUpgradeCost: 160
-  baseBpsUpgradeCost: 140
+  range: 5
+  aps: 1
+  baseRangeUpgradeCost: 100
+  baseApsUpgradeCost: 100
   bulletObj: {fileID: 0}
 --- !u!114 &6180918296130834524
 MonoBehaviour:

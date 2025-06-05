@@ -9,7 +9,7 @@ public class HealthUI : MonoBehaviour
     [SerializeField] TextMeshProUGUI HealthCounterUI;
     private void OnGUI() {
         if (HealthCounterUI != null) {
-            HealthCounterUI.text = "Health " + LevelManager.playerHealth.ToString();
+            HealthCounterUI.text = LevelManager.playerHealth.ToString();
         }
     }   
 }

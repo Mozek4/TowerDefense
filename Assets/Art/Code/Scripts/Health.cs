@@ -22,13 +22,15 @@ public class Health : MonoBehaviour {
         hitPoints -= dmg;
         //Debug.Log(hitPoints);
 
-        if (hitPoints <= 0 && !isDestroyed) {
+        if (hitPoints <= 0 && !isDestroyed)
+        {
             EnemySpawner.onEnemyDestroy.Invoke();
             LevelManager.main.IncreaseCurrency(currencyWorth);
             isDestroyed = true;
             Destroy(gameObject);
             LevelManager.main.score = LevelManager.main.score + enemyScore;
             AudioSource.PlayClipAtPoint(death, Camera.main.transform.position, 0.1f);
+            Debug.Log(LevelManager.main.score);
         }
     }
 /*     private void ResetHealth() {

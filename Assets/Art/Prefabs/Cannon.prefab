@@ -36,7 +36,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0.007000003, y: 0.153}
   m_SizeDelta: {x: 250, y: 200}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!223 &121990559966267087
@@ -361,11 +361,11 @@ MonoBehaviour:
   sellTower: {fileID: 2412989167429093257}
   rangeIndicator: {fileID: -6820073388370535333}
   cannonShot: {fileID: 8300000, guid: ccfb2b571f4829743a4b13fa865402fc, type: 3}
-  targetingRange: 4
+  range: 5
   rotationSpeed: 200
-  bps: 0.55
-  baseTargetingRangeUpgradeCost: 160
-  baseBpsUpgradeCost: 140
+  aps: 1
+  baseRangeUpgradeCost: 100
+  baseApsUpgradeCost: 100
   bulletObj: {fileID: 0}
 --- !u!114 &-8129473342375616164
 MonoBehaviour:
@@ -630,8 +630,8 @@ Transform:
   m_GameObject: {fileID: 5331808642105058636}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.13449997, y: 0.637, z: 0.020133099}
-  m_LocalScale: {x: 1.25, y: 1.25, z: 1}
+  m_LocalPosition: {x: -0.04375, y: 0.85625, z: 0.020133099}
+  m_LocalScale: {x: 1.2500001, y: 1.2500001, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 7384022723085567186}
@@ -662,7 +662,7 @@ Transform:
   m_GameObject: {fileID: 6342671459020759699}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.013, y: 0.092, z: -0.020133099}
+  m_LocalPosition: {x: 0.04, y: -0.052, z: 0}
   m_LocalScale: {x: 0.8, y: 0.8, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -898,8 +898,8 @@ Transform:
   m_GameObject: {fileID: 6607524187845773250}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.06749995, y: -0.16874999, z: 0}
-  m_LocalScale: {x: 0.83750004, y: 0.5625, z: 1}
+  m_LocalPosition: {x: 0.02624996, y: 0.087500006, z: 0}
+  m_LocalScale: {x: 0.8375001, y: 0.56250006, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 7384022723085567186}
@@ -968,6 +968,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3833d0d7111b4654cac8be55309c7d10, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  extraRenderers: []
+  offset: 1
 --- !u!1 &6659900364325703714
 GameObject:
   m_ObjectHideFlags: 0

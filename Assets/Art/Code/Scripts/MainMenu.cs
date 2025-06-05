@@ -11,9 +11,14 @@ public class MainMenu : MonoBehaviour
     {
         SceneManager.LoadScene("Main");
     }
-    public void OnExitButtonClicked() 
+    public void OnExitButtonClicked()
     {
         Application.Quit();
+    }
+
+    public void OnVillageButtonClicked()
+    {
+        SceneManager.LoadScene("Village");
     }
 }
 
