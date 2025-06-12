@@ -20,7 +20,6 @@ public class Health : MonoBehaviour {
 
     public void TakeDamage(int dmg) {
         hitPoints -= dmg;
-        //Debug.Log(hitPoints);
 
         if (hitPoints <= 0 && !isDestroyed)
         {

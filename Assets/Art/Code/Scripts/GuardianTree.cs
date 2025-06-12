@@ -84,9 +84,4 @@ public class GuardianTree : MonoBehaviour
     private bool CheckSecondTargetIsInRange() {
             return target2 != null && Vector2.Distance(target2.position, transform.position) <= range;
     }
-
-    //private void OnDrawGizmos() {
-        //Gizmos.color = Color.cyan;
-        //Gizmos.DrawWireSphere(transform.position, targetingRange);
-    //}
 }

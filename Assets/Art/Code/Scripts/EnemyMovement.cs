@@ -30,7 +30,6 @@ public class EnemyMovement : MonoBehaviour
                 LevelManager.playerHealthReduce(hpDamage);
                 EnemySpawner.onEnemyDestroy.Invoke();
                 Destroy(gameObject);
-                //Debug.Log(LevelManager.playerHealth);
                 return;
             } 
             else 

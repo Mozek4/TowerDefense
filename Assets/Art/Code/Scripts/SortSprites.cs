@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class SortSprites : MonoBehaviour
 {
-    public SpriteRenderer[] extraRenderers; // sem přetáhneš střelce
+    public SpriteRenderer[] extraRenderers;
     public int offset = 1;
 
     private SpriteRenderer sr;
