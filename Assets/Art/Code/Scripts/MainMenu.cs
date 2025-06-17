@@ -4,12 +4,23 @@ using System.Security;
 using UnityEngine.Rendering;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using System.Data;
 
 public class MainMenu : MonoBehaviour
 {
-    public void OnStartButtonClicked()
+    [SerializeField] private GameObject map;
+
+    void Start()
+    {
+        map.SetActive(false);
+    }
+    public void OnFirstMapButtonClicked()
     {
         SceneManager.LoadScene("Main");
+    }
+    public void OnStartButtonClicked()
+    {
+        map.SetActive(true);
     }
     public void OnExitButtonClicked()
     {

@@ -103,7 +103,7 @@ MonoBehaviour:
   hitPoints: 95
   currencyWorth: 35
   enemyScore: 20
-  death: {fileID: 0}
+  death: {fileID: 8300000, guid: bd7186213b0091746a1e2145af06b387, type: 3}
 --- !u!114 &8762406705713231985
 MonoBehaviour:
   m_ObjectHideFlags: 0

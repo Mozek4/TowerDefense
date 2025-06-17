@@ -34,6 +34,7 @@ public class VillageButtons : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.S))
         {
             PlayerData.instance.SaveVillage();
+            PlayerData.instance.SaveDiamonds();
         }
     }
 
@@ -100,7 +101,7 @@ public class VillageButtons : MonoBehaviour
     }
     public void FirstHouseButton()
     {
-        if (!house1.activeSelf)
+        if (PlayerData.instance.diamonds > 100 && !house1.activeSelf)
         {
             house1.SetActive(true);
             PlayerData.instance.diamonds = PlayerData.instance.diamonds - 100;
