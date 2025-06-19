@@ -18,6 +18,10 @@ public class MainMenu : MonoBehaviour
     {
         SceneManager.LoadScene("Main");
     }
+    public void OnSecondMapButtonClicked()
+    {
+        SceneManager.LoadScene("SnowMap");
+    }
     public void OnStartButtonClicked()
     {
         map.SetActive(true);
@@ -31,5 +35,6 @@ public class MainMenu : MonoBehaviour
     {
         SceneManager.LoadScene("Village");
     }
+
 }
 
