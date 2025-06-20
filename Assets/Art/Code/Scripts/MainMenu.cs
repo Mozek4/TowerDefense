@@ -10,6 +10,14 @@ public class MainMenu : MonoBehaviour
 {
     [SerializeField] private GameObject map;
 
+    void Update() 
+    {
+        if (Input.GetKeyDown(KeyCode.Escape) && map.activeSelf)
+        {
+            map.SetActive(false);
+        }
+    }
+
     void Start()
     {
         map.SetActive(false);
@@ -35,6 +43,5 @@ public class MainMenu : MonoBehaviour
     {
         SceneManager.LoadScene("Village");
     }
-
 }
 
