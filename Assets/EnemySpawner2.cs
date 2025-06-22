@@ -10,8 +10,8 @@ using UnityEngine.Events;
 using UnityEngine.Rendering;
 using Random=UnityEngine.Random;
 
-public class EnemySpawner : MonoBehaviour {
-    public static EnemySpawner Instance {get; private set;}
+public class EnemySpawner2 : MonoBehaviour {
+    public static EnemySpawner2 Instance {get; private set;}
 
     [Header("Attributes")]
     [SerializeField] private List<GameObject> enemies; 
@@ -32,8 +32,6 @@ public class EnemySpawner : MonoBehaviour {
     private int enemiesLeftToSpawn;
     private float eps;
     private bool isSpawning = false;
-
-    public GameObject panel;
 
     private GameObject skeletonBoss;
     private GameObject vampireBoss;
@@ -80,11 +78,6 @@ public class EnemySpawner : MonoBehaviour {
 
     private void Start() {
         StartCoroutine(StartWave());
-        if (panel == null) {
-            panel = GameObject.Find("Game Over");
-        }
-        panel.SetActive(false);
-
     }   
 
     private void Update() {
@@ -103,7 +96,6 @@ public class EnemySpawner : MonoBehaviour {
         if (enemiesAlive <= 0 && enemiesLeftToSpawn == 0) {
             EndWave();
         }
-        EndGame();
     }
     private void EnemyDestroyed() {
         enemiesAlive--;
@@ -193,16 +185,7 @@ public class EnemySpawner : MonoBehaviour {
     private float EnemiesPerSecond() {
         return Math.Clamp(enemiesPerSecond * Mathf.Pow(currentWave, difficulty),0f, enemiesPerSecondLimit);
     }
-
-    private void EndGame(){
-        if (LevelManager.playerHealth <= 0 && !GameIsOver)
-        {
-            GameIsOver = true;
-            Time.timeScale = 0;
-            panel.SetActive(true);
-            PlayerData.instance.AddDiamonds(LevelManager.main.score / 20);
-        }
-    }
 }
+
 
 

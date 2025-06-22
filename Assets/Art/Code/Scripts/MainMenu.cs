@@ -24,7 +24,7 @@ public class MainMenu : MonoBehaviour
     }
     public void OnFirstMapButtonClicked()
     {
-        SceneManager.LoadScene("Main");
+        SceneManager.LoadScene("OriginalMap");
     }
     public void OnSecondMapButtonClicked()
     {

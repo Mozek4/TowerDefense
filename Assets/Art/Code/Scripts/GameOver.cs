@@ -7,7 +7,7 @@ using UnityEngine.SceneManagement;
 public class GameOver : MonoBehaviour
 {
     public void RestartButton() {
-        SceneManager.LoadScene("Main");
+        SceneManager.LoadScene("OriginalMap");
         LevelManager.playerHealth = 100;
         Time.timeScale =1;
     }
