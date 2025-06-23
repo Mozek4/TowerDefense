@@ -55,7 +55,7 @@ public class EnemySpawner : MonoBehaviour {
         enemies = new List<GameObject>();;
         skeletonBoss = Resources.Load<GameObject>("Enemies/SkeletonBoss");
         vampireBoss = Resources.Load<GameObject>("Enemies/VampireBoss");
-        skeleton = Resources.Load<GameObject>("Enemies/Skeleton2");
+        skeleton = Resources.Load<GameObject>("Enemies/Skeleton");
         goblin = Resources.Load<GameObject>("Enemies/Goblin");
         wolf = Resources.Load<GameObject>("Enemies/Wolf");
         tank = Resources.Load<GameObject>("Enemies/Tank");

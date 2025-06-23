@@ -33,8 +33,6 @@ public class EnemySpawner2 : MonoBehaviour {
     private float eps;
     private bool isSpawning = false;
 
-    private GameObject skeletonBoss;
-    private GameObject vampireBoss;
     private GameObject skeleton;
     private GameObject goblin;
     private GameObject wolf;
@@ -43,7 +41,6 @@ public class EnemySpawner2 : MonoBehaviour {
     private GameObject spider;
     private GameObject miniRobot;
     private GameObject witch;
-    private GameObject car;
     private GameObject roboticSnake;
     private GameObject greenTroll;
     private GameObject blueTroll;
@@ -51,8 +48,6 @@ public class EnemySpawner2 : MonoBehaviour {
 
     private void Awake() {
         enemies = new List<GameObject>();;
-        skeletonBoss = Resources.Load<GameObject>("Enemies/SkeletonBoss");
-        vampireBoss = Resources.Load<GameObject>("Enemies/VampireBoss");
         skeleton = Resources.Load<GameObject>("Enemies/Skeleton2");
         goblin = Resources.Load<GameObject>("Enemies/Goblin");
         wolf = Resources.Load<GameObject>("Enemies/Wolf");
@@ -61,7 +56,6 @@ public class EnemySpawner2 : MonoBehaviour {
         spider = Resources.Load<GameObject>("Enemies/Spider");
         miniRobot = Resources.Load<GameObject>("Enemies/MiniRobot");
         witch = Resources.Load<GameObject>("Enemies/Witch");
-        car = Resources.Load<GameObject>("Enemies/Car");
         roboticSnake = Resources.Load<GameObject>("Enemies/RoboticSnake");
         greenTroll = Resources.Load<GameObject>("Enemies/GreenTroll");
         blueTroll = Resources.Load<GameObject>("Enemies/BlueTroll");
@@ -103,8 +97,6 @@ public class EnemySpawner2 : MonoBehaviour {
 
     private IEnumerator StartWave() {
         yield return new WaitForSeconds(timeBetweenWaves);
-
-        BossSpawner();
 
         isSpawning = true;
         enemiesLeftToSpawn = EnemiesPerWave();
@@ -159,23 +151,11 @@ public class EnemySpawner2 : MonoBehaviour {
             enemies.Add(redTroll);
         }
     }
-
-    private void BossSpawner() {
-        if (currentWave % 10 == 0 ) {
-            Instantiate(skeletonBoss, LevelManager.main.startPoint.position, Quaternion.identity);
-        }
-        if (currentWave % 10 == 0 && currentWave > 19) {
-            Instantiate(vampireBoss, LevelManager.main.startPoint.position, Quaternion.identity);
-        }
-        if (currentWave % 3 == 0 && currentWave > 11) {
-            Instantiate(car, LevelManager.main.startPoint.position, Quaternion.identity);
-        }
-    }
     
     private void SpawnEnemy() {
         int index = Random.Range(0, enemies.Count);
         GameObject prefabToSpawn = enemies[index];
-        Instantiate(prefabToSpawn, LevelManager.main.startPoint.position, Quaternion.identity);
+        Instantiate(prefabToSpawn, LevelManager.main.startPoint2.position, Quaternion.identity);
     }
 
     private int EnemiesPerWave() {
