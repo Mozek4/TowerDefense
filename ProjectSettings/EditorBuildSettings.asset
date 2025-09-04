@@ -17,4 +17,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Village.unity
     guid: 3690be761444fb045b42fc1b9789901b
+  - enabled: 1
+    path: Assets/Scenes/TestDoublePath.unity
+    guid: 6a9928c02b82d844b8ab9065e40feda9
   m_configObjects: {}

@@ -45,11 +45,11 @@ public class FastForward : MonoBehaviour
     }
     private void fastForward() {
         if (Time.timeScale == 1 && isFastForward == false) {
-            Time.timeScale = 1.5f;
+            Time.timeScale = 10f;
             arrow2.SetActive(true);
             Debug.Log(Time.timeScale);
         }
-        if (Time.timeScale == 1.5f && isFastForward == true) {
+        if (Time.timeScale == 10 && isFastForward == true) {
             Time.timeScale = 1;
             arrow2.SetActive(false);
             Debug.Log(Time.timeScale);

@@ -35,50 +35,41 @@ public class EnemySpawner : MonoBehaviour {
 
     public GameObject panel;
 
-    private GameObject skeletonBoss;
-    private GameObject vampireBoss;
-    private GameObject skeleton;
-    private GameObject goblin;
-    private GameObject wolf;
-    private GameObject tank;
-    private GameObject electroSpirit;
-    private GameObject spider;
-    private GameObject miniRobot;
-    private GameObject witch;
-    private GameObject car;
-    private GameObject roboticSnake;
-    private GameObject greenTroll;
-    private GameObject blueTroll;
-    private GameObject redTroll;
+    private GameObject skeletonBoss, vampireBoss, skeleton, goblin, wolf, tank, electroSpirit, spider, miniRobot, witch, car, roboticSnake, greenTroll, blueTroll, redTroll;
 
-    private void Awake() {
-        enemies = new List<GameObject>();;
-        skeletonBoss = Resources.Load<GameObject>("Enemies/SkeletonBoss");
-        vampireBoss = Resources.Load<GameObject>("Enemies/VampireBoss");
-        skeleton = Resources.Load<GameObject>("Enemies/Skeleton");
-        goblin = Resources.Load<GameObject>("Enemies/Goblin");
-        wolf = Resources.Load<GameObject>("Enemies/Wolf");
-        tank = Resources.Load<GameObject>("Enemies/Tank");
-        electroSpirit = Resources.Load<GameObject>("Enemies/ElectroSpirit");
-        spider = Resources.Load<GameObject>("Enemies/Spider");
-        miniRobot = Resources.Load<GameObject>("Enemies/MiniRobot");
-        witch = Resources.Load<GameObject>("Enemies/Witch");
-        car = Resources.Load<GameObject>("Enemies/Car");
-        roboticSnake = Resources.Load<GameObject>("Enemies/RoboticSnake");
-        greenTroll = Resources.Load<GameObject>("Enemies/GreenTroll");
-        blueTroll = Resources.Load<GameObject>("Enemies/BlueTroll");
-        redTroll = Resources.Load<GameObject>("Enemies/RedTroll");
+    private void Awake()
+    {
+        enemies = new List<GameObject>(); ;
+        skeletonBoss = Resources.Load<GameObject>("Enemies/Single/SkeletonBoss");
+        vampireBoss = Resources.Load<GameObject>("Enemies/Single/VampireBoss");
+        skeleton = Resources.Load<GameObject>("Enemies/Single/Skeleton");
+        goblin = Resources.Load<GameObject>("Enemies/Single/Goblin");
+        wolf = Resources.Load<GameObject>("Enemies/Single/Wolf");
+        tank = Resources.Load<GameObject>("Enemies/Single/Tank");
+        electroSpirit = Resources.Load<GameObject>("Enemies/Single/ElectroSpirit");
+        spider = Resources.Load<GameObject>("Enemies/Single/Spider");
+        miniRobot = Resources.Load<GameObject>("Enemies/Single/MiniRobot");
+        witch = Resources.Load<GameObject>("Enemies/Single/Witch");
+        car = Resources.Load<GameObject>("Enemies/Single/Car");
+        roboticSnake = Resources.Load<GameObject>("Enemies/Single/RoboticSnake");
+        greenTroll = Resources.Load<GameObject>("Enemies/Single/GreenTroll");
+        blueTroll = Resources.Load<GameObject>("Enemies/Single/BlueTroll");
+        redTroll = Resources.Load<GameObject>("Enemies/Single/RedTroll");
 
-        if (Instance == null) {
+        if (Instance == null)
+        {
             Instance = this;
         }
-            else {
+        else
+        {
             Destroy(gameObject);
-            }
+        }
         onEnemyDestroy.AddListener(EnemyDestroyed);
+        Time.timeScale = 1;
     }
 
     private void Start() {
+        
         StartCoroutine(StartWave());
         if (panel == null) {
             panel = GameObject.Find("Game Over");

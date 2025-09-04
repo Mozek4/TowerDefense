@@ -25,12 +25,19 @@ public class Bullet : MonoBehaviour {
     }
     private void OnCollisionEnter2D(Collision2D collision) {
         if (collision.transform == target) {
-        Health health = collision.gameObject.GetComponent<Health>();
-        if (health != null) {
-            health.TakeDamage(bulletDamage);
-        }
-        Destroy(gameObject);
-        }
+            IDamageable damageable = collision.gameObject.GetComponent<IDamageable>();
+            if (damageable != null) {
+                damageable.TakeDamage(bulletDamage);
+            }
+            Destroy(gameObject);
+    }
+/*         if (collision.transform == target) {
+                Health2 health = collision.gameObject.GetComponent<Health2>();
+                if (health != null) {
+                    health.TakeDamage(bulletDamage);
+                }
+                Destroy(gameObject);
+                } */
     }
     private void Start () {
         Destroy (gameObject, bulletTimeToLive);

@@ -1,23 +1,27 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.Mathematics;
 using UnityEngine;
 
-public class WitchEnemy : MonoBehaviour
+public class EnemyMovementDouble : MonoBehaviour
 {
-    public static WitchEnemy Instance {get; private set;}
+    public static EnemyMovementDouble Instance {get; private set;}
     [Header("References")]
     [SerializeField] private Rigidbody2D rb;
 
     [Header("Attributes")]
     [SerializeField] private float moveSpeed = 2f;
     [SerializeField] private int hpDamage = 2;
+    [SerializeField] private int xRotate;
+    [SerializeField] private int yRotate;
+    [SerializeField] private int zRotate;
 
     private Transform target;
     private int pathIndex = 0;
     private float baseSpeed;
 
-    private void Start() {
-        transform.rotation = Quaternion.Euler(0, 180, 0);
+    private void Start()
+    {
         baseSpeed = moveSpeed;
         target = LevelManager.main.path[pathIndex];
     }
@@ -28,10 +32,12 @@ public class WitchEnemy : MonoBehaviour
 
             if (pathIndex == LevelManager.main.path.Length) {
                 LevelManager.playerHealthReduce(hpDamage);
-                EnemySpawner.onEnemyDestroy.Invoke();
+                EnemySpawnerB.onEnemyDestroy.Invoke();
                 Destroy(gameObject);
                 return;
-            } else {
+            } 
+            else 
+            {
                 target = LevelManager.main.path[pathIndex];
                 RotateByDirection();
             }
@@ -53,7 +59,7 @@ public class WitchEnemy : MonoBehaviour
 
     private void RotateByDirection() {
         if (pathIndex == 6) {
-            transform.rotation = Quaternion.Euler(0, 0, 0);
+            transform.rotation = Quaternion.Euler(xRotate, yRotate, zRotate);
         }
     }
 }

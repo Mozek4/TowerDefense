@@ -17,13 +17,16 @@ public class LevelManager : MonoBehaviour
     public static void playerHealthReduce(int amount) {
         playerHealth -= amount;
     }
-    private void Awake() {
+    private void Awake()
+    {
         main = this;
     }
 
-    private void Start() {
+    private void Start()
+    {
         gold = 37500;
         score = 0;
+        playerHealth = 100;
     }
 
     public void IncreaseCurrency(int amount) {

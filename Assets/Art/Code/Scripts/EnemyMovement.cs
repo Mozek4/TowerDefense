@@ -12,6 +12,9 @@ public class EnemyMovement : MonoBehaviour
     [Header("Attributes")]
     [SerializeField] private float moveSpeed = 2f;
     [SerializeField] private int hpDamage = 2;
+    [SerializeField] private int xRotate;
+    [SerializeField] private int yRotate;
+    [SerializeField] private int zRotate;
 
     private Transform target;
     private int pathIndex = 0;
@@ -55,7 +58,7 @@ public class EnemyMovement : MonoBehaviour
 
     private void RotateByDirection() {
         if (pathIndex == 6) {
-            transform.rotation = Quaternion.Euler(0, 180, 0);
+            transform.rotation = Quaternion.Euler(xRotate, yRotate, zRotate);
         }
     }
 }
