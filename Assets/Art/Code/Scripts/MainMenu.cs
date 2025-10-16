@@ -9,6 +9,9 @@ using System.Data;
 public class MainMenu : MonoBehaviour
 {
     [SerializeField] private GameObject map;
+    [SerializeField] private GameObject firstLevel;
+    [SerializeField] private GameObject secondLevel;
+
 
     void Update() 
     {
@@ -21,14 +24,25 @@ public class MainMenu : MonoBehaviour
     void Start()
     {
         map.SetActive(false);
+        firstLevel.SetActive(false);
+        secondLevel.SetActive(false);
     }
     public void OnFirstMapButtonClicked()
     {
         SceneManager.LoadScene("OriginalMap");
     }
+
+    public void OnFirst2MapButtonClicked()
+    {
+        firstLevel.SetActive(true);
+    }
     public void OnSecondMapButtonClicked()
     {
         SceneManager.LoadScene("SnowMap");
+    }
+    public void OnSecond2MapButtonClicked()
+    {
+        secondLevel.SetActive(true);
     }
     public void OnStartButtonClicked()
     {

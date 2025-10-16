@@ -6,16 +6,28 @@ using UnityEngine.SceneManagement;
 
 public class GameOver : MonoBehaviour
 {
-    public void RestartButton() {
-        SceneManager.LoadScene("OriginalMap");
+    [SerializeField] string MapName;
+    public void RestartButton()
+    {
+        SceneManager.LoadScene(MapName);
         LevelManager.playerHealth = 100;
-        Time.timeScale =1;
+        Time.timeScale = 1;
     }
     public void ExitToMenu()
     {
+        int diamondsToAdd = 0;
+        if (LevelManager.main != null)
+        {
+            diamondsToAdd = LevelManager.main.score / 20;
+        }
+
+        if (PlayerData.instance != null)
+        {
+            PlayerData.instance.AddDiamonds(diamondsToAdd);
+        }
+
         LevelManager.playerHealth = 100;
-        SceneManager.LoadScene("Menu");
         Time.timeScale = 1;
-        PlayerData.instance.AddDiamonds(LevelManager.main.score / 20);
+        SceneManager.LoadScene("Menu");
     }
 }

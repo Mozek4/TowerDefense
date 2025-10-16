@@ -11,12 +11,7 @@ public class Health : MonoBehaviour {
 
     [Header("References")]
     [SerializeField] private AudioClip death;
-/*     [SerializeField] public int BaseHitPoints; */
     private bool isDestroyed = false;
-
-/*     private void Awake() {
-        ResetHealth();
-    } */
 
     public void TakeDamage(int dmg) {
         hitPoints -= dmg;
@@ -32,9 +27,6 @@ public class Health : MonoBehaviour {
             Debug.Log(LevelManager.main.score);
         }
     }
-/*     private void ResetHealth() {
-        hitPoints = BaseHitPoints;
-    } */
 } 
 
 

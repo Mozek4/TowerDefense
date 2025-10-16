@@ -16,6 +16,17 @@ public class OpenAlmanac : MonoBehaviour
     [SerializeField] private Button GoToMonsterButton;
     [SerializeField] private GameObject VillageButton;
     [SerializeField] private GameObject DiamondCounter;
+    [SerializeField] private GameObject Enemy1;
+    [SerializeField] private GameObject Enemy2;
+    [SerializeField] private GameObject Enemy3;
+    [SerializeField] private GameObject Enemy4;
+    [SerializeField] private GameObject Enemy5;
+    [SerializeField] private GameObject Enemy6;
+    [SerializeField] private GameObject Enemy7;
+    [SerializeField] private GameObject Enemy8;
+    [SerializeField] private GameObject Enemy9;
+    [SerializeField] private GameObject Enemy10;
+
 
     private void Start()
     {
@@ -25,7 +36,7 @@ public class OpenAlmanac : MonoBehaviour
         CloseAlmanacButton.onClick.AddListener(CloseEnemiesAlmanac);
         CloseAlmanacButton2.onClick.AddListener(CloseEnemiesAlmanac);
         EnemiesAlmanac.SetActive(false);
-        TowersAlmanac.SetActive(false);
+        TowersAlmanac.SetActive(false);                                                                 
     }
 
     private void OpenEnemiesAlmanac()
@@ -54,4 +65,46 @@ public class OpenAlmanac : MonoBehaviour
         EnemiesAlmanac.SetActive(true);
         TowersAlmanac.SetActive(false);
     }
+
+    public void ActivateEnemy1()
+    {
+        Enemy1.SetActive(true);
+    }
+    public void ActivateEnemy2()
+    {
+        Enemy2.SetActive(true);
+    }
+    public void ActivateEnemy3()
+    {
+        Enemy3.SetActive(true);
+    }
+    public void ActivateEnemy4()
+    {
+        Enemy4.SetActive(true);
+    }
+    public void ActivateEnemy5()
+    {
+        Enemy5.SetActive(true);
+    }
+    public void ActivateEnemy6()
+    {
+        Enemy6.SetActive(true);
+    }
+    public void ActivateEnemy7()
+    {
+        Enemy7.SetActive(true);
+    }
+    public void ActivateEnemy8()
+    {
+        Enemy8.SetActive(true);
+    }
+    public void ActivateEnemy9()
+    {
+        Enemy9.SetActive(true);
+    }
+    public void ActivateEnemy10()
+    {
+        Enemy10.SetActive(true);
+    }
+    
 }

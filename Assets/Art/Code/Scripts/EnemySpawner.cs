@@ -84,7 +84,6 @@ public class EnemySpawner : MonoBehaviour {
             panel = GameObject.Find("Game Over");
         }
         panel.SetActive(false);
-
     }   
 
     private void Update() {
@@ -197,10 +196,14 @@ public class EnemySpawner : MonoBehaviour {
     private void EndGame(){
         if (LevelManager.playerHealth <= 0 && !GameIsOver)
         {
+        
             GameIsOver = true;
             Time.timeScale = 0;
             panel.SetActive(true);
-            PlayerData.instance.AddDiamonds(LevelManager.main.score / 20);
+            if (PlayerData.instance != null && LevelManager.main != null)
+            {
+                PlayerData.instance.AddDiamonds(LevelManager.main.score / 20);
+            }
         }
     }
 }
