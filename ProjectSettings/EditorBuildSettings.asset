@@ -17,4 +17,10 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Village.unity
     guid: 3690be761444fb045b42fc1b9789901b
+  - enabled: 1
+    path: Assets/Scenes/DesertMap.unity
+    guid: 9f167c28a3088e14d9365d01e0d107d0
+  - enabled: 1
+    path: Assets/Scenes/MountainMap.unity
+    guid: ac2f7b767ae96dd4aa79a4c9e5fafb5b
   m_configObjects: {}

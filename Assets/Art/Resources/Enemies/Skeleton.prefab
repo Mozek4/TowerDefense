@@ -140,6 +140,7 @@ MonoBehaviour:
   hitPoints: 20
   currencyWorth: 20
   enemyScore: 5
+  enemyType: 1
   death: {fileID: 8300000, guid: a458c78b184725e4a983b6a0076d5972, type: 3}
 --- !u!50 &6834997717310453001
 Rigidbody2D:

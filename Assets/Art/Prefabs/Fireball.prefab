@@ -102,6 +102,7 @@ MonoBehaviour:
   rb: {fileID: 5356668663579142972}
   bulletSpeed: 5
   bulletDamage: 20
+  damageType: 0
 --- !u!50 &5356668663579142972
 Rigidbody2D:
   serializedVersion: 4
