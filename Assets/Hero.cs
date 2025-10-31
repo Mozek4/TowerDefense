@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.EventSystems;
+using TMPro;
 
 [RequireComponent(typeof(Rigidbody2D))]
 public class HeroController : MonoBehaviour
@@ -21,6 +22,12 @@ public class HeroController : MonoBehaviour
     [Header("Detection")]
     public LayerMask enemyLayerMask; 
 
+    [Header("Level System")]
+    public int level = 1;
+    private int enemiesKilled = 0;
+    private int killsNeededForNextLevel = 20; // začínáme na 20
+    [SerializeField] private TextMeshProUGUI levelText;
+
     private Rigidbody2D rb;
     private bool awaitingMoveCommand = false;
     private Transform currentTarget;
@@ -34,8 +41,13 @@ public class HeroController : MonoBehaviour
         {
             rangeIndicator.positionCount = 0;
             rangeIndicator.enabled = false;
-            rangeIndicator.useWorldSpace = true; // nutné, aby bylo kolem hrdiny
+            rangeIndicator.useWorldSpace = true;
         }
+    }
+
+    void Start()
+    {
+        UpdateLevelText();
     }
 
     void FixedUpdate()
@@ -72,13 +84,17 @@ public class HeroController : MonoBehaviour
     {
         HandleMoveCommandInput();
 
-        // aktualizace pozice kruhu, pokud je aktivní
+        // ✳️ Nově: klávesa E dělá to samé jako klik na tlačítko
+        if (Input.GetKeyDown(KeyCode.E))
+        {
+            StartMoveCommand();
+        }
+
         if (rangeIndicator.enabled)
         {
             DrawRangeCircle();
         }
 
-        // Útok jen pokud stojí
         if (!isMoving)
         {
             attackTimer -= Time.deltaTime;
@@ -90,30 +106,26 @@ public class HeroController : MonoBehaviour
         }
     }
 
-private void HandleMoveCommandInput()
-{
-    // pokud čekám na cíl a kliknu
-    if (awaitingMoveCommand && Input.GetMouseButtonDown(0))
+    private void HandleMoveCommandInput()
     {
-        // ✳️ KONTROLA: jestli klik nebyl přes UI
-        if (EventSystem.current != null && EventSystem.current.IsPointerOverGameObject())
+        if (awaitingMoveCommand && Input.GetMouseButtonDown(0))
         {
-            return; // ignoruj klik, pokud byl přes UI tlačítko
+            if (EventSystem.current != null && EventSystem.current.IsPointerOverGameObject())
+            {
+                return;
+            }
+
+            Vector3 mouseWorld = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+            targetPosition = new Vector2(mouseWorld.x, mouseWorld.y);
+            isMoving = true;
+            awaitingMoveCommand = false;
+
+            HideRangeCircle();
         }
-
-        Vector3 mouseWorld = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-        targetPosition = new Vector2(mouseWorld.x, mouseWorld.y);
-        isMoving = true;
-        awaitingMoveCommand = false;
-
-        HideRangeCircle(); // po kliknutí vypni kruh
     }
-}
 
-    // volá se z UI Button
     public void StartMoveCommand()
     {
-        // když už čekám na příkaz, vypni režim
         if (awaitingMoveCommand)
         {
             awaitingMoveCommand = false;
@@ -160,18 +172,56 @@ private void HandleMoveCommandInput()
         var enemyHealth = target.GetComponent<Health>();
         if (enemyHealth != null)
         {
+            int prevHealth = enemyHealth.hitPoints;
             enemyHealth.TakeDamage(attackDamage);
+
+            if (enemyHealth.hitPoints <= 0 && prevHealth > 0)
+            {
+                OnEnemyKilled();
+            }
+        }
+    }
+
+    private void OnEnemyKilled()
+    {
+        enemiesKilled++;
+
+        if (enemiesKilled >= killsNeededForNextLevel)
+        {
+            level++;
+            enemiesKilled = 0;
+
+            // každý level vyžaduje o 50 % více killů než předchozí
+            killsNeededForNextLevel = Mathf.CeilToInt(killsNeededForNextLevel * 1.5f);
+
+            // Zrychlení útoku o 3 % (sníží cooldown)
+            attackCooldown *= 0.97f;
+
+            // Každý 5. level zvýší damage o 10 %
+            if (level % 5 == 0)
+            {
+                attackDamage = Mathf.CeilToInt(attackDamage * 1.1f);
+            }
+
+            UpdateLevelText();
+        }
+    }
+
+    private void UpdateLevelText()
+    {
+        if (levelText != null)
+        {
+            levelText.text = $"Level: {level}";
         }
     }
 
     // === RANGE KRUH ===
-
     private void ShowRangeCircle()
     {
         if (rangeIndicator == null) return;
 
         rangeIndicator.enabled = true;
-        rangeIndicator.sortingLayerName = "UI"; // nebo jiná, podle hry
+        rangeIndicator.sortingLayerName = "UI";
         rangeIndicator.sortingOrder = 10;
         DrawRangeCircle();
     }
