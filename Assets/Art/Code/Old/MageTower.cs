@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEditor;
 using UnityEngine.UI;
 using System.Runtime.CompilerServices;
+
 public class MageTower : MonoBehaviour
 {
     [Header("References")]
@@ -18,8 +19,8 @@ public class MageTower : MonoBehaviour
     //[SerializeField] private AudioClip shot;
 
     [Header("Attribute")]
-    [SerializeField] private float range = 5f;
-    [SerializeField] private float aps = 1f;
+    [SerializeField] private float range = 5f; // počáteční hodnota (bude použita jako base)
+    [SerializeField] private float aps = 1f;   // počáteční hodnota (shots per second)
     [SerializeField] private float baseRangeUpgradeCost = 100;
     [SerializeField] private int baseApsUpgradeCost = 100;
 
@@ -36,8 +37,11 @@ public class MageTower : MonoBehaviour
 
     private void Start() {
         towerSellCost = LevelManager.main.towerCost;
+
+        // uložení základních hodnot (pokud jsi nastavoval range/aps v inspektoru)
         apsbase = aps;
         rangeBase = range;
+
         upgradeBpsButton.onClick.AddListener(UpgradeBps);
         upgradeRangeButton.onClick.AddListener(UpgradeRange);
         sellTower.onClick.AddListener(SellTower);
@@ -56,24 +60,33 @@ public class MageTower : MonoBehaviour
     
     private void Update() {
         UpgradeButtonsManager();
+
+        // spočítáme efektivní hodnoty = lokální levelová hodnota * globální multiplikátor (pokud existuje)
+        float globalRangeMult   = PlayerStats.instance != null ? PlayerStats.instance.towerRangeMultiplier : 1f;
+        float globalApsMult     = PlayerStats.instance != null ? PlayerStats.instance.towerAttackSpeedMultiplier : 1f;
+
+        float effectiveRange = CalculateRange() * globalRangeMult;
+        float effectiveAps = CalculateBPS() * globalApsMult;
+
+        // Find / maintain target podle efektivního range
         if (target == null) {
-            FindTarget();
+            FindTarget(effectiveRange);
             return;
         }
 
-        if (!CheckTargetIsInRange()) {
+        if (!CheckTargetIsInRange(effectiveRange)) {
             target = null;
         }
         else {
-
             timeUntilFire += Time.deltaTime;
         
-            if (timeUntilFire >= 1f/aps) {
+            if (timeUntilFire >= 1f / effectiveAps) {
                 Shoot();
                 timeUntilFire = 0f;
             }  
         }
     }
+
     private void Shoot() {
         //AudioSource.PlayClipAtPoint(shot, transform.position, 0.8f);
         GameObject bulletObj = Instantiate(bulletPrefab, firingPoint.position, Quaternion.identity);
@@ -81,23 +94,23 @@ public class MageTower : MonoBehaviour
         bulletScript.SetTarget(target);
     }
 
-    private void FindTarget() {
-        RaycastHit2D[] hits = Physics2D.CircleCastAll(transform.position, range, Vector2.zero, 0f, enemyMask);
+    private void FindTarget(float effectiveRange) {
+        RaycastHit2D[] hits = Physics2D.CircleCastAll(transform.position, effectiveRange, Vector2.zero, 0f, enemyMask);
 
         if (hits.Length > 0) {
             target = hits[0].transform;
         }
-
     }
-    private bool CheckTargetIsInRange() {
-        return Vector2.Distance(target.position, transform.position) <= range;
+
+    private bool CheckTargetIsInRange(float effectiveRange) {
+        if (target == null) return false;
+        return Vector2.Distance(target.position, transform.position) <= effectiveRange;
     }
 
    public void OpenUpgradeUI () {
         upgradeUI.SetActive(true);
         rangeIndicator.enabled = true;
         DrawRangeCircle();
-        
     }
 
     public void CloseUpgradeUI () {
@@ -107,6 +120,10 @@ public class MageTower : MonoBehaviour
     }
 
     private void DrawRangeCircle() {
+        // Když vykreslujeme, použijeme aktuální efektivní range (zohlední i PlayerStats)
+        float globalRangeMult = PlayerStats.instance != null ? PlayerStats.instance.towerRangeMultiplier : 1f;
+        float effectiveRange = CalculateRange() * globalRangeMult;
+
         int segments = 50;
         float angleStep = 360f / segments;
         Vector3[] positions = new Vector3[segments + 1];
@@ -114,8 +131,8 @@ public class MageTower : MonoBehaviour
         for (int i = 0; i <= segments; i++)
         {
             float angle = Mathf.Deg2Rad * (i * angleStep);
-            float x = Mathf.Cos(angle) * range;
-            float y = Mathf.Sin(angle) * range;
+            float x = Mathf.Cos(angle) * effectiveRange;
+            float y = Mathf.Sin(angle) * effectiveRange;
             positions[i] = new Vector3(x, y, 0);
         }
 
@@ -129,7 +146,7 @@ public class MageTower : MonoBehaviour
         }
         LevelManager.main.SpendCurrency(CalculateBpsCost());
         bpsLevel ++;
-        aps = CalculateBPS();
+        // aps = CalculateBPS();  // už nepotřebujeme nastavovat, efektivní hodnota se počítá dynamicky
         CloseUpgradeUI();
     }
 
@@ -139,7 +156,7 @@ public class MageTower : MonoBehaviour
         }
         LevelManager.main.SpendCurrency(CalculateRangeCost());
         rangeLevel++;
-        range = CalculateRange();
+        // range = CalculateRange(); // efektivní range se počítá dynamicky
         CloseUpgradeUI();
     }
 
@@ -151,10 +168,12 @@ public class MageTower : MonoBehaviour
         return Mathf.RoundToInt(baseRangeUpgradeCost * Mathf.Pow(rangeLevel, 1.1f));
     }
 
+    // Vrací základní hodnotu BPS podle levelu (bez globálního multiplikátoru)
     private float CalculateBPS() {
         return apsbase * Mathf.Pow(bpsLevel, 0.4f);
     }
     
+    // Vrací základní hodnotu range podle levelu (bez globálního multiplikátoru)
     private float CalculateRange() {
         return rangeBase * Mathf.Pow(rangeLevel, 0.15f);
     }
@@ -165,3 +184,4 @@ public class MageTower : MonoBehaviour
         CloseUpgradeUI();
     }
 }
+

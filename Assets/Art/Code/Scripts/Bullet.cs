@@ -14,6 +14,9 @@ public class Bullet : MonoBehaviour
     [Header("Damage Type")]
     public DamageType damageType = DamageType.Physical;
 
+    [Header("Behavior Settings")]
+    [SerializeField] private bool tipRotation = false; // ✅ Checkbox pro zapnutí/vypnutí rotace
+
     private Transform target;
     private float bulletTimeToLive = 2.5f;
 
@@ -25,8 +28,17 @@ public class Bullet : MonoBehaviour
     private void FixedUpdate()
     {
         if (!target) return;
+
+        // směr k cíli
         Vector2 direction = (target.position - transform.position).normalized;
         rb.velocity = direction * bulletSpeed;
+
+        // ✅ pokud je zaškrtnutý tipRotation, otáčí se projektil směrem k cíli
+        if (tipRotation)
+        {
+            float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
+            transform.rotation = Quaternion.Euler(new Vector3(0f, 0f, angle - 180));
+        }
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
@@ -38,11 +50,14 @@ public class Bullet : MonoBehaviour
             {
                 float finalDamage = bulletDamage;
 
-                // Magic deals 1.5x damage to Undead enemies
+                // 1️⃣ Bonus podle typu nepřítele
                 if (damageType == DamageType.Magic && health.enemyType == EnemyType.Undead)
                 {
-                    finalDamage *= 1.5f;
+                    finalDamage *= 1.5f; // +50 % proti undeadům
                 }
+
+                // 2️⃣ Upgrady z PlayerStats
+                finalDamage *= PlayerStats.instance.towerDamageMultiplier;
 
                 health.TakeDamage(Mathf.RoundToInt(finalDamage));
             }

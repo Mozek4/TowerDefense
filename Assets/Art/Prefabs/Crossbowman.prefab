@@ -651,6 +651,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8142759043744905910}
   - component: {fileID: 4480543197623436758}
+  - component: {fileID: -2544621133639917165}
   - component: {fileID: 5203513095401779327}
   - component: {fileID: -5613868248015791183}
   m_Layer: 0
@@ -684,7 +685,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6375529586462424670}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 47ca51fa719bb654a9f20be8957db686, type: 3}
   m_Name: 
@@ -700,12 +701,42 @@ MonoBehaviour:
   upgradeRangeButton: {fileID: 7253571261413278673}
   sellTower: {fileID: 7645016313276130845}
   rangeIndicator: {fileID: -5613868248015791183}
-  targetingRange: 5
+  range: 5
   rotationSpeed: 400
-  bps: 0.7
+  aps: 1
   baseTargetingRangeUpgradeCost: 120
-  baseBpsUpgradeCost: 120
+  baseApsUpgradeCost: 100
   arrowObj: {fileID: 0}
+--- !u!114 &-2544621133639917165
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6375529586462424670}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 52d2bdfaea327ad47a86a58f8dad9667, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  shouldRotate: 1
+  turretRotationPoint: {fileID: 5510765816812201323}
+  enemyMask:
+    serializedVersion: 2
+    m_Bits: 64
+  bulletPrefab: {fileID: 3974715371734488610, guid: 24638c253600dfb4eb876a24933b8ebf, type: 3}
+  firingPoint: {fileID: 1150833852255008355}
+  upgradeUI: {fileID: 1191042662694884873}
+  upgradeBpsButton: {fileID: 6390454763077655609}
+  upgradeRangeButton: {fileID: 7253571261413278673}
+  sellTower: {fileID: 7645016313276130845}
+  rangeIndicator: {fileID: -5613868248015791183}
+  shotSound: {fileID: 0}
+  rotationSpeed: 400
+  range: 5
+  aps: 1
+  baseRangeUpgradeCost: 100
+  baseApsUpgradeCost: 100
 --- !u!114 &5203513095401779327
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 7349338144058541630}
   - component: {fileID: 9021868251892736290}
   - component: {fileID: 1827078805048165405}
+  - component: {fileID: 8238778811954411969}
   - component: {fileID: 8252920609243845907}
   - component: {fileID: 4058821493310752223}
   m_Layer: 7
@@ -94,7 +95,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3974715371734488610}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 6c6bfd540cb098e49bf7d669d2b93b4e, type: 3}
   m_Name: 
@@ -102,6 +103,23 @@ MonoBehaviour:
   rb: {fileID: 4058821493310752223}
   bulletSpeed: 7
   bulletDamage: 10
+--- !u!114 &8238778811954411969
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3974715371734488610}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0312b9f49229e404f986999ea37d2bcd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rb: {fileID: 4058821493310752223}
+  bulletSpeed: 7
+  bulletDamage: 10
+  damageType: 0
+  tipRotation: 1
 --- !u!70 &8252920609243845907
 CapsuleCollider2D:
   m_ObjectHideFlags: 0

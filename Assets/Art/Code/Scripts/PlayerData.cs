@@ -9,6 +9,37 @@ public class PlayerData : MonoBehaviour
     public int diamonds;
 
     public List<string> activeVillageObjects = new List<string>();
+    public List<string> unlockedSkills = new List<string>();
+
+    public void SaveSkill(string skillName)
+    {
+        if (!unlockedSkills.Contains(skillName))
+        {
+            unlockedSkills.Add(skillName);
+            string data = string.Join(",", unlockedSkills);
+            PlayerPrefs.SetString("UnlockedSkills", data);
+            PlayerPrefs.Save();
+        }
+    }
+
+    public void LoadSkills()
+    {
+        string data = PlayerPrefs.GetString("UnlockedSkills", "");
+        if (!string.IsNullOrEmpty(data))
+        {
+            string[] ids = data.Split(',');
+            unlockedSkills = new List<string>(ids);
+        }
+
+        // Obnoví efekty skillů po načtení
+        foreach (string skill in unlockedSkills)
+        {
+            if (skill == "TowerDamage")
+                PlayerStats.instance.towerDamageMultiplier += 0.2f;
+            else if (skill == "TowerRange")
+                PlayerStats.instance.towerRangeMultiplier += 0.1f;
+        }
+    }
 
     private void Awake()
     {

@@ -36,7 +36,7 @@ public class MainMenu : MonoBehaviour
 
     public void OnFirst2MapButtonClicked()
     {
-        SceneManager.LoadScene("OriginalMap");
+        SceneManager.LoadScene("ForestMap");
     }
     public void OnSecondMapButtonClicked()
     {
@@ -67,6 +67,11 @@ public class MainMenu : MonoBehaviour
     public void OnVillageButtonClicked()
     {
         SceneManager.LoadScene("Village");
+    }
+    
+    public void OnSkillTreeButtonClicked()
+    {
+        SceneManager.LoadScene("SkillTree");
     }
 }
 

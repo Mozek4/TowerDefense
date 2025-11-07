@@ -211,7 +211,7 @@ public class HeroController : MonoBehaviour
     {
         if (levelText != null)
         {
-            levelText.text = $"Level: {level}";
+            levelText.text = $"{level}";
         }
     }
 

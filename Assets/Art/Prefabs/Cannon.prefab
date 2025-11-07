@@ -349,6 +349,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 52d2bdfaea327ad47a86a58f8dad9667, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  shouldRotate: 1
   turretRotationPoint: {fileID: 7384022723085567186}
   enemyMask:
     serializedVersion: 2
@@ -360,13 +361,12 @@ MonoBehaviour:
   upgradeRangeButton: {fileID: 4425187239405100861}
   sellTower: {fileID: 2412989167429093257}
   rangeIndicator: {fileID: -6820073388370535333}
-  cannonShot: {fileID: 8300000, guid: ccfb2b571f4829743a4b13fa865402fc, type: 3}
-  range: 5
+  shotSound: {fileID: 0}
   rotationSpeed: 200
+  range: 5
   aps: 1
   baseRangeUpgradeCost: 100
   baseApsUpgradeCost: 100
-  bulletObj: {fileID: 0}
 --- !u!114 &-8129473342375616164
 MonoBehaviour:
   m_ObjectHideFlags: 0
