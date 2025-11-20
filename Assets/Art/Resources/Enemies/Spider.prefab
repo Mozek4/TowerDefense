@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 1227526423716356395}
   - component: {fileID: 5916807941938336664}
   - component: {fileID: 2758322303551616991}
-  - component: {fileID: 21904020885754906}
+  - component: {fileID: -5265221568642179058}
   - component: {fileID: 839551559685502166}
   - component: {fileID: 4112891778534939043}
   m_Layer: 6
@@ -103,8 +103,9 @@ MonoBehaviour:
   hitPoints: 70
   currencyWorth: 30
   enemyScore: 15
+  enemyType: 0
   death: {fileID: 8300000, guid: a09512996ac04e34fa136c2cae2b45f7, type: 3}
---- !u!114 &21904020885754906
+--- !u!114 &-5265221568642179058
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -113,12 +114,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 8497780522464845842}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 724807d5de5a703478d261cd04c6409e, type: 3}
+  m_Script: {fileID: 11500000, guid: c762e82d1dbd47d47a708e9d7b3af583, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   rb: {fileID: 839551559685502166}
   moveSpeed: 2
   hpDamage: 4
+  rotationByDirection: 1
 --- !u!50 &839551559685502166
 Rigidbody2D:
   serializedVersion: 4

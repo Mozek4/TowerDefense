@@ -195,7 +195,7 @@ GameObject:
   - component: {fileID: 8081494120843740492}
   - component: {fileID: 7225587503981455454}
   - component: {fileID: 2116323854321918295}
-  - component: {fileID: 8725432987624665718}
+  - component: {fileID: 2897647913452925627}
   m_Layer: 5
   m_Name: Bps Text
   m_TagString: Untagged
@@ -319,7 +319,7 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
---- !u!114 &8725432987624665718
+--- !u!114 &2897647913452925627
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -328,11 +328,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 2792987683209212904}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1fbefdda14f32c1478bb696dbd1a8af7, type: 3}
+  m_Script: {fileID: 11500000, guid: 87667fc567d64ed44b019dd30a7c427b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   upgradeBpsPrice: {fileID: 2116323854321918295}
-  crossbowman: {fileID: 867468904419180452}
+  turret: {fileID: 2379447286831725086}
 --- !u!1 &3329231254574496175
 GameObject:
   m_ObjectHideFlags: 0
@@ -344,7 +344,7 @@ GameObject:
   - component: {fileID: 8581626974808607326}
   - component: {fileID: 1482381690568879735}
   - component: {fileID: 1210062023062805186}
-  - component: {fileID: 4007692054625368866}
+  - component: {fileID: 9191007361766415339}
   m_Layer: 5
   m_Name: Range Text
   m_TagString: Untagged
@@ -468,7 +468,7 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
---- !u!114 &4007692054625368866
+--- !u!114 &9191007361766415339
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -477,11 +477,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 3329231254574496175}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1e8e18bbb6ee60d4fb5832632b947472, type: 3}
+  m_Script: {fileID: 11500000, guid: 0eeb2dca6a2f0fe40abde0c638291a76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   upgradeRangePrice: {fileID: 1210062023062805186}
-  crossbowman: {fileID: 867468904419180452}
+  turret: {fileID: 2379447286831725086}
 --- !u!1 &4268407509466042768
 GameObject:
   m_ObjectHideFlags: 0
@@ -1112,6 +1112,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8432482507916857355}
   - component: {fileID: 867468904419180452}
+  - component: {fileID: 2379447286831725086}
   - component: {fileID: 5922142082205644255}
   - component: {fileID: -3688973679118555344}
   m_Layer: 0
@@ -1146,7 +1147,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7165386847958393432}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 47ca51fa719bb654a9f20be8957db686, type: 3}
   m_Name: 
@@ -1162,12 +1163,42 @@ MonoBehaviour:
   upgradeRangeButton: {fileID: 4505042302041952070}
   sellTower: {fileID: 1601469784390120786}
   rangeIndicator: {fileID: -3688973679118555344}
-  targetingRange: 7.5
+  range: 5
   rotationSpeed: 400
-  bps: 0.5
+  aps: 1
   baseTargetingRangeUpgradeCost: 200
-  baseBpsUpgradeCost: 140
+  baseApsUpgradeCost: 100
   arrowObj: {fileID: 0}
+--- !u!114 &2379447286831725086
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7165386847958393432}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 52d2bdfaea327ad47a86a58f8dad9667, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  shouldRotate: 1
+  turretRotationPoint: {fileID: 3887691364458361538}
+  enemyMask:
+    serializedVersion: 2
+    m_Bits: 64
+  bulletPrefab: {fileID: 3974715371734488610, guid: 24638c253600dfb4eb876a24933b8ebf, type: 3}
+  firingPoint: {fileID: 8062513048359777433}
+  upgradeUI: {fileID: 5831175785463575494}
+  upgradeBpsButton: {fileID: 6294652717005626294}
+  upgradeRangeButton: {fileID: 4505042302041952070}
+  sellTower: {fileID: 1601469784390120786}
+  rangeIndicator: {fileID: -3688973679118555344}
+  shotSound: {fileID: 0}
+  rotationSpeed: 400
+  range: 5
+  aps: 1
+  baseRangeUpgradeCost: 135
+  baseApsUpgradeCost: 135
 --- !u!114 &5922142082205644255
 MonoBehaviour:
   m_ObjectHideFlags: 0

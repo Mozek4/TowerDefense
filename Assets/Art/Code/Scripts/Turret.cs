@@ -92,12 +92,22 @@ public class Turret : MonoBehaviour
 
     private void Shoot()
     {
-        if (shotSound != null)
-            AudioSource.PlayClipAtPoint(shotSound, transform.position, 1.2f);
+    if (shotSound != null)
+        AudioSource.PlayClipAtPoint(shotSound, transform.position, 1.2f);
 
         GameObject bulletObj = Instantiate(bulletPrefab, firingPoint.position, Quaternion.identity);
         Bullet bulletScript = bulletObj.GetComponent<Bullet>();
         bulletScript.SetTarget(target);
+
+        // ---------------------------
+        // ZDE aplikujeme shield
+        // ---------------------------
+/*      EnemyDamageModifier edm = target.GetComponent<EnemyDamageModifier>();
+        int baseDamage = bulletScript.bulletDamage; // předpokládáme, že Bullet má public int damage
+        int finalDamage = edm != null ? edm.ApplyDamage(baseDamage) : baseDamage;
+
+        // Pošleme finální damage do Health
+        target.GetComponent<Health>().TakeDamage(finalDamage); */
     }
 
     private void FindTarget(float effectiveRange)

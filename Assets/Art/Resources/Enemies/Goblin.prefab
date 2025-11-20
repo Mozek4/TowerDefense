@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5765640449827905232}
   - component: {fileID: 5745978634802396050}
+  - component: {fileID: -4702539490688306594}
   - component: {fileID: 4959820913663189931}
   - component: {fileID: 4320110983024569532}
   - component: {fileID: 1313460678969836528}
@@ -88,7 +89,7 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &4959820913663189931
+--- !u!114 &-4702539490688306594
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -96,6 +97,22 @@ MonoBehaviour:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 862671043071846076}
   m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c762e82d1dbd47d47a708e9d7b3af583, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rb: {fileID: 4320110983024569532}
+  moveSpeed: 2.3
+  hpDamage: 2
+  rotationByDirection: 0
+--- !u!114 &4959820913663189931
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 862671043071846076}
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: dfe3a993f19fc53418fa3ad2b6bd241f, type: 3}
   m_Name: 
@@ -145,6 +162,7 @@ MonoBehaviour:
   hitPoints: 40
   currencyWorth: 25
   enemyScore: 10
+  enemyType: 0
   death: {fileID: 8300000, guid: f18a9b53f652bab428a74a805db6df76, type: 3}
 --- !u!70 &1412780154438565784
 CapsuleCollider2D:

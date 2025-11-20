@@ -110,7 +110,7 @@ GameObject:
   - component: {fileID: 6612393152620776198}
   - component: {fileID: 1982462141848177851}
   - component: {fileID: 5009871656540059639}
-  - component: {fileID: 7613566008504334568}
+  - component: {fileID: 4686610484050200815}
   m_Layer: 5
   m_Name: Upgrade Text
   m_TagString: Untagged
@@ -234,7 +234,7 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
---- !u!114 &7613566008504334568
+--- !u!114 &4686610484050200815
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -243,11 +243,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 948282439102786886}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 21820d64d4281ed489c2a55f3fcd01b7, type: 3}
+  m_Script: {fileID: 11500000, guid: 87667fc567d64ed44b019dd30a7c427b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   upgradeBpsPrice: {fileID: 5009871656540059639}
-  mageTower: {fileID: 6284109253899025917}
+  turret: {fileID: 3169615007135340871}
 --- !u!1 &1073827536607530029
 GameObject:
   m_ObjectHideFlags: 0
@@ -258,6 +258,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2178566989380316394}
   - component: {fileID: 6284109253899025917}
+  - component: {fileID: 3169615007135340871}
   - component: {fileID: 2343859794103347286}
   - component: {fileID: -7672164593928775707}
   m_Layer: 0
@@ -292,7 +293,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1073827536607530029}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ec56122f552ce8e4ab9af93d10de9556, type: 3}
   m_Name: 
@@ -307,11 +308,41 @@ MonoBehaviour:
   upgradeRangeButton: {fileID: 7661126220015381676}
   sellTower: {fileID: 6232155270099615015}
   rangeIndicator: {fileID: -7672164593928775707}
-  targetingRange: 4
-  bps: 0.55
-  baseTargetingRangeUpgradeCost: 150
-  baseBpsUpgradeCost: 150
+  range: 5
+  aps: 1
+  baseRangeUpgradeCost: 100
+  baseApsUpgradeCost: 100
   bulletObj: {fileID: 0}
+--- !u!114 &3169615007135340871
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1073827536607530029}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 52d2bdfaea327ad47a86a58f8dad9667, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  shouldRotate: 0
+  turretRotationPoint: {fileID: 0}
+  enemyMask:
+    serializedVersion: 2
+    m_Bits: 64
+  bulletPrefab: {fileID: 852103730582770441, guid: 487f3225338cb7f4a8df106f405341cc, type: 3}
+  firingPoint: {fileID: 1904278010330155313}
+  upgradeUI: {fileID: 4168160502203028125}
+  upgradeBpsButton: {fileID: 558093608408014497}
+  upgradeRangeButton: {fileID: 7661126220015381676}
+  sellTower: {fileID: 6232155270099615015}
+  rangeIndicator: {fileID: -7672164593928775707}
+  shotSound: {fileID: 0}
+  rotationSpeed: 5
+  range: 5
+  aps: 1
+  baseRangeUpgradeCost: 100
+  baseApsUpgradeCost: 100
 --- !u!114 &2343859794103347286
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -791,7 +822,7 @@ GameObject:
   - component: {fileID: 4387987011618512396}
   - component: {fileID: 3988838773329139106}
   - component: {fileID: 1185191355746887102}
-  - component: {fileID: 6377112654129511196}
+  - component: {fileID: 6827683322787455255}
   m_Layer: 5
   m_Name: Upgrade Text
   m_TagString: Untagged
@@ -915,7 +946,7 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
---- !u!114 &6377112654129511196
+--- !u!114 &6827683322787455255
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -924,11 +955,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 4132491781350439998}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7b183387b3f5c5a49b57fb2fb1692d28, type: 3}
+  m_Script: {fileID: 11500000, guid: 0eeb2dca6a2f0fe40abde0c638291a76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   upgradeRangePrice: {fileID: 1185191355746887102}
-  mageTower: {fileID: 6284109253899025917}
+  turret: {fileID: 3169615007135340871}
 --- !u!1 &4168160502203028125
 GameObject:
   m_ObjectHideFlags: 0

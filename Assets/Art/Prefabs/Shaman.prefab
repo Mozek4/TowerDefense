@@ -97,6 +97,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3833d0d7111b4654cac8be55309c7d10, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  extraRenderers: []
+  offset: 1
 --- !u!1 &1294856787977267810
 GameObject:
   m_ObjectHideFlags: 0
@@ -242,7 +244,7 @@ GameObject:
   - component: {fileID: 624125943101554049}
   - component: {fileID: 6039264523212090476}
   - component: {fileID: 6953073745578716736}
-  - component: {fileID: 2137627414083793611}
+  - component: {fileID: 2734234842274474411}
   m_Layer: 5
   m_Name: Upgrade Text
   m_TagString: Untagged
@@ -366,7 +368,7 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
---- !u!114 &2137627414083793611
+--- !u!114 &2734234842274474411
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -375,11 +377,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 1947990062889939760}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 21820d64d4281ed489c2a55f3fcd01b7, type: 3}
+  m_Script: {fileID: 11500000, guid: 87667fc567d64ed44b019dd30a7c427b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   upgradeBpsPrice: {fileID: 6953073745578716736}
-  mageTower: {fileID: 8575008894023430132}
+  turret: {fileID: 1520957518726097169}
 --- !u!1 &3944456807838974692
 GameObject:
   m_ObjectHideFlags: 0
@@ -512,7 +514,7 @@ GameObject:
   - component: {fileID: 8873887100340044281}
   - component: {fileID: 5056805321246062774}
   - component: {fileID: 1137445980513956446}
-  - component: {fileID: 2696452274326112026}
+  - component: {fileID: 2347694427244308362}
   m_Layer: 5
   m_Name: Upgrade Text
   m_TagString: Untagged
@@ -636,7 +638,7 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
---- !u!114 &2696452274326112026
+--- !u!114 &2347694427244308362
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -645,11 +647,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 4451380178815676566}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7b183387b3f5c5a49b57fb2fb1692d28, type: 3}
+  m_Script: {fileID: 11500000, guid: 0eeb2dca6a2f0fe40abde0c638291a76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   upgradeRangePrice: {fileID: 1137445980513956446}
-  mageTower: {fileID: 8575008894023430132}
+  turret: {fileID: 1520957518726097169}
 --- !u!1 &5141573160954171163
 GameObject:
   m_ObjectHideFlags: 0
@@ -992,6 +994,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6845070941881033630}
   - component: {fileID: 8575008894023430132}
+  - component: {fileID: 1520957518726097169}
   - component: {fileID: -1848102096429116295}
   - component: {fileID: -4856947601962491716}
   m_Layer: 0
@@ -1026,7 +1029,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8037573936691127569}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ec56122f552ce8e4ab9af93d10de9556, type: 3}
   m_Name: 
@@ -1041,11 +1044,41 @@ MonoBehaviour:
   upgradeRangeButton: {fileID: 6350544867801008650}
   sellTower: {fileID: 4762614234287662078}
   rangeIndicator: {fileID: -4856947601962491716}
-  targetingRange: 4
-  bps: 1.05
-  baseTargetingRangeUpgradeCost: 160
-  baseBpsUpgradeCost: 140
+  range: 5
+  aps: 1
+  baseRangeUpgradeCost: 100
+  baseApsUpgradeCost: 100
   bulletObj: {fileID: 0}
+--- !u!114 &1520957518726097169
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8037573936691127569}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 52d2bdfaea327ad47a86a58f8dad9667, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  shouldRotate: 0
+  turretRotationPoint: {fileID: 0}
+  enemyMask:
+    serializedVersion: 2
+    m_Bits: 64
+  bulletPrefab: {fileID: 4127286729235567049, guid: 6bdcb8efc9987de4baefb271cb8dd9a2, type: 3}
+  firingPoint: {fileID: 3569906509545328333}
+  upgradeUI: {fileID: 7930390501284183018}
+  upgradeBpsButton: {fileID: 7600316932077136658}
+  upgradeRangeButton: {fileID: 6350544867801008650}
+  sellTower: {fileID: 4762614234287662078}
+  rangeIndicator: {fileID: -4856947601962491716}
+  shotSound: {fileID: 0}
+  rotationSpeed: 5
+  range: 5
+  aps: 1
+  baseRangeUpgradeCost: 100
+  baseApsUpgradeCost: 100
 --- !u!114 &-1848102096429116295
 MonoBehaviour:
   m_ObjectHideFlags: 0

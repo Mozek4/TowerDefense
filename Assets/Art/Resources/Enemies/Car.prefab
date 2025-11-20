@@ -10,10 +10,11 @@ GameObject:
   m_Component:
   - component: {fileID: 7280670064934446114}
   - component: {fileID: 852630315329678902}
-  - component: {fileID: 3016457081069074262}
+  - component: {fileID: -8742828931316368045}
   - component: {fileID: 2275634009410102537}
   - component: {fileID: 7810266245203924697}
   - component: {fileID: 4637652826422866435}
+  - component: {fileID: -5304955110735738672}
   m_Layer: 6
   m_Name: Car
   m_TagString: Untagged
@@ -88,7 +89,7 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &3016457081069074262
+--- !u!114 &-8742828931316368045
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -97,12 +98,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 2358502304824751715}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9a60ae16bc58bae47901ca6e49480165, type: 3}
+  m_Script: {fileID: 11500000, guid: c762e82d1dbd47d47a708e9d7b3af583, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   rb: {fileID: 2275634009410102537}
   moveSpeed: 2.2
   hpDamage: 20
+  rotationByDirection: 1
 --- !u!50 &2275634009410102537
 Rigidbody2D:
   serializedVersion: 4
@@ -144,6 +146,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hitPoints: 450
   currencyWorth: 80
+  enemyScore: 0
+  enemyType: 0
   death: {fileID: 8300000, guid: cacc14f02d5fab644a74ed0a1870f106, type: 3}
 --- !u!70 &4637652826422866435
 CapsuleCollider2D:
@@ -180,3 +184,18 @@ CapsuleCollider2D:
   m_Offset: {x: 0, y: 0.2}
   m_Size: {x: 2, y: 4.2}
   m_Direction: 0
+--- !u!114 &-5304955110735738672
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2358502304824751715}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0238ac5fe7e8de14d871ef71a09dfd51, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  smallOrcPrefab: {fileID: 862671043071846076, guid: 1e00ef6e5892f644d83ae052affea564, type: 3}
+  spawnCount: 5
+  spawnRadius: 1.5

@@ -81,4 +81,20 @@ public class EnemyMovement : MonoBehaviour
     {
         moveSpeed = baseSpeed;
     }
+
+    // Getter pro získání aktuálního pathIndexu
+    public int GetPathIndex()
+    {
+        return pathIndex;
+    }
+
+    // Setter pro nastavení pathIndexu (a aktualizaci cílového waypointu)
+    public void SetPathIndex(int index)
+    {
+        pathIndex = index;
+
+        // nastav nový target podle indexu
+        if (pathIndex < LevelManager.main.path.Length)
+            target = LevelManager.main.path[pathIndex];
+    }
 }

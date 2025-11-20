@@ -9,13 +9,13 @@ public class Bullet : MonoBehaviour
 
     [Header("Attributes")]
     [SerializeField] private float bulletSpeed = 5f;
-    [SerializeField] private int bulletDamage = 1;
+    [SerializeField] public int bulletDamage = 1;
 
     [Header("Damage Type")]
     public DamageType damageType = DamageType.Physical;
 
     [Header("Behavior Settings")]
-    [SerializeField] private bool tipRotation = false; // ✅ Checkbox pro zapnutí/vypnutí rotace
+    [SerializeField] private bool tipRotation = false;
 
     private Transform target;
     private float bulletTimeToLive = 2.5f;
@@ -29,15 +29,13 @@ public class Bullet : MonoBehaviour
     {
         if (!target) return;
 
-        // směr k cíli
         Vector2 direction = (target.position - transform.position).normalized;
         rb.velocity = direction * bulletSpeed;
 
-        // ✅ pokud je zaškrtnutý tipRotation, otáčí se projektil směrem k cíli
         if (tipRotation)
         {
             float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
-            transform.rotation = Quaternion.Euler(new Vector3(0f, 0f, angle - 180));
+            transform.rotation = Quaternion.Euler(0f, 0f, angle - 180);
         }
     }
 
@@ -50,14 +48,24 @@ public class Bullet : MonoBehaviour
             {
                 float finalDamage = bulletDamage;
 
-                // 1️⃣ Bonus podle typu nepřítele
+                // Typ nepřítele
                 if (damageType == DamageType.Magic && health.enemyType == EnemyType.Undead)
                 {
-                    finalDamage *= 1.5f; // +50 % proti undeadům
+                    finalDamage *= 1.5f;
                 }
 
-                // 2️⃣ Upgrady z PlayerStats
-                finalDamage *= PlayerStats.instance.towerDamageMultiplier;
+                // Upgrady z PlayerStats
+                if (PlayerStats.instance != null)
+                {
+                    finalDamage *= PlayerStats.instance.towerDamageMultiplier;
+                }
+
+                // Dark Hag shield
+                EnemyDamageModifier edm = collision.gameObject.GetComponent<EnemyDamageModifier>();
+                if (edm != null)
+                {
+                    finalDamage = edm.ApplyDamage(Mathf.RoundToInt(finalDamage));
+                }
 
                 health.TakeDamage(Mathf.RoundToInt(finalDamage));
             }
@@ -70,6 +78,9 @@ public class Bullet : MonoBehaviour
     {
         Destroy(gameObject, bulletTimeToLive);
     }
+
+    // Public getter pro případ Turret.cs
+    public int Damage => bulletDamage;
 }
 
 public enum DamageType

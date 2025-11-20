@@ -650,7 +650,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8142759043744905910}
-  - component: {fileID: 4480543197623436758}
   - component: {fileID: -2544621133639917165}
   - component: {fileID: 5203513095401779327}
   - component: {fileID: -5613868248015791183}
@@ -678,35 +677,6 @@ Transform:
   - {fileID: 1358864610201958474}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &4480543197623436758
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6375529586462424670}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 47ca51fa719bb654a9f20be8957db686, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  turretRotationPoint: {fileID: 5510765816812201323}
-  enemyMask:
-    serializedVersion: 2
-    m_Bits: 64
-  bulletPrefab: {fileID: 3974715371734488610, guid: 24638c253600dfb4eb876a24933b8ebf, type: 3}
-  firingPoint: {fileID: 1150833852255008355}
-  upgradeUI: {fileID: 1191042662694884873}
-  upgradeBpsButton: {fileID: 6390454763077655609}
-  upgradeRangeButton: {fileID: 7253571261413278673}
-  sellTower: {fileID: 7645016313276130845}
-  rangeIndicator: {fileID: -5613868248015791183}
-  range: 5
-  rotationSpeed: 400
-  aps: 1
-  baseTargetingRangeUpgradeCost: 120
-  baseApsUpgradeCost: 100
-  arrowObj: {fileID: 0}
 --- !u!114 &-2544621133639917165
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -865,7 +835,7 @@ GameObject:
   - component: {fileID: 8761501565273768927}
   - component: {fileID: 6389160976054976025}
   - component: {fileID: 4001209208992491847}
-  - component: {fileID: 4297308989126275493}
+  - component: {fileID: 1756117547484901445}
   m_Layer: 5
   m_Name: Upgrade Text
   m_TagString: Untagged
@@ -989,7 +959,7 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
---- !u!114 &4297308989126275493
+--- !u!114 &1756117547484901445
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -998,11 +968,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 6654836726113932852}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1fbefdda14f32c1478bb696dbd1a8af7, type: 3}
+  m_Script: {fileID: 11500000, guid: 87667fc567d64ed44b019dd30a7c427b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   upgradeBpsPrice: {fileID: 4001209208992491847}
-  crossbowman: {fileID: 4480543197623436758}
+  turret: {fileID: -2544621133639917165}
 --- !u!1 &7168846382107932467
 GameObject:
   m_ObjectHideFlags: 0
@@ -1014,7 +984,7 @@ GameObject:
   - component: {fileID: 5477964405517969920}
   - component: {fileID: 8540783235534360150}
   - component: {fileID: 7519715652988756842}
-  - component: {fileID: 7491598829022281424}
+  - component: {fileID: 3199757919217300619}
   m_Layer: 5
   m_Name: Upgrade Text
   m_TagString: Untagged
@@ -1138,7 +1108,7 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
---- !u!114 &7491598829022281424
+--- !u!114 &3199757919217300619
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1147,11 +1117,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 7168846382107932467}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1e8e18bbb6ee60d4fb5832632b947472, type: 3}
+  m_Script: {fileID: 11500000, guid: 0eeb2dca6a2f0fe40abde0c638291a76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   upgradeRangePrice: {fileID: 7519715652988756842}
-  crossbowman: {fileID: 4480543197623436758}
+  turret: {fileID: -2544621133639917165}
 --- !u!1 &8489889009896877531
 GameObject:
   m_ObjectHideFlags: 0

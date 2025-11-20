@@ -6,6 +6,7 @@ public class Health : MonoBehaviour
 {
     [Header("Attributes")]
     [SerializeField] public int hitPoints = 2;
+    [SerializeField] public int maxHP = 2;
     [SerializeField] private int currencyWorth = 50;
     [SerializeField] private int enemyScore;
 
@@ -24,12 +25,27 @@ public class Health : MonoBehaviour
         {
             EnemySpawner.onEnemyDestroy.Invoke();
             LevelManager.main.IncreaseCurrency(currencyWorth);
+
+            // ⭐ SPUŠTĚNÍ VŠECH SCHOPNOSTÍ PO SMRTI
+            OnDeathAbility[] abilities = GetComponents<OnDeathAbility>();
+            foreach (var ability in abilities)
+            {
+                ability.Activate();
+            }
+
             isDestroyed = true;
             Destroy(gameObject);
             LevelManager.main.score = LevelManager.main.score + enemyScore;
             AudioSource.PlayClipAtPoint(death, Camera.main.transform.position, 0.1f);
             Debug.Log(LevelManager.main.score);
         }
+    }
+    public void TakeHeal(int amount)
+    {
+        hitPoints += amount;
+
+        if (hitPoints > maxHP)
+            hitPoints = maxHP;
     }
 }
 
@@ -38,6 +54,7 @@ public enum EnemyType
     Casual,
     Undead
 }
+
 
 
 

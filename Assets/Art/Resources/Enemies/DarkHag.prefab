@@ -10,13 +10,13 @@ GameObject:
   m_Component:
   - component: {fileID: 5323325247265921655}
   - component: {fileID: 1890904503693892730}
-  - component: {fileID: 7311366543970548505}
-  - component: {fileID: 8000049401658116324}
+  - component: {fileID: 1800984581538435334}
   - component: {fileID: 589695110812279931}
   - component: {fileID: 6834997717310453001}
+  - component: {fileID: 6103858665195718728}
   - component: {fileID: 1485772972995742641}
   m_Layer: 6
-  m_Name: Skeleton2
+  m_Name: DarkHag
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -78,7 +78,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 1
-  m_Sprite: {fileID: 21300000, guid: 8eedabf026eaf8c45b1c2bcf36a3068a, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 7d8441e5abd4e3d48aafe557e2b2fa42, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -89,28 +89,7 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!95 &7311366543970548505
-Animator:
-  serializedVersion: 5
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3653386987932208592}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 1d92bd6abe1809d4b8f97c099be2d3f6, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_StabilizeFeet: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorStateOnDisable: 0
-  m_WriteDefaultValuesOnDisable: 0
---- !u!114 &8000049401658116324
+--- !u!114 &1800984581538435334
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -119,12 +98,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 3653386987932208592}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2b773f512eadf1f46ac6397d0b9baeab, type: 3}
+  m_Script: {fileID: 11500000, guid: c762e82d1dbd47d47a708e9d7b3af583, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   rb: {fileID: 6834997717310453001}
-  moveSpeed: 1.7
+  moveSpeed: 1.8
   hpDamage: 2
+  rotationByDirection: 0
 --- !u!114 &589695110812279931
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -137,9 +117,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 84b03a5f325275d4ebf60d8e2213fb1a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hitPoints: 20
+  hitPoints: 1000
+  maxHP: 1000
   currencyWorth: 20
   enemyScore: 5
+  enemyType: 1
   death: {fileID: 8300000, guid: a458c78b184725e4a983b6a0076d5972, type: 3}
 --- !u!50 &6834997717310453001
 Rigidbody2D:
@@ -168,6 +150,20 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 1
   m_Constraints: 0
+--- !u!114 &6103858665195718728
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3653386987932208592}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 143df39008d84d94fbc09b5de021bd58, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  range: 5
+  shieldReduction: 0.3
 --- !u!70 &1485772972995742641
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
