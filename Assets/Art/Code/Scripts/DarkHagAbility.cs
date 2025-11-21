@@ -7,13 +7,15 @@ public class DarkHagAbility : MonoBehaviour
     [SerializeField] private float range = 5f;               // radius aury
     [SerializeField] private float shieldReduction = 0.3f;   // 30% snížení damage
 
+    [SerializeField] private LayerMask enemyLayer;
+
     // Uchovává nepřátele, kteří jsou momentálně chráněni
     private HashSet<EnemyDamageModifier> affectedEnemies = new HashSet<EnemyDamageModifier>();
 
     private void Update()
     {
         // Najdeme všechny nepřátele v oblasti
-        Collider2D[] hits = Physics2D.OverlapCircleAll(transform.position, range);
+        Collider2D[] hits = Physics2D.OverlapCircleAll(transform.position, range, enemyLayer);
 
         // Odstraníme shield těm, kteří už nejsou v range nebo byli zničeni
         List<EnemyDamageModifier> toRemove = new List<EnemyDamageModifier>();

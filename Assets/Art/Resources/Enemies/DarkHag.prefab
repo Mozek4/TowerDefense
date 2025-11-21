@@ -164,6 +164,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   range: 5
   shieldReduction: 0.3
+  enemyLayer:
+    serializedVersion: 2
+    m_Bits: 64
 --- !u!70 &1485772972995742641
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
