@@ -10,7 +10,7 @@ public class BpsUpgradePrice : MonoBehaviour
     [SerializeField] Turret turret;
     private void OnGUI() {
         if (upgradeBpsPrice != null && turret != null) {
-            upgradeBpsPrice.text = "Upgrade AS, Price: "+ turret.CalculateBpsCost();
+            upgradeBpsPrice.text = "Price: "+ turret.CalculateBpsCost();
         }
     }
 }

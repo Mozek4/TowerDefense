@@ -12,7 +12,7 @@ public class RangeUpgradePrice : MonoBehaviour
 
     private void OnGUI() {
         if (upgradeRangePrice != null && turret != null) {
-            upgradeRangePrice.text = "Upgrade Range, Price: "+ turret.CalculateRangeCost();
+            upgradeRangePrice.text = "Price: "+ turret.CalculateRangeCost();
         }
     }
 }

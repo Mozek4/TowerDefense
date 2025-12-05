@@ -6,7 +6,7 @@ using UnityEngine.UI;
 public class Turret : MonoBehaviour
 {
     [Header("References")]
-    [SerializeField] private bool shouldRotate = false; // ✅ Checkbox v inspektoru
+    [SerializeField] private bool shouldRotate = false;
     [SerializeField] private Transform turretRotationPoint;
     [SerializeField] private LayerMask enemyMask;
     [SerializeField] private GameObject bulletPrefab;
@@ -16,7 +16,7 @@ public class Turret : MonoBehaviour
     [SerializeField] private Button upgradeRangeButton;
     [SerializeField] private Button sellTower;
     [SerializeField] private LineRenderer rangeIndicator;
-    [SerializeField] private AudioClip shotSound; // Volitelné (pro cannon apod.)
+    [SerializeField] private AudioClip shotSound;
     [SerializeField] private float rotationSpeed = 5f;
 
     [Header("Attributes")]
@@ -24,6 +24,10 @@ public class Turret : MonoBehaviour
     [SerializeField] private float aps = 1f;
     [SerializeField] private int baseRangeUpgradeCost = 100;
     [SerializeField] private int baseApsUpgradeCost = 100;
+
+    [Header("Upgrade Bars")]
+    [SerializeField] private List<GameObject> bpsBars;    // ← ČÁRKY PRO BPS
+    [SerializeField] private List<GameObject> rangeBars;  // ← ČÁRKY PRO RANGE
 
     private float rangeBase;
     private float apsBase;
@@ -33,6 +37,16 @@ public class Turret : MonoBehaviour
     private int bpsLevel = 1;
     private int rangeLevel = 1;
     private int towerSellCost;
+
+
+
+    public int BpsLevel => bpsLevel;
+    public float ApsBaseTimes(float x) => apsBase * x;
+
+    public int RangeLevel => rangeLevel;
+    public float RangeBaseTimes(float x) => rangeBase * x;
+
+
 
     private void Start()
     {
@@ -63,7 +77,7 @@ public class Turret : MonoBehaviour
             return;
         }
 
-        if (shouldRotate && turretRotationPoint != null) // ✅ Rotace jen pokud checkbox zapnutý
+        if (shouldRotate && turretRotationPoint != null)
             RotateTowardsTarget();
 
         if (!CheckTargetIsInRange(effectiveRange))
@@ -98,7 +112,7 @@ public class Turret : MonoBehaviour
         GameObject bulletObj = Instantiate(bulletPrefab, firingPoint.position, Quaternion.identity);
         Bullet bulletScript = bulletObj.GetComponent<Bullet>();
         bulletScript.SetTarget(target);
-
+        
         // ---------------------------
         // ZDE aplikujeme shield
         // ---------------------------
@@ -170,6 +184,7 @@ public class Turret : MonoBehaviour
         LevelManager.main.SpendCurrency(CalculateBpsCost());
         bpsLevel++;
         CloseUpgradeUI();
+        UpdateBpsBars();   // ← UPDATE ČÁREK
     }
 
     private void UpgradeRange()
@@ -178,6 +193,7 @@ public class Turret : MonoBehaviour
         LevelManager.main.SpendCurrency(CalculateRangeCost());
         rangeLevel++;
         CloseUpgradeUI();
+        UpdateRangeBars(); // ← UPDATE ČÁREK
     }
 
     public int CalculateBpsCost()
@@ -190,12 +206,12 @@ public class Turret : MonoBehaviour
         return Mathf.RoundToInt(baseRangeUpgradeCost * Mathf.Pow(rangeLevel, 1.1f));
     }
 
-    private float CalculateBPS()
+    public float CalculateBPS()
     {
         return apsBase * Mathf.Pow(bpsLevel, 0.4f);
     }
 
-    private float CalculateRange()
+    public float CalculateRange()
     {
         return rangeBase * Mathf.Pow(rangeLevel, 0.15f);
     }
@@ -205,5 +221,17 @@ public class Turret : MonoBehaviour
         Destroy(gameObject);
         LevelManager.main.gold += towerSellCost;
         CloseUpgradeUI();
+    }
+
+        private void UpdateBpsBars()
+    {
+        for (int i = 0; i < bpsBars.Count; i++)
+            bpsBars[i].SetActive(i < bpsLevel);
+    }
+
+    private void UpdateRangeBars()
+    {
+        for (int i = 0; i < rangeBars.Count; i++)
+            rangeBars[i].SetActive(i < rangeLevel);
     }
 }

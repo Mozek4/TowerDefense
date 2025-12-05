@@ -21224,7 +21224,7 @@ MonoBehaviour:
   towers:
   - name: Crossbowman
     cost: 100
-    prefab: {fileID: 6375529586462424670, guid: a2642715d7262834a99190dc879838fa, type: 3}
+    prefab: {fileID: 6375529586462424670, guid: 03c00f3e8c6797e4a871c8c429db22a9, type: 3}
   - name: Sniper
     cost: 300
     prefab: {fileID: 7165386847958393432, guid: 72904ec8e3ce08e4ebd863675fcd33ff, type: 3}
