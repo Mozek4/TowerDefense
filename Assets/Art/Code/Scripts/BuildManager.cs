@@ -9,7 +9,11 @@ public class BuildManager : MonoBehaviour
     [Header("References")]
     [SerializeField] public Tower[] towers;
 
+    [Header("UI Buttons")]
+    [SerializeField] public RectTransform[] towerButtons;
+
     public int selectedTower = 0;
+    private int lastSelected = -1;
 
     void Update()
     {
@@ -49,7 +53,22 @@ public class BuildManager : MonoBehaviour
     public Tower GetSelectedTower() {
         return towers[selectedTower];
     }
+
     public void SetSelectedTower(int _selectedTower) {
+
+        // ZMENŠENÍ PŘEDCHOZÍHO TLAČÍTKA
+        if (lastSelected != -1 && lastSelected < towerButtons.Length) {
+            towerButtons[lastSelected].localScale = Vector3.one;
+        }
+
         selectedTower = _selectedTower;
+
+        // ZVĚTŠENÍ NOVÉHO TLAČÍTKA
+        if (_selectedTower < towerButtons.Length) {
+            towerButtons[_selectedTower].localScale = new Vector3(1.05f, 1.05f, 1f);
+        }
+
+        lastSelected = _selectedTower;
     }
 }
+

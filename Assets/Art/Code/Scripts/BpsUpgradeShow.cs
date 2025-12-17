@@ -14,13 +14,10 @@ public class BpsUpgradeShow : MonoBehaviour
     {
         if (upgradeBpsText != null && turret != null)
         {
-            // Aktuální BPS
             float currentBps = turret.CalculateBPS();
 
-            // Budoucí BPS po upgradu (simulace zvýšení levelu o 1)
             float nextBps = turret.ApsBaseTimes(Mathf.Pow(turret.BpsLevel + 1, 0.4f));
 
-            // Zaokrouhlení na 2 desetinná místa
             currentBps = (float)Math.Round(currentBps, 2);
             nextBps = (float)Math.Round(nextBps, 2);
 

@@ -46,8 +46,6 @@ public class Turret : MonoBehaviour
     public int RangeLevel => rangeLevel;
     public float RangeBaseTimes(float x) => rangeBase * x;
 
-
-
     private void Start()
     {
         towerSellCost = LevelManager.main.towerCost;

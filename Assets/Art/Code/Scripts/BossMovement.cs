@@ -43,7 +43,7 @@ public class BossMovement : MonoBehaviour
     }
 
     public void UpdateSpeed(float newSpeed) {
-            moveSpeed = newSpeed;
+        moveSpeed = newSpeed;
     }
 
     public void ResetSpeed() {
