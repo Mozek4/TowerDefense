@@ -707,6 +707,12 @@ MonoBehaviour:
   aps: 1
   baseRangeUpgradeCost: 100
   baseApsUpgradeCost: 100
+  bpsBars: []
+  rangeBars: []
+  attackType: 0
+  damageType: 0
+  baseDamage: 10
+  meleeHitEffect: {fileID: 0}
 --- !u!114 &5203513095401779327
 MonoBehaviour:
   m_ObjectHideFlags: 0

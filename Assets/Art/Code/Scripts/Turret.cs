@@ -8,7 +8,7 @@ public class Turret : MonoBehaviour
     [Header("References")]
     [SerializeField] private bool shouldRotate = false;
     [SerializeField] private Transform turretRotationPoint;
-    [SerializeField] private LayerMask enemyMask;
+    [SerializeField] public LayerMask enemyMask;
     [SerializeField] private GameObject bulletPrefab;
     [SerializeField] private Transform firingPoint;
     [SerializeField] private GameObject upgradeUI;
@@ -29,10 +29,24 @@ public class Turret : MonoBehaviour
     [SerializeField] private List<GameObject> bpsBars;    // ← ČÁRKY PRO BPS
     [SerializeField] private List<GameObject> rangeBars;  // ← ČÁRKY PRO RANGE
 
+    public enum AttackType
+    {
+        Ranged,
+        Melee
+    }
+
+    [Header("Attack Settings")]
+    [SerializeField] private AttackType attackType = AttackType.Ranged;
+    [SerializeField] private DamageType damageType = DamageType.Physical; // Nové: Věž ví, jaký typ poškození dává (nastav v Inspectoru)
+
+    [SerializeField] private int baseDamage = 10;          // základní damage věže
+    [SerializeField] private GameObject meleeHitEffect;    // efekt zásahu (optional)
+
+
     private float rangeBase;
     private float apsBase;
 
-    private Transform target;
+    protected Transform target; 
     private float timeUntilFire;
     private int bpsLevel = 1;
     private int rangeLevel = 1;
@@ -102,24 +116,57 @@ public class Turret : MonoBehaviour
         turretRotationPoint.rotation = Quaternion.RotateTowards(turretRotationPoint.rotation, targetRotation, rotationSpeed * Time.deltaTime);
     }
 
-    private void Shoot()
+    protected virtual void Shoot()
     {
-    if (shotSound != null)
-        AudioSource.PlayClipAtPoint(shotSound, transform.position, 1.2f);
+        if (shotSound != null)
+            AudioSource.PlayClipAtPoint(shotSound, transform.position, 1.2f);
 
-        GameObject bulletObj = Instantiate(bulletPrefab, firingPoint.position, Quaternion.identity);
-        Bullet bulletScript = bulletObj.GetComponent<Bullet>();
-        bulletScript.SetTarget(target);
-        
-        // ---------------------------
-        // ZDE aplikujeme shield
-        // ---------------------------
-/*      EnemyDamageModifier edm = target.GetComponent<EnemyDamageModifier>();
-        int baseDamage = bulletScript.bulletDamage; // předpokládáme, že Bullet má public int damage
-        int finalDamage = edm != null ? edm.ApplyDamage(baseDamage) : baseDamage;
+        // Vypočítáme damage centrálně zde
+        int finalDamage = CalculateOutputDamage();
 
-        // Pošleme finální damage do Health
-        target.GetComponent<Health>().TakeDamage(finalDamage); */
+        if (attackType == AttackType.Ranged)
+        {
+            GameObject bulletObj = Instantiate(bulletPrefab, firingPoint.position, Quaternion.identity);
+            Bullet bulletScript = bulletObj.GetComponent<Bullet>();
+
+            bulletScript.SetTarget(target);
+            // Předáme damage a typ kulce
+            bulletScript.SetupBullet(finalDamage, damageType);
+        }
+        else if (attackType == AttackType.Melee)
+        {
+            DoMeleeAttack(finalDamage);
+        }
+    }
+
+
+    protected virtual void DoMeleeAttack(int damage)
+    {
+        if (target == null) return;
+
+        // efekt zásahu
+        if (meleeHitEffect != null)
+            Instantiate(meleeHitEffect, target.position, Quaternion.identity);
+
+        // damage
+        Health health = target.GetComponent<Health>();
+        if (health != null)
+            health.TakeDamage(damage, damageType); // Předáváme i typ poškození
+    }
+
+    // Centrální výpočet síly věže
+    protected virtual int CalculateOutputDamage()
+    {
+        float damage = baseDamage;
+
+        // upgrade věže (levely)
+        damage *= Mathf.Pow(bpsLevel, 0.5f);
+
+        // globální buffy (PlayerStats) - ZDE SE APLIKUJE MULTIPLIER (pouze jednou!)
+        if (PlayerStats.instance != null)
+            damage *= PlayerStats.instance.towerDamageMultiplier;
+
+        return Mathf.RoundToInt(damage);
     }
 
     private void FindTarget(float effectiveRange)
@@ -182,7 +229,7 @@ public class Turret : MonoBehaviour
         LevelManager.main.SpendCurrency(CalculateBpsCost());
         bpsLevel++;
         CloseUpgradeUI();
-        UpdateBpsBars();   // ← UPDATE ČÁREK
+        UpdateBpsBars();
     }
 
     private void UpgradeRange()
@@ -191,7 +238,7 @@ public class Turret : MonoBehaviour
         LevelManager.main.SpendCurrency(CalculateRangeCost());
         rangeLevel++;
         CloseUpgradeUI();
-        UpdateRangeBars(); // ← UPDATE ČÁREK
+        UpdateRangeBars();
     }
 
     public int CalculateBpsCost()
@@ -221,7 +268,7 @@ public class Turret : MonoBehaviour
         CloseUpgradeUI();
     }
 
-        private void UpdateBpsBars()
+    private void UpdateBpsBars()
     {
         for (int i = 0; i < bpsBars.Count; i++)
             bpsBars[i].SetActive(i < bpsLevel);

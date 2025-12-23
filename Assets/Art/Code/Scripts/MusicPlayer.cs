@@ -1,19 +1,37 @@
 using UnityEngine;
-using TMPro; // pro Dropdown TMP
+using TMPro;
+using UnityEngine.UI; // Slider
 
 public class MusicPlayer : MonoBehaviour
 {
     [Header("Seznam hudby")]
     public AudioClip[] tracks;
-    public TMP_Dropdown dropdown; // přiřadíš dropdown z Canvasu
+    public TMP_Dropdown dropdown;
+
+    [Header("Ovládání hlasitosti")]
+    [SerializeField] private Slider volumeSlider;
 
     private AudioSource audioSource;
 
     void Awake()
     {
         audioSource = GetComponent<AudioSource>();
+
+        LoadVolume();        // ⬅️ NEJDŘÍV data
         SetupDropdown();
+        SetupVolumeSlider(); // ⬅️ pak UI
     }
+
+    void LoadVolume()
+    {
+        float savedVolume = PlayerPrefs.GetFloat("MusicVolume", 0.5f);
+        audioSource.volume = savedVolume;
+
+        if (volumeSlider != null)
+            volumeSlider.value = savedVolume;
+    }
+
+
 
     void SetupDropdown()
     {
@@ -21,7 +39,6 @@ public class MusicPlayer : MonoBehaviour
 
         dropdown.ClearOptions();
 
-        // Naplníme názvy skladeb podle názvů AudioClipů
         var options = new System.Collections.Generic.List<string>();
         foreach (AudioClip clip in tracks)
         {
@@ -29,14 +46,26 @@ public class MusicPlayer : MonoBehaviour
         }
 
         dropdown.AddOptions(options);
-
-        // Přidáme listener na změnu
         dropdown.onValueChanged.AddListener(delegate { PlayTrack(dropdown.value); });
 
-        // Automaticky pustí první skladbu
         if (tracks.Length > 0)
             PlayTrack(0);
     }
+
+    void SetupVolumeSlider()
+    {
+        if (volumeSlider == null) return;
+
+        volumeSlider.onValueChanged.AddListener(SetVolume);
+    }
+
+    public void SetVolume(float value)
+    {
+        audioSource.volume = value;
+        PlayerPrefs.SetFloat("MusicVolume", value);
+        PlayerPrefs.Save();
+    }
+
 
     public void PlayTrack(int index)
     {

@@ -9,20 +9,25 @@ public class Bullet : MonoBehaviour
 
     [Header("Attributes")]
     [SerializeField] private float bulletSpeed = 5f;
-    [SerializeField] public int bulletDamage = 1;
-
-    [Header("Damage Type")]
-    public DamageType damageType = DamageType.Physical;
-
-    [Header("Behavior Settings")]
     [SerializeField] private bool tipRotation = false;
 
+    // Payload data (co kulka nese)
+    private int damagePayload;
+    private DamageType damageType;
+    
     private Transform target;
     private float bulletTimeToLive = 2.5f;
 
     public void SetTarget(Transform _target)
     {
         target = _target;
+    }
+
+    // Hlavní metoda pro nastavení kulky z Věže
+    public void SetupBullet(int damage, DamageType type)
+    {
+        this.damagePayload = damage;
+        this.damageType = type;
     }
 
     private void FixedUpdate()
@@ -46,28 +51,9 @@ public class Bullet : MonoBehaviour
             Health health = collision.gameObject.GetComponent<Health>();
             if (health != null)
             {
-                float finalDamage = bulletDamage;
-
-                // Typ nepřítele
-                if (damageType == DamageType.Magic && health.enemyType == EnemyType.Undead)
-                {
-                    finalDamage *= 1.5f;
-                }
-
-                // Upgrady z PlayerStats
-                if (PlayerStats.instance != null)
-                {
-                    finalDamage *= PlayerStats.instance.towerDamageMultiplier;
-                }
-
-                // Dark Hag shield
-                EnemyDamageModifier edm = collision.gameObject.GetComponent<EnemyDamageModifier>();
-                if (edm != null)
-                {
-                    finalDamage = edm.ApplyDamage(Mathf.RoundToInt(finalDamage));
-                }
-
-                health.TakeDamage(Mathf.RoundToInt(finalDamage));
+                // Předáme damage a typ přímo do Health. 
+                // Žádné výpočty PlayerStats nebo Shieldů zde!
+                health.TakeDamage(damagePayload, damageType);
             }
 
             Destroy(gameObject);
@@ -78,11 +64,9 @@ public class Bullet : MonoBehaviour
     {
         Destroy(gameObject, bulletTimeToLive);
     }
-
-    // Public getter pro případ Turret.cs
-    public int Damage => bulletDamage;
 }
 
+// Enum necháme zde, aby byl dostupný
 public enum DamageType
 {
     Physical,

@@ -1633,6 +1633,10 @@ MonoBehaviour:
   - {fileID: 9027740936742813974}
   - {fileID: 292393141956056906}
   - {fileID: 7866694453519336471}
+  attackType: 0
+  damageType: 1
+  baseDamage: 10
+  meleeHitEffect: {fileID: 0}
 --- !u!114 &5203513095401779327
 MonoBehaviour:
   m_ObjectHideFlags: 0

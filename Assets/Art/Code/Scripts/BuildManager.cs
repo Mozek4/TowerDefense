@@ -44,6 +44,9 @@ public class BuildManager : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Alpha9)) {
             SetSelectedTower(8);
         }
+        if (Input.GetKeyDown(KeyCode.Alpha0)) {
+            SetSelectedTower(9);
+        }
     }
 
     private void Awake() {

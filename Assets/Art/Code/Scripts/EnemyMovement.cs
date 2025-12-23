@@ -63,6 +63,20 @@ public class EnemyMovement : MonoBehaviour
         rb.velocity = direction * moveSpeed;
     }
 
+    public void Stun(float duration)
+    {
+        StartCoroutine(StunCoroutine(duration));
+    }
+
+    private IEnumerator StunCoroutine(float duration)
+    {
+        float oldSpeed = moveSpeed;
+        moveSpeed = 0f;           // zastaví nepřítele
+        yield return new WaitForSeconds(duration);
+        moveSpeed = oldSpeed;     // obnoví původní rychlost
+    }
+
+
     private void RotateByFixedDirection()
     {
         // Příklad pro tvůj původní EnemyMovement, který se otočí na určitém indexu

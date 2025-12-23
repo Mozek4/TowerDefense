@@ -1277,6 +1277,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6711995782803428736}
   - component: {fileID: 4143476513523537276}
+  - component: {fileID: 3918923175974075383}
   - component: {fileID: 6180918296130834524}
   - component: {fileID: -6529010810389422483}
   m_Layer: 0
@@ -1348,8 +1349,24 @@ MonoBehaviour:
   - {fileID: 2841616461153282105}
   - {fileID: 7379260381086506049}
   attackType: 0
+  damageType: 0
   baseDamage: 15
   meleeHitEffect: {fileID: 0}
+--- !u!114 &3918923175974075383
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4123386717831054292}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 621ebc540f28907488df89889e365cea, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  burnDamage: 2
+  burnInterval: 1
+  burnTicks: 3
 --- !u!114 &6180918296130834524
 MonoBehaviour:
   m_ObjectHideFlags: 0

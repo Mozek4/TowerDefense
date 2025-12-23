@@ -139,8 +139,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 84b03a5f325275d4ebf60d8e2213fb1a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hitPoints: 20
-  maxHP: 20
+  hitPoints: 100
+  maxHP: 100
   currencyWorth: 20
   enemyScore: 5
   enemyType: 1

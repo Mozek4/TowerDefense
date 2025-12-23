@@ -18,10 +18,10 @@ public class EnemyDamageModifier : MonoBehaviour
         if (temporaryShield < 0f) temporaryShield = 0f;
     }
 
-    // Používá se při výpočtu damage
-    public int ApplyDamage(int calculatedDamage)
+    // Používá se při výpočtu damage v Health.cs
+    // Změněno na float pro zachování přesnosti před zaokrouhlením
+    public float ApplyDamageReduction(float calculatedDamage)
     {
-        return Mathf.CeilToInt(calculatedDamage * (1f - temporaryShield));
+        return calculatedDamage * (1f - temporaryShield);
     }
 }
-
