@@ -14,7 +14,7 @@ public class Health : MonoBehaviour
     public EnemyType enemyType = EnemyType.Casual;
 
     [Header("References")]
-    [SerializeField] private AudioClip death;
+    //[SerializeField] private AudioClip death;
     
     private bool isDestroyed = false;
     private EnemyDamageModifier damageModifier; // Reference na štíty
@@ -80,7 +80,7 @@ public class Health : MonoBehaviour
             ability.Activate();
         }
 
-        AudioSource.PlayClipAtPoint(death, Camera.main.transform.position, 0.1f);
+        //AudioSource.PlayClipAtPoint(death, Camera.main.transform.position, 0.1f);
         Debug.Log(LevelManager.main.score);
         Destroy(gameObject);
     }

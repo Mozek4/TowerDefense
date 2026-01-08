@@ -7,9 +7,16 @@ public class WaveUI : MonoBehaviour
 {
     [Header("References")]
     [SerializeField] TextMeshProUGUI WaveCounterUI;
-    private void OnGUI() {
-        if (EnemySpawner.Instance != null) {
-            WaveCounterUI.text = "Wave " + EnemySpawner.Instance.currentWave.ToString();
+    private void OnGUI()
+    {
+        if (EnemySpawner.Instance != null)
+        {
+            WaveCounterUI.text =
+                "Wave " +
+                EnemySpawner.Instance.CurrentWaveNumber +
+                " / " +
+                EnemySpawner.Instance.TotalWaves;
         }
     }
 }
+

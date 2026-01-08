@@ -279,4 +279,31 @@ public class Turret : MonoBehaviour
         for (int i = 0; i < rangeBars.Count; i++)
             rangeBars[i].SetActive(i < rangeLevel);
     }
+
+    private void OnDrawGizmosSelected()
+    {
+        // Barva gizma
+        Gizmos.color = Color.green;
+
+        // Pokud ještě Start neběžel, použij serializované hodnoty z Inspectoru
+        float effectiveRange = range;
+        int currentRangeLevel = rangeLevel;
+
+        if (Application.isPlaying)
+        {
+            // Ve hře použij upravené hodnoty
+            float globalRangeMult = PlayerStats.instance != null ? PlayerStats.instance.towerRangeMultiplier : 1f;
+            effectiveRange = CalculateRange() * globalRangeMult;
+        }
+        else
+        {
+            // Editor: použij základní hodnoty a level z Inspectoru
+            effectiveRange = range * Mathf.Pow(currentRangeLevel, 0.15f);
+        }
+
+        // Vykresli kruh
+        Gizmos.DrawWireSphere(transform.position, effectiveRange);
+    }
+
+
 }

@@ -101,7 +101,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rb: {fileID: 4320110983024569532}
-  moveSpeed: 2.3
+  moveSpeed: 1.4
   hpDamage: 2
   rotationByDirection: 0
 --- !u!114 &1313460678969836528
@@ -116,12 +116,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 84b03a5f325275d4ebf60d8e2213fb1a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hitPoints: 40
-  maxHP: 2
-  currencyWorth: 25
+  hitPoints: 140
+  maxHP: 140
+  currencyWorth: 30
   enemyScore: 10
   enemyType: 0
-  death: {fileID: 8300000, guid: f18a9b53f652bab428a74a805db6df76, type: 3}
 --- !u!50 &4320110983024569532
 Rigidbody2D:
   serializedVersion: 4

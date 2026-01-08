@@ -1,0 +1,315 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9717d3b089eb03649b3075f8035f5070, type: 3}
+  m_Name: Level_Forest_Normal_Config
+  m_EditorClassIdentifier: 
+  waves:
+  - delayBeforeWave: 10
+    enemiesPerSecond: 0.5
+    enemies:
+    - enemyPrefab: {fileID: 3653386987932208592, guid: a804f0b623bbb2c4284224d9645ec88e, type: 3}
+      count: 10
+  - delayBeforeWave: 3
+    enemiesPerSecond: 0.75
+    enemies:
+    - enemyPrefab: {fileID: 862671043071846076, guid: 1e00ef6e5892f644d83ae052affea564, type: 3}
+      count: 2
+    - enemyPrefab: {fileID: 3653386987932208592, guid: a804f0b623bbb2c4284224d9645ec88e, type: 3}
+      count: 3
+    - enemyPrefab: {fileID: 862671043071846076, guid: 1e00ef6e5892f644d83ae052affea564, type: 3}
+      count: 2
+  - delayBeforeWave: 3
+    enemiesPerSecond: 1
+    enemies:
+    - enemyPrefab: {fileID: 862671043071846076, guid: 1e00ef6e5892f644d83ae052affea564, type: 3}
+      count: 5
+    - enemyPrefab: {fileID: 3653386987932208592, guid: a804f0b623bbb2c4284224d9645ec88e, type: 3}
+      count: 3
+  - delayBeforeWave: 3
+    enemiesPerSecond: 1
+    enemies:
+    - enemyPrefab: {fileID: 862671043071846076, guid: 1e00ef6e5892f644d83ae052affea564, type: 3}
+      count: 5
+    - enemyPrefab: {fileID: 3653386987932208592, guid: a804f0b623bbb2c4284224d9645ec88e, type: 3}
+      count: 10
+  - delayBeforeWave: 10
+    enemiesPerSecond: 1
+    enemies:
+    - enemyPrefab: {fileID: 862671043071846076, guid: 1e00ef6e5892f644d83ae052affea564, type: 3}
+      count: 5
+    - enemyPrefab: {fileID: 8497780522464845842, guid: c6a1e2ee40491c240b2c8b80418f2396, type: 3}
+      count: 3
+  - delayBeforeWave: 3
+    enemiesPerSecond: 1
+    enemies:
+    - enemyPrefab: {fileID: 3653386987932208592, guid: a804f0b623bbb2c4284224d9645ec88e, type: 3}
+      count: 10
+    - enemyPrefab: {fileID: 8497780522464845842, guid: c6a1e2ee40491c240b2c8b80418f2396, type: 3}
+      count: 6
+    - enemyPrefab: {fileID: 862671043071846076, guid: 1e00ef6e5892f644d83ae052affea564, type: 3}
+      count: 3
+  - delayBeforeWave: 3
+    enemiesPerSecond: 1
+    enemies:
+    - enemyPrefab: {fileID: 862671043071846076, guid: 1e00ef6e5892f644d83ae052affea564, type: 3}
+      count: 12
+  - delayBeforeWave: 3
+    enemiesPerSecond: 1
+    enemies:
+    - enemyPrefab: {fileID: 8497780522464845842, guid: c6a1e2ee40491c240b2c8b80418f2396, type: 3}
+      count: 8
+  - delayBeforeWave: 3
+    enemiesPerSecond: 1
+    enemies:
+    - enemyPrefab: {fileID: 8497780522464845842, guid: c6a1e2ee40491c240b2c8b80418f2396, type: 3}
+      count: 4
+    - enemyPrefab: {fileID: 857018116690580185, guid: 3cbfcc9baa53bec408746fb6a1e2dc29, type: 3}
+      count: 2
+  - delayBeforeWave: 10
+    enemiesPerSecond: 1
+    enemies:
+    - enemyPrefab: {fileID: 3653386987932208592, guid: ef74fb45dafce7d48b4fc1e96ac08d96, type: 3}
+      count: 1
+    - enemyPrefab: {fileID: 857018116690580185, guid: 3cbfcc9baa53bec408746fb6a1e2dc29, type: 3}
+      count: 4
+    - enemyPrefab: {fileID: 3653386987932208592, guid: ef74fb45dafce7d48b4fc1e96ac08d96, type: 3}
+      count: 1
+  - delayBeforeWave: 3
+    enemiesPerSecond: 1
+    enemies:
+    - enemyPrefab: {fileID: 3653386987932208592, guid: ef74fb45dafce7d48b4fc1e96ac08d96, type: 3}
+      count: 2
+    - enemyPrefab: {fileID: 8497780522464845842, guid: c6a1e2ee40491c240b2c8b80418f2396, type: 3}
+      count: 6
+    - enemyPrefab: {fileID: 862671043071846076, guid: 1e00ef6e5892f644d83ae052affea564, type: 3}
+      count: 8
+    - enemyPrefab: {fileID: 3653386987932208592, guid: a804f0b623bbb2c4284224d9645ec88e, type: 3}
+      count: 15
+  - delayBeforeWave: 3
+    enemiesPerSecond: 1
+    enemies:
+    - enemyPrefab: {fileID: 3653386987932208592, guid: c4c4c4bb6e9935d46a97e76f60f7360e, type: 3}
+      count: 1
+    - enemyPrefab: {fileID: 764305588573266297, guid: f0dd9e17397697148aa387f9add9c654, type: 3}
+      count: 3
+    - enemyPrefab: {fileID: 3653386987932208592, guid: c4c4c4bb6e9935d46a97e76f60f7360e, type: 3}
+      count: 1
+    - enemyPrefab: {fileID: 862671043071846076, guid: 1e00ef6e5892f644d83ae052affea564, type: 3}
+      count: 10
+  - delayBeforeWave: 3
+    enemiesPerSecond: 1
+    enemies:
+    - enemyPrefab: {fileID: 3653386987932208592, guid: ef74fb45dafce7d48b4fc1e96ac08d96, type: 3}
+      count: 1
+    - enemyPrefab: {fileID: 3026666264698206484, guid: d1ebe94a6bb8ab645aedd269b613faa3, type: 3}
+      count: 2
+    - enemyPrefab: {fileID: 3653386987932208592, guid: c4c4c4bb6e9935d46a97e76f60f7360e, type: 3}
+      count: 1
+    - enemyPrefab: {fileID: 857018116690580185, guid: 3cbfcc9baa53bec408746fb6a1e2dc29, type: 3}
+      count: 3
+    - enemyPrefab: {fileID: 6456402562420172118, guid: 8699a5e1c7dfff741a811e2fd4e46202, type: 3}
+      count: 1
+  - delayBeforeWave: 3
+    enemiesPerSecond: 1
+    enemies:
+    - enemyPrefab: {fileID: 3653386987932208592, guid: ef74fb45dafce7d48b4fc1e96ac08d96, type: 3}
+      count: 1
+    - enemyPrefab: {fileID: 6456402562420172118, guid: 8699a5e1c7dfff741a811e2fd4e46202, type: 3}
+      count: 1
+    - enemyPrefab: {fileID: 764305588573266297, guid: f0dd9e17397697148aa387f9add9c654, type: 3}
+      count: 2
+    - enemyPrefab: {fileID: 3653386987932208592, guid: a804f0b623bbb2c4284224d9645ec88e, type: 3}
+      count: 15
+  - delayBeforeWave: 10
+    enemiesPerSecond: 1
+    enemies:
+    - enemyPrefab: {fileID: 3653386987932208592, guid: a804f0b623bbb2c4284224d9645ec88e, type: 3}
+      count: 8
+    - enemyPrefab: {fileID: 3653386987932208592, guid: ef74fb45dafce7d48b4fc1e96ac08d96, type: 3}
+      count: 3
+    - enemyPrefab: {fileID: 6105378301228501771, guid: 36e5f98186ee3884abc40e10f92d876a, type: 3}
+      count: 5
+    - enemyPrefab: {fileID: 862671043071846076, guid: 1e00ef6e5892f644d83ae052affea564, type: 3}
+      count: 15
+  - delayBeforeWave: 3
+    enemiesPerSecond: 1
+    enemies:
+    - enemyPrefab: {fileID: 862671043071846076, guid: 1e00ef6e5892f644d83ae052affea564, type: 3}
+      count: 8
+    - enemyPrefab: {fileID: 3653386987932208592, guid: ef74fb45dafce7d48b4fc1e96ac08d96, type: 3}
+      count: 1
+    - enemyPrefab: {fileID: 6456402562420172118, guid: 8699a5e1c7dfff741a811e2fd4e46202, type: 3}
+      count: 2
+    - enemyPrefab: {fileID: 3026666264698206484, guid: d1ebe94a6bb8ab645aedd269b613faa3, type: 3}
+      count: 2
+    - enemyPrefab: {fileID: 764305588573266297, guid: f0dd9e17397697148aa387f9add9c654, type: 3}
+      count: 2
+    - enemyPrefab: {fileID: 857018116690580185, guid: 3cbfcc9baa53bec408746fb6a1e2dc29, type: 3}
+      count: 3
+  - delayBeforeWave: 3
+    enemiesPerSecond: 1
+    enemies:
+    - enemyPrefab: {fileID: 8497780522464845842, guid: c6a1e2ee40491c240b2c8b80418f2396, type: 3}
+      count: 12
+    - enemyPrefab: {fileID: 3653386987932208592, guid: 1b895948da9466443afc85d1fe4a83a1, type: 3}
+      count: 1
+    - enemyPrefab: {fileID: 6456402562420172118, guid: 8699a5e1c7dfff741a811e2fd4e46202, type: 3}
+      count: 2
+    - enemyPrefab: {fileID: 3653386987932208592, guid: ef74fb45dafce7d48b4fc1e96ac08d96, type: 3}
+      count: 2
+    - enemyPrefab: {fileID: 3026666264698206484, guid: d1ebe94a6bb8ab645aedd269b613faa3, type: 3}
+      count: 2
+    - enemyPrefab: {fileID: 3653386987932208592, guid: 1b895948da9466443afc85d1fe4a83a1, type: 3}
+      count: 1
+    - enemyPrefab: {fileID: 862671043071846076, guid: 1e00ef6e5892f644d83ae052affea564, type: 3}
+      count: 8
+  - delayBeforeWave: 3
+    enemiesPerSecond: 1
+    enemies:
+    - enemyPrefab: {fileID: 6456402562420172118, guid: 8699a5e1c7dfff741a811e2fd4e46202, type: 3}
+      count: 3
+    - enemyPrefab: {fileID: 3653386987932208592, guid: 1b895948da9466443afc85d1fe4a83a1, type: 3}
+      count: 1
+    - enemyPrefab: {fileID: 3653386987932208592, guid: c4c4c4bb6e9935d46a97e76f60f7360e, type: 3}
+      count: 1
+    - enemyPrefab: {fileID: 3653386987932208592, guid: 1b895948da9466443afc85d1fe4a83a1, type: 3}
+      count: 1
+    - enemyPrefab: {fileID: 3653386987932208592, guid: c4c4c4bb6e9935d46a97e76f60f7360e, type: 3}
+      count: 1
+    - enemyPrefab: {fileID: 3026666264698206484, guid: d1ebe94a6bb8ab645aedd269b613faa3, type: 3}
+      count: 4
+    - enemyPrefab: {fileID: 764305588573266297, guid: f0dd9e17397697148aa387f9add9c654, type: 3}
+      count: 5
+  - delayBeforeWave: 3
+    enemiesPerSecond: 1
+    enemies:
+    - enemyPrefab: {fileID: 3653386987932208592, guid: ef74fb45dafce7d48b4fc1e96ac08d96, type: 3}
+      count: 2
+    - enemyPrefab: {fileID: 3653386987932208592, guid: c4c4c4bb6e9935d46a97e76f60f7360e, type: 3}
+      count: 1
+    - enemyPrefab: {fileID: 3653386987932208592, guid: a804f0b623bbb2c4284224d9645ec88e, type: 3}
+      count: 20
+    - enemyPrefab: {fileID: 862671043071846076, guid: 1e00ef6e5892f644d83ae052affea564, type: 3}
+      count: 10
+    - enemyPrefab: {fileID: 3653386987932208592, guid: 1b895948da9466443afc85d1fe4a83a1, type: 3}
+      count: 1
+  - delayBeforeWave: 10
+    enemiesPerSecond: 1
+    enemies:
+    - enemyPrefab: {fileID: 857018116690580185, guid: 3cbfcc9baa53bec408746fb6a1e2dc29, type: 3}
+      count: 4
+    - enemyPrefab: {fileID: 3653386987932208592, guid: ef74fb45dafce7d48b4fc1e96ac08d96, type: 3}
+      count: 1
+    - enemyPrefab: {fileID: 8497780522464845842, guid: c6a1e2ee40491c240b2c8b80418f2396, type: 3}
+      count: 5
+    - enemyPrefab: {fileID: 3653386987932208592, guid: a804f0b623bbb2c4284224d9645ec88e, type: 3}
+      count: 2
+    - enemyPrefab: {fileID: 6105378301228501771, guid: 36e5f98186ee3884abc40e10f92d876a, type: 3}
+      count: 6
+    - enemyPrefab: {fileID: 3653386987932208592, guid: 1b895948da9466443afc85d1fe4a83a1, type: 3}
+      count: 1
+    - enemyPrefab: {fileID: 3653386987932208592, guid: ef74fb45dafce7d48b4fc1e96ac08d96, type: 3}
+      count: 1
+  - delayBeforeWave: 3
+    enemiesPerSecond: 1
+    enemies:
+    - enemyPrefab: {fileID: 2990371063797274941, guid: 7b839b983a73cc948b44cf66e2413759, type: 3}
+      count: 6
+    - enemyPrefab: {fileID: 8949225651217709422, guid: 83a7fe685bbbc2e4f83eafd56ddd5f3d, type: 3}
+      count: 4
+    - enemyPrefab: {fileID: 464766282541277056, guid: 3829c02a326fc9a4a906602a6a5beb6c, type: 3}
+      count: 1
+  - delayBeforeWave: 3
+    enemiesPerSecond: 1
+    enemies:
+    - enemyPrefab: {fileID: 464766282541277056, guid: 3829c02a326fc9a4a906602a6a5beb6c, type: 3}
+      count: 1
+    - enemyPrefab: {fileID: 3907295641302818266, guid: 2a84d17f1b1244f449fe55bafcdb0f6e, type: 3}
+      count: 2
+    - enemyPrefab: {fileID: 3653386987932208592, guid: 1b895948da9466443afc85d1fe4a83a1, type: 3}
+      count: 1
+    - enemyPrefab: {fileID: 464766282541277056, guid: 3829c02a326fc9a4a906602a6a5beb6c, type: 3}
+      count: 1
+    - enemyPrefab: {fileID: 2990371063797274941, guid: 7b839b983a73cc948b44cf66e2413759, type: 3}
+      count: 3
+    - enemyPrefab: {fileID: 3653386987932208592, guid: 1b895948da9466443afc85d1fe4a83a1, type: 3}
+      count: 1
+    - enemyPrefab: {fileID: 3653386987932208592, guid: ef74fb45dafce7d48b4fc1e96ac08d96, type: 3}
+      count: 1
+  - delayBeforeWave: 3
+    enemiesPerSecond: 1
+    enemies:
+    - enemyPrefab: {fileID: 8497780522464845842, guid: c6a1e2ee40491c240b2c8b80418f2396, type: 3}
+      count: 5
+    - enemyPrefab: {fileID: 3653386987932208592, guid: c4c4c4bb6e9935d46a97e76f60f7360e, type: 3}
+      count: 1
+    - enemyPrefab: {fileID: 6456402562420172118, guid: 8699a5e1c7dfff741a811e2fd4e46202, type: 3}
+      count: 2
+    - enemyPrefab: {fileID: 464766282541277056, guid: 3829c02a326fc9a4a906602a6a5beb6c, type: 3}
+      count: 1
+    - enemyPrefab: {fileID: 764305588573266297, guid: f0dd9e17397697148aa387f9add9c654, type: 3}
+      count: 3
+    - enemyPrefab: {fileID: 3653386987932208592, guid: c4c4c4bb6e9935d46a97e76f60f7360e, type: 3}
+      count: 1
+  - delayBeforeWave: 3
+    enemiesPerSecond: 1
+    enemies:
+    - enemyPrefab: {fileID: 862671043071846076, guid: 1e00ef6e5892f644d83ae052affea564, type: 3}
+      count: 10
+    - enemyPrefab: {fileID: 3653386987932208592, guid: c4c4c4bb6e9935d46a97e76f60f7360e, type: 3}
+      count: 1
+    - enemyPrefab: {fileID: 464766282541277056, guid: 3829c02a326fc9a4a906602a6a5beb6c, type: 3}
+      count: 2
+    - enemyPrefab: {fileID: 857018116690580185, guid: 3cbfcc9baa53bec408746fb6a1e2dc29, type: 3}
+      count: 3
+    - enemyPrefab: {fileID: 2990371063797274941, guid: 7b839b983a73cc948b44cf66e2413759, type: 3}
+      count: 5
+    - enemyPrefab: {fileID: 8949225651217709422, guid: 83a7fe685bbbc2e4f83eafd56ddd5f3d, type: 3}
+      count: 2
+  - delayBeforeWave: 10
+    enemiesPerSecond: 1
+    enemies:
+    - enemyPrefab: {fileID: 3653386987932208592, guid: 1b895948da9466443afc85d1fe4a83a1, type: 3}
+      count: 1
+    - enemyPrefab: {fileID: 3653386987932208592, guid: c4c4c4bb6e9935d46a97e76f60f7360e, type: 3}
+      count: 1
+    - enemyPrefab: {fileID: 3907295641302818266, guid: 2a84d17f1b1244f449fe55bafcdb0f6e, type: 3}
+      count: 2
+    - enemyPrefab: {fileID: 464766282541277056, guid: 3829c02a326fc9a4a906602a6a5beb6c, type: 3}
+      count: 2
+    - enemyPrefab: {fileID: 3653386987932208592, guid: 1b895948da9466443afc85d1fe4a83a1, type: 3}
+      count: 1
+    - enemyPrefab: {fileID: 2990371063797274941, guid: 7b839b983a73cc948b44cf66e2413759, type: 3}
+      count: 5
+    - enemyPrefab: {fileID: 3653386987932208592, guid: ef74fb45dafce7d48b4fc1e96ac08d96, type: 3}
+      count: 2
+  - delayBeforeWave: 3
+    enemiesPerSecond: 1
+    enemies:
+    - enemyPrefab: {fileID: 3026666264698206484, guid: d1ebe94a6bb8ab645aedd269b613faa3, type: 3}
+      count: 5
+    - enemyPrefab: {fileID: 3653386987932208592, guid: c4c4c4bb6e9935d46a97e76f60f7360e, type: 3}
+      count: 1
+    - enemyPrefab: {fileID: 764305588573266297, guid: f0dd9e17397697148aa387f9add9c654, type: 3}
+      count: 6
+    - enemyPrefab: {fileID: 6456402562420172118, guid: 8699a5e1c7dfff741a811e2fd4e46202, type: 3}
+      count: 3
+    - enemyPrefab: {fileID: 3907295641302818266, guid: 2a84d17f1b1244f449fe55bafcdb0f6e, type: 3}
+      count: 1
+    - enemyPrefab: {fileID: 3653386987932208592, guid: 1b895948da9466443afc85d1fe4a83a1, type: 3}
+      count: 1
+    - enemyPrefab: {fileID: 464766282541277056, guid: 3829c02a326fc9a4a906602a6a5beb6c, type: 3}
+      count: 1
+    - enemyPrefab: {fileID: 8949225651217709422, guid: 83a7fe685bbbc2e4f83eafd56ddd5f3d, type: 3}
+      count: 3
+    - enemyPrefab: {fileID: 2990371063797274941, guid: 7b839b983a73cc948b44cf66e2413759, type: 3}
+      count: 5

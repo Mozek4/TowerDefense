@@ -1,211 +1,166 @@
-using System;
 using System.Collections;
 using System.Collections.Generic;
-using System.Runtime.CompilerServices;
-using Unity.Mathematics;
-using Unity.VisualScripting;
-using UnityEditor;
 using UnityEngine;
 using UnityEngine.Events;
-using UnityEngine.Rendering;
-using Random=UnityEngine.Random;
 
-public class EnemySpawner : MonoBehaviour {
-    public static EnemySpawner Instance {get; private set;}
+public class EnemySpawner : MonoBehaviour
+{
+    public static EnemySpawner Instance { get; private set; }
 
-    [Header("Attributes")]
-    [SerializeField] private List<GameObject> enemies; 
-    [SerializeField] private int baseEnemies = 8;
-    [SerializeField] private float enemiesPerSecond = 0.5f;
-    [SerializeField] private float timeBetweenWaves = 5f;
-    [SerializeField] private float difficulty = 0.75f;
-    [SerializeField] private float enemiesPerSecondLimit = 15f;
+    [Header("Level Data")]
+    [SerializeField] private LevelConfig levelConfig;
+
+    [Header("Game Over")]
+    [SerializeField] private GameObject panel;
 
     [Header("Events")]
     public static UnityEvent onEnemyDestroy = new UnityEvent();
 
-    private bool GameIsOver = false;
+    private bool waveInProgress = false;
 
-    public int currentWave = 1;
+
+    private Queue<GameObject> spawnQueue = new Queue<GameObject>();
+
+    private int currentWaveIndex = 0;
+    private int enemiesAlive = 0;
+
+    private float enemiesPerSecond;
     private float timeSinceLastSpawn;
-    private int enemiesAlive;
-    private int enemiesLeftToSpawn;
-    private float eps;
     private bool isSpawning = false;
+    private bool gameIsOver = false;
 
-    public GameObject panel;
-
-    private GameObject skeletonBoss;
-    private GameObject vampireBoss;
-    private GameObject skeleton;
-    private GameObject goblin;
-    private GameObject wolf;
-    private GameObject tank;
-    private GameObject electroSpirit;
-    private GameObject spider;
-    private GameObject miniRobot;
-    private GameObject witch;
-    private GameObject car;
-    private GameObject roboticSnake;
-    private GameObject greenTroll;
-    private GameObject blueTroll;
-    private GameObject redTroll;
-
-    private void Awake() {
-        enemies = new List<GameObject>();;
-        skeletonBoss = Resources.Load<GameObject>("Enemies/SkeletonBoss");
-        vampireBoss = Resources.Load<GameObject>("Enemies/VampireBoss");
-        skeleton = Resources.Load<GameObject>("Enemies/Skeleton");
-        goblin = Resources.Load<GameObject>("Enemies/Goblin");
-        wolf = Resources.Load<GameObject>("Enemies/Wolf");
-        tank = Resources.Load<GameObject>("Enemies/Tank");
-        electroSpirit = Resources.Load<GameObject>("Enemies/ElectroSpirit");
-        spider = Resources.Load<GameObject>("Enemies/Spider");
-        miniRobot = Resources.Load<GameObject>("Enemies/MiniRobot");
-        witch = Resources.Load<GameObject>("Enemies/Witch");
-        car = Resources.Load<GameObject>("Enemies/Car");
-        roboticSnake = Resources.Load<GameObject>("Enemies/RoboticSnake");
-        greenTroll = Resources.Load<GameObject>("Enemies/GreenTroll");
-        blueTroll = Resources.Load<GameObject>("Enemies/BlueTroll");
-        redTroll = Resources.Load<GameObject>("Enemies/RedTroll");
-
-        if (Instance == null) {
+    private void Awake()
+    {
+        if (Instance == null)
             Instance = this;
-        }
-            else {
+        else
+        {
             Destroy(gameObject);
-            }
+            return;
+        }
+
         onEnemyDestroy.AddListener(EnemyDestroyed);
     }
 
-    private void Start() {
-        StartCoroutine(StartWave());
-        if (panel == null) {
+    private void Start()
+    {
+        if (panel == null)
             panel = GameObject.Find("Game Over");
-        }
-        panel.SetActive(false);
-    }   
 
-    private void Update() {
-        AddingEnemies();
-        if (!isSpawning) return;
+        if (panel != null)
+            panel.SetActive(false);
+
+        StartCoroutine(StartWave());
+    }
+
+    private void Update()
+    {
+        if (!isSpawning)
+            return;
 
         timeSinceLastSpawn += Time.deltaTime;
-        
-        if (timeSinceLastSpawn >= (1f / eps) && enemiesLeftToSpawn > 0) {
-            SpawnEnemy();
-            enemiesLeftToSpawn--;
-            enemiesAlive++;
+
+        if (spawnQueue.Count > 0 && timeSinceLastSpawn >= (1f / enemiesPerSecond))
+        {
+            SpawnNextEnemy();
             timeSinceLastSpawn = 0f;
         }
 
-        if (enemiesAlive <= 0 && enemiesLeftToSpawn == 0) {
-            EndWave();
-        }
+    if (waveInProgress && spawnQueue.Count == 0 && enemiesAlive <= 0)
+    {
+        EndWave();
+    }
         EndGame();
     }
-    private void EnemyDestroyed() {
+
+    private IEnumerator StartWave()
+    {
+        if (currentWaveIndex >= levelConfig.waves.Count)
+        {
+            LevelComplete();
+            yield break;
+        }
+
+        EnemyWave wave = levelConfig.waves[currentWaveIndex];
+
+        yield return new WaitForSeconds(wave.delayBeforeWave);
+
+        PrepareSpawnQueue(wave);
+
+        enemiesPerSecond = Mathf.Max(0.1f, wave.enemiesPerSecond);
+        timeSinceLastSpawn = 0f;
+        isSpawning = true;
+        waveInProgress = true;
+    }
+
+
+    private void PrepareSpawnQueue(EnemyWave wave)
+    {
+        spawnQueue.Clear();
+
+        foreach (EnemySpawnEntry entry in wave.enemies)
+        {
+            for (int i = 0; i < entry.count; i++)
+            {
+                spawnQueue.Enqueue(entry.enemyPrefab);
+            }
+        }
+    }
+
+    private void SpawnNextEnemy()
+    {
+        if (spawnQueue.Count == 0)
+            return;
+
+        GameObject prefab = spawnQueue.Dequeue();
+        Instantiate(prefab, LevelManager.main.startPoint.position, Quaternion.identity);
+        enemiesAlive++;
+    }
+
+    private void EndWave()
+    {
+        isSpawning = false;
+        waveInProgress = false;
+        currentWaveIndex++;
+        StartCoroutine(StartWave());
+    }
+
+    private void EnemyDestroyed()
+    {
         enemiesAlive--;
     }
 
-    private IEnumerator StartWave() {
-        yield return new WaitForSeconds(timeBetweenWaves);
-
-        BossSpawner();
-
-        isSpawning = true;
-        enemiesLeftToSpawn = EnemiesPerWave();
-        eps = EnemiesPerSecond() / 1.5f;
+    public int CurrentWaveNumber
+    {
+        get { return currentWaveIndex + 1; }
     }
 
-    private void EndWave() {
-        isSpawning = false;
-        timeSinceLastSpawn = 0f;
-        currentWave++;
-        StartCoroutine(StartWave());
-    }
-    private void AddingEnemies() {
-        if (currentWave == 1 && !enemies.Contains(skeleton)) {
-            enemies.Add(skeleton);
-        }
-        if (currentWave == 5 && !enemies.Contains(goblin)) {
-            enemies.Add(goblin);
-        }
-        if (currentWave == 10 && !enemies.Contains(spider)) {
-            enemies.Add(spider);
-        }
-        if (currentWave == 15 && !enemies.Contains(wolf)) {
-            enemies.Add(wolf);
-            enemies.Remove(skeleton);
-        }
-        if (currentWave == 20 && !enemies.Contains(electroSpirit)) {
-            enemies.Add(electroSpirit);
-        }
-        if (currentWave == 25 && !enemies.Contains(greenTroll)) {
-            enemies.Add(greenTroll);
-            enemies.Remove(goblin);
-        }
-        if (currentWave == 30 && !enemies.Contains(tank)) {
-            enemies.Add(tank);
-        }
-        if (currentWave == 35 && !enemies.Contains(witch)) {
-            enemies.Add(witch);
-            enemies.Remove(spider);
-        }
-        if (currentWave == 40 && !enemies.Contains(roboticSnake)) {
-            enemies.Add(roboticSnake);
-            enemies.Remove(wolf);
-        }
-        if (currentWave == 45 && !enemies.Contains(blueTroll)) {
-            enemies.Add(blueTroll);
-        }
-        if (currentWave == 50 && !enemies.Contains(miniRobot)) {
-            enemies.Add(miniRobot);
-        }
-        if (currentWave == 55 && !enemies.Contains(redTroll)) {
-            enemies.Add(redTroll);
-        }
+    public int TotalWaves
+    {
+        get { return levelConfig != null ? levelConfig.waves.Count : 0; }
     }
 
-    private void BossSpawner() {
-        if (currentWave % 10 == 0 ) {
-            Instantiate(skeletonBoss, LevelManager.main.startPoint.position, Quaternion.identity);
-        }
-        if (currentWave % 10 == 0 && currentWave > 19) {
-            Instantiate(vampireBoss, LevelManager.main.startPoint.position, Quaternion.identity);
-        }
-        if (currentWave % 3 == 0 && currentWave > 11) {
-            Instantiate(car, LevelManager.main.startPoint.position, Quaternion.identity);
-        }
-    }
-    
-    private void SpawnEnemy() {
-        int index = Random.Range(0, enemies.Count);
-        GameObject prefabToSpawn = enemies[index];
-        Instantiate(prefabToSpawn, LevelManager.main.startPoint.position, Quaternion.identity);
+
+    private void LevelComplete()
+    {
+        Debug.Log("LEVEL COMPLETE");
     }
 
-    private int EnemiesPerWave() {
-        return Mathf.RoundToInt(baseEnemies * Mathf.Pow(currentWave, difficulty));
-    }
-
-    private float EnemiesPerSecond() {
-        return Math.Clamp(enemiesPerSecond * Mathf.Pow(currentWave, difficulty),0f, enemiesPerSecondLimit);
-    }
-
-    private void EndGame(){
-        if (LevelManager.playerHealth <= 0 && !GameIsOver)
+    private void EndGame()
+    {
+        if (LevelManager.playerHealth <= 0 && !gameIsOver)
         {
-        
-            GameIsOver = true;
-            Time.timeScale = 0;
-            panel.SetActive(true);
+            gameIsOver = true;
+            Time.timeScale = 0f;
+
+            if (panel != null)
+                panel.SetActive(true);
+
             if (PlayerData.instance != null && LevelManager.main != null)
             {
                 PlayerData.instance.AddDiamonds(LevelManager.main.score / 20);
             }
         }
     }
+
 }
-
-

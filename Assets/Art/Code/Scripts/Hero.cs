@@ -6,6 +6,8 @@ using TMPro;
 public class HeroController : MonoBehaviour
 {
     [SerializeField] private LineRenderer rangeIndicator;
+    [SerializeField] private GameObject hitEffectPrefab;
+
 
     [Header("Movement")]
     public float moveSpeed = 4f;
@@ -169,6 +171,16 @@ public class HeroController : MonoBehaviour
 
     private void DoAttack(Transform target)
     {
+        // 🔹 efekt zásahu
+        if (hitEffectPrefab != null)
+        {
+            Instantiate(
+                hitEffectPrefab,
+                target.position,
+                Quaternion.identity
+            );
+        }
+
         var enemyHealth = target.GetComponent<Health>();
         if (enemyHealth != null)
         {
@@ -181,6 +193,7 @@ public class HeroController : MonoBehaviour
             }
         }
     }
+
 
     private void OnEnemyKilled()
     {

@@ -102,8 +102,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rb: {fileID: 6834997717310453001}
-  moveSpeed: 1.8
-  hpDamage: 2
+  moveSpeed: 1.3
+  hpDamage: 6
   rotationByDirection: 0
 --- !u!114 &-3344523462340244460
 MonoBehaviour:
@@ -118,9 +118,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   skeletonPrefab: {fileID: 3653386987932208592, guid: a804f0b623bbb2c4284224d9645ec88e, type: 3}
-  skeletonCount: 2
+  skeletonCount: 3
   spawnRadius: 1.5
-  spawnInterval: 3
+  spawnInterval: 8
   stopDuration: 1
 --- !u!114 &589695110812279931
 MonoBehaviour:
@@ -134,11 +134,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 84b03a5f325275d4ebf60d8e2213fb1a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hitPoints: 20
-  currencyWorth: 20
-  enemyScore: 5
+  hitPoints: 500
+  maxHP: 500
+  currencyWorth: 45
+  enemyScore: 25
   enemyType: 1
-  death: {fileID: 8300000, guid: a458c78b184725e4a983b6a0076d5972, type: 3}
 --- !u!50 &6834997717310453001
 Rigidbody2D:
   serializedVersion: 4

@@ -2306,10 +2306,10 @@ MonoBehaviour:
   rangeIndicator: {fileID: -3688973679118555344}
   shotSound: {fileID: 0}
   rotationSpeed: 400
-  range: 5
-  aps: 1
-  baseRangeUpgradeCost: 135
-  baseApsUpgradeCost: 135
+  range: 7
+  aps: 0.6
+  baseRangeUpgradeCost: 170
+  baseApsUpgradeCost: 145
   bpsBars:
   - {fileID: 6293365902568188011}
   - {fileID: 6632562177350691827}
@@ -2324,6 +2324,10 @@ MonoBehaviour:
   - {fileID: 6361298771651843499}
   - {fileID: 5042338888315913338}
   - {fileID: 4552939591164618092}
+  attackType: 0
+  damageType: 0
+  baseDamage: 30
+  meleeHitEffect: {fileID: 0}
 --- !u!114 &5922142082205644255
 MonoBehaviour:
   m_ObjectHideFlags: 0

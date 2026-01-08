@@ -1553,8 +1553,8 @@ MonoBehaviour:
   rotationSpeed: 5
   range: 2.5
   aps: 1
-  baseRangeUpgradeCost: 120
-  baseApsUpgradeCost: 120
+  baseRangeUpgradeCost: 130
+  baseApsUpgradeCost: 130
   bpsBars:
   - {fileID: 6502979671328152414}
   - {fileID: 4296471354173946578}
@@ -1571,7 +1571,7 @@ MonoBehaviour:
   - {fileID: 7866694453519336471}
   attackType: 1
   damageType: 0
-  baseDamage: 15
+  baseDamage: 20
   meleeHitEffect: {fileID: 2238172225628848781, guid: 6b9743359cd963f47a5782b5fdaaa199, type: 3}
   attacksForBite: 4
   biteDamageMultiplier: 2
