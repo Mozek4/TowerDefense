@@ -834,7 +834,7 @@ MonoBehaviour:
   - {fileID: 8300000, guid: da5dd50665fce9648af469fd175b0594, type: 3}
   - {fileID: 8300000, guid: 03bba5ccbb290d74d850ce37f5160b81, type: 3}
   dropdown: {fileID: 1248340248}
-  volumeSlider: {fileID: 0}
+  volumeSlider: {fileID: 654296106}
 --- !u!82 &27040072
 AudioSource:
   m_ObjectHideFlags: 0
