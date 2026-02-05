@@ -22,6 +22,9 @@ public class EnemyMovement : MonoBehaviour
     {
         baseSpeed = moveSpeed;
         target = LevelManager.main.path[pathIndex];
+
+        if (!rotationByDirection)
+            RotateByFixedDirection();
     }
 
     private void Update()
@@ -75,15 +78,49 @@ public class EnemyMovement : MonoBehaviour
         yield return new WaitForSeconds(duration);
         moveSpeed = oldSpeed;     // obnoví původní rychlost
     }
-
-
     private void RotateByFixedDirection()
     {
-        // Příklad pro tvůj původní EnemyMovement, který se otočí na určitém indexu
-        if (pathIndex == 6)
+        if (LevelManager.main == null || LevelManager.main.path == null)
+            return;
+
+        Transform[] path = LevelManager.main.path;
+
+        if (path.Length < 2)
+            return;
+
+        Vector2 chosenDir;
+
+        // 🔹 SPECIÁLNÍ PŘÍPAD: začátek cesty
+        if (pathIndex == 0)
         {
-            transform.rotation = Quaternion.Euler(0, 180, 0);
+            chosenDir = (Vector2)(path[1].position - path[0].position);
         }
+        else
+        {
+            int nextIndex = pathIndex;
+            if (nextIndex >= path.Length)
+                return;
+
+            Vector2 dirToNext = path[nextIndex].position - transform.position;
+            chosenDir = dirToNext;
+
+            // pokud je segment vertikální, koukni na další
+            if (Mathf.Abs(dirToNext.y) > Mathf.Abs(dirToNext.x))
+            {
+                int afterIndex = nextIndex + 1;
+                if (afterIndex < path.Length)
+                {
+                    chosenDir = (Vector2)(path[afterIndex].position - path[nextIndex].position);
+                }
+            }
+        }
+
+        if (chosenDir.x == 0)
+            return;
+
+        Vector3 scale = transform.localScale;
+        scale.x = Mathf.Sign(chosenDir.x) * Mathf.Abs(scale.x);
+        transform.localScale = scale;
     }
 
     public void UpdateSpeed(float newSpeed)

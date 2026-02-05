@@ -31,7 +31,6 @@ public class PlayerData : MonoBehaviour
             unlockedSkills = new List<string>(ids);
         }
 
-        // Obnoví efekty skillů po načtení
         foreach (string skill in unlockedSkills)
         {
             if (skill == "TowerDamage")
@@ -54,22 +53,6 @@ public class PlayerData : MonoBehaviour
             Destroy(gameObject);
         }
     }
-
-    /*public void SaveVillage()
-    {
-        activeVillageObjects.Clear();
-
-        foreach (VillageObject vo in FindObjectsOfType<VillageObject>())
-        {
-            if (vo.gameObject.activeSelf)
-            {
-                activeVillageObjects.Add(vo.objectID);
-            }
-        }
-        string data = string.Join(",", activeVillageObjects);
-        PlayerPrefs.SetString("VillageObjects", data);
-        PlayerPrefs.Save();
-    }*/
     
 public void SaveVillage()
 {
@@ -89,42 +72,6 @@ public void SaveVillage()
     Debug.Log("Uložená data: " + data);
 }
 
-
-    /*public void LoadVillage()
-    {
-        string data = PlayerPrefs.GetString("VillageObjects", "");
-
-        if (!string.IsNullOrEmpty(data))
-        {
-            string[] ids = data.Split(',');
-            activeVillageObjects = new List<string>(ids);
-        }
-
-        foreach (VillageObject vo in FindObjectsOfType<VillageObject>())
-        {
-            vo.gameObject.SetActive(activeVillageObjects.Contains(vo.objectID));
-        }
-    }*/
-
-    /*public void LoadVillage()
-    {
-        string data = PlayerPrefs.GetString("VillageObjects", "");
-        Debug.Log("Načtena uložená data: " + data);
-
-        if (!string.IsNullOrEmpty(data))
-        {
-            string[] ids = data.Split(',');
-            activeVillageObjects = new List<string>(ids);
-        }
-
-        foreach (VillageObject vo in FindObjectsOfType<VillageObject>(true))
-        {
-            bool aktivovat = activeVillageObjects.Contains(vo.objectID);
-            Debug.Log(vo.objectID + " bude " + (aktivovat ? "aktivní" : "neaktivní"));
-            vo.gameObject.SetActive(aktivovat);
-            Debug.Log("Objekt " + vo.objectID + " má po aktivaci stav: " + vo.gameObject.activeSelf);
-        }
-    }*/
 public void LoadVillage()
 {
     string data = PlayerPrefs.GetString("VillageObjects", "");

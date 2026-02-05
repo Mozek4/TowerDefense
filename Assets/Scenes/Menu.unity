@@ -3973,6 +3973,7 @@ GameObject:
   - component: {fileID: 450522510}
   - component: {fileID: 450522509}
   - component: {fileID: 450522512}
+  - component: {fileID: 450522513}
   m_Layer: 5
   m_Name: MountainMap2
   m_TagString: Untagged
@@ -4106,6 +4107,27 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   targetButton: {fileID: 450522507}
+--- !u!95 &450522513
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 450522507}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 182b4b120fa6029458db580031ca0356, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &481062907
 GameObject:
   m_ObjectHideFlags: 0
@@ -7448,6 +7470,7 @@ GameObject:
   - component: {fileID: 935828833}
   - component: {fileID: 935828832}
   - component: {fileID: 935828835}
+  - component: {fileID: 935828836}
   m_Layer: 5
   m_Name: SnowMap2
   m_TagString: Untagged
@@ -7582,6 +7605,27 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   targetButton: {fileID: 935828829}
+--- !u!95 &935828836
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 935828829}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 874621a550662c340b9c81672f7630b8, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &936201105
 GameObject:
   m_ObjectHideFlags: 0
@@ -14127,6 +14171,7 @@ MonoBehaviour:
   GoToMonsterButton: {fileID: 1031209871}
   VillageButton: {fileID: 219598749}
   DiamondCounter: {fileID: 127723607}
+  SkillTreeButton: {fileID: 2021045239}
   Enemy1: {fileID: 944053386}
   Enemy2: {fileID: 35870788}
   Enemy3: {fileID: 1082374791}

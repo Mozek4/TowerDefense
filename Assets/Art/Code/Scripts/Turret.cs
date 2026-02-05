@@ -7,7 +7,13 @@ public class Turret : MonoBehaviour
 {
     [Header("References")]
     [SerializeField] private bool shouldRotate = false;
-    [SerializeField] private Transform turretRotationPoint;
+    [SerializeField] private Transform turretRotationPoint; // Používá se pro plynulé otáčení (pokud shouldRotate = true)
+    
+    // --- ZMĚNA: Reference na objekt, který se má překlápět (flipovat) ---
+    [Tooltip("Přiřaď sem grafiku/sprite, který se má otáčet vlevo/vpravo, pokud je 'shouldRotate' vypnuté.")]
+    [SerializeField] private Transform spriteFlipperPoint; 
+    // --------------------------------------------------------------------
+
     [SerializeField] public LayerMask enemyMask;
     [SerializeField] private GameObject bulletPrefab;
     [SerializeField] private Transform firingPoint;
@@ -37,10 +43,10 @@ public class Turret : MonoBehaviour
 
     [Header("Attack Settings")]
     [SerializeField] private AttackType attackType = AttackType.Ranged;
-    [SerializeField] private DamageType damageType = DamageType.Physical; // Nové: Věž ví, jaký typ poškození dává (nastav v Inspectoru)
+    [SerializeField] private DamageType damageType = DamageType.Physical; 
 
-    [SerializeField] private int baseDamage = 10;          // základní damage věže
-    [SerializeField] private GameObject meleeHitEffect;    // efekt zásahu (optional)
+    [SerializeField] private int baseDamage = 10;          
+    [SerializeField] private GameObject meleeHitEffect;    
 
 
     private float rangeBase;
@@ -52,15 +58,13 @@ public class Turret : MonoBehaviour
     private int rangeLevel = 1;
     private int towerSellCost;
 
-
-
     public int BpsLevel => bpsLevel;
     public float ApsBaseTimes(float x) => apsBase * x;
 
     public int RangeLevel => rangeLevel;
     public float RangeBaseTimes(float x) => rangeBase * x;
 
-    private void Start()
+    protected virtual void Start()
     {
         towerSellCost = LevelManager.main.towerCost;
         apsBase = aps;
@@ -89,8 +93,18 @@ public class Turret : MonoBehaviour
             return;
         }
 
+        // --- ZMĚNA: Rozhodování o způsobu otáčení ---
         if (shouldRotate && turretRotationPoint != null)
+        {
+            // Původní plynulé otáčení
             RotateTowardsTarget();
+        }
+        else if (!shouldRotate && spriteFlipperPoint != null)
+        {
+            // Nové skokové otáčení (Left/Right)
+            RotateLeftOrRight();
+        }
+        // --------------------------------------------
 
         if (!CheckTargetIsInRange(effectiveRange))
         {
@@ -116,12 +130,31 @@ public class Turret : MonoBehaviour
         turretRotationPoint.rotation = Quaternion.RotateTowards(turretRotationPoint.rotation, targetRotation, rotationSpeed * Time.deltaTime);
     }
 
+    // --- ZMĚNA: Nová funkce pro otáčení vlevo/vpravo ---
+    private void RotateLeftOrRight()
+    {
+        if (target == null) return;
+
+        // Pokud je target napravo od věže (X je větší)
+        if (target.position.x > transform.position.x)
+        {
+            // Otoč se doprava (reset rotace na 0)
+            spriteFlipperPoint.localRotation = Quaternion.Euler(0, 0, 0);
+        }
+        // Pokud je target nalevo od věže (X je menší)
+        else
+        {
+            // Otoč se doleva (otočení o 180 stupňů kolem osy Y)
+            spriteFlipperPoint.localRotation = Quaternion.Euler(0, 180, 0);
+        }
+    }
+    // ---------------------------------------------------
+
     protected virtual void Shoot()
     {
         if (shotSound != null)
             AudioSource.PlayClipAtPoint(shotSound, transform.position, 1.2f);
 
-        // Vypočítáme damage centrálně zde
         int finalDamage = CalculateOutputDamage();
 
         if (attackType == AttackType.Ranged)
@@ -130,7 +163,6 @@ public class Turret : MonoBehaviour
             Bullet bulletScript = bulletObj.GetComponent<Bullet>();
 
             bulletScript.SetTarget(target);
-            // Předáme damage a typ kulce
             bulletScript.SetupBullet(finalDamage, damageType);
         }
         else if (attackType == AttackType.Melee)
@@ -139,30 +171,23 @@ public class Turret : MonoBehaviour
         }
     }
 
-
     protected virtual void DoMeleeAttack(int damage)
     {
         if (target == null) return;
 
-        // efekt zásahu
         if (meleeHitEffect != null)
             Instantiate(meleeHitEffect, target.position, Quaternion.identity);
 
-        // damage
         Health health = target.GetComponent<Health>();
         if (health != null)
-            health.TakeDamage(damage, damageType); // Předáváme i typ poškození
+            health.TakeDamage(damage, damageType); 
     }
 
-    // Centrální výpočet síly věže
     protected virtual int CalculateOutputDamage()
     {
         float damage = baseDamage;
-
-        // upgrade věže (levely)
         damage *= Mathf.Pow(bpsLevel, 0.5f);
 
-        // globální buffy (PlayerStats) - ZDE SE APLIKUJE MULTIPLIER (pouze jednou!)
         if (PlayerStats.instance != null)
             damage *= PlayerStats.instance.towerDamageMultiplier;
 
@@ -282,28 +307,21 @@ public class Turret : MonoBehaviour
 
     private void OnDrawGizmosSelected()
     {
-        // Barva gizma
         Gizmos.color = Color.green;
 
-        // Pokud ještě Start neběžel, použij serializované hodnoty z Inspectoru
         float effectiveRange = range;
         int currentRangeLevel = rangeLevel;
 
         if (Application.isPlaying)
         {
-            // Ve hře použij upravené hodnoty
             float globalRangeMult = PlayerStats.instance != null ? PlayerStats.instance.towerRangeMultiplier : 1f;
             effectiveRange = CalculateRange() * globalRangeMult;
         }
         else
         {
-            // Editor: použij základní hodnoty a level z Inspectoru
             effectiveRange = range * Mathf.Pow(currentRangeLevel, 0.15f);
         }
 
-        // Vykresli kruh
         Gizmos.DrawWireSphere(transform.position, effectiveRange);
     }
-
-
 }

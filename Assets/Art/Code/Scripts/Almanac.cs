@@ -16,6 +16,7 @@ public class OpenAlmanac : MonoBehaviour
     [SerializeField] private Button GoToMonsterButton;
     [SerializeField] private GameObject VillageButton;
     [SerializeField] private GameObject DiamondCounter;
+    [SerializeField] private GameObject SkillTreeButton;
     [SerializeField] private GameObject Enemy1;
     [SerializeField] private GameObject Enemy2;
     [SerializeField] private GameObject Enemy3;
@@ -44,6 +45,7 @@ public class OpenAlmanac : MonoBehaviour
         EnemiesAlmanac.SetActive(true);
         VillageButton.SetActive(false);
         DiamondCounter.SetActive(false);
+        SkillTreeButton.SetActive(false);
     }
 
     private void CloseEnemiesAlmanac()
@@ -52,6 +54,7 @@ public class OpenAlmanac : MonoBehaviour
         TowersAlmanac.SetActive(false);
         VillageButton.SetActive(true);
         DiamondCounter.SetActive(true);
+        SkillTreeButton.SetActive(true);
     }
 
     private void GoToTowers()

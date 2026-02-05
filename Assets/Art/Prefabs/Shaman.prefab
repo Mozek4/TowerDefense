@@ -154,11 +154,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 638966805598971002}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0.154, y: 0.548, z: 0.0010008048}
   m_LocalScale: {x: 0.35, y: 0.35, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 3569906509545328333}
   m_Father: {fileID: 6845070941881033630}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &1165181997700195665
@@ -1437,11 +1438,11 @@ Transform:
   m_GameObject: {fileID: 5141573160954171163}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.684, y: 1.147, z: 0.0010008048}
-  m_LocalScale: {x: 0.35, y: 0.35, z: 1}
+  m_LocalPosition: {x: 1.5142858, y: 1.7114285, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 6845070941881033630}
+  m_Father: {fileID: 7918615949656894023}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &5892794712409797215
 GameObject:
@@ -2058,7 +2059,6 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 7918615949656894023}
-  - {fileID: 3569906509545328333}
   - {fileID: 6987645925283318041}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -2076,6 +2076,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   shouldRotate: 0
   turretRotationPoint: {fileID: 0}
+  spriteFlipperPoint: {fileID: 7918615949656894023}
   enemyMask:
     serializedVersion: 2
     m_Bits: 64

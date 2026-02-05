@@ -158,7 +158,8 @@ Transform:
   m_LocalPosition: {x: 0.076999664, y: 0.55200005, z: -0.0031954076}
   m_LocalScale: {x: 0.18, y: 0.18, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 1904278010330155313}
   m_Father: {fileID: 2178566989380316394}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &6085435557012130191
@@ -493,7 +494,6 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 6298292032691539608}
-  - {fileID: 1904278010330155313}
   - {fileID: 8325038200882340357}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -511,6 +511,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   shouldRotate: 0
   turretRotationPoint: {fileID: 0}
+  spriteFlipperPoint: {fileID: 6298292032691539608}
   enemyMask:
     serializedVersion: 2
     m_Bits: 64
@@ -1524,11 +1525,11 @@ Transform:
   m_GameObject: {fileID: 3493618535558528853}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.010000229, y: 0.44200003, z: -0.0031954076}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: -0.48333272, y: -0.61111116, z: 0}
+  m_LocalScale: {x: 5.5555553, y: 5.5555553, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 2178566989380316394}
+  m_Father: {fileID: 6298292032691539608}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &3921932761406213991
 GameObject:

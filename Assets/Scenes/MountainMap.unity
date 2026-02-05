@@ -22016,7 +22016,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 086d6421444139c4cbacafa1713b8071, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  levelConfig: {fileID: 0}
+  levelConfig: {fileID: 11400000, guid: 66dbaf98bad1e2a4a8a5fe72b0ec61a3, type: 2}
   panel: {fileID: 0}
 --- !u!114 &1041048780
 MonoBehaviour:

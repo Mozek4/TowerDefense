@@ -20,7 +20,7 @@ public class LevelManager : MonoBehaviour
     }
 
     private void Start() {
-        gold = 600;
+        gold = 6000;
         score = 0;
     }
 

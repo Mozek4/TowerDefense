@@ -1,71 +1,55 @@
-using System.Collections;
-using System.Collections.Generic;
-using Unity.Mathematics;
-using Unity.VisualScripting;
 using UnityEngine;
 
-public class ElectroSpiritMovement : MonoBehaviour
+public class ElectroSpiritMovement : EnemyMovement
 {
-    public static EnemyMovement Instance {get; private set;}
-    [Header("References")]
-    [SerializeField] private Rigidbody2D rb;
+    [Header("Electro Spirit Settings")]
+    [SerializeField] private float waveAmplitude = 2f;
+    [SerializeField] private float waveFrequency = 5f;
+    [SerializeField] private float spiritSpeed = 2f;
 
-    [Header("Attributes")]
-    [SerializeField] private float moveSpeed = 2f;
-    [SerializeField] private float floatLength = 0.2f;
-    [SerializeField] private float floatSpeed = 2f;
-    [SerializeField] private int hpDamage = 2;
+    private Rigidbody2D myRb;
 
-    private Transform target;
-    private int pathIndex = 0;
-    private float baseSpeed;
-    private float startY;
+    private void Start()
+    {
+        // 1. Načteme RB
+        myRb = GetComponent<Rigidbody2D>();
 
-    private void Start() {
-        baseSpeed = moveSpeed;
-        target = LevelManager.main.path[pathIndex];
-        startY = transform.position.y;
+        // 2. OPRAVA PROBLÉMU:
+        // Protože tento Start() "přepsal" Start() v rodiči (EnemyMovement),
+        // rodič si nikdy nenastavil 'target'. Musíme to udělat ručně.
+        // Zavoláme veřejnou metodu z rodiče, která nastaví index na 0 a najde target.
+        SetPathIndex(0);
     }
 
-    private void Update() {
-        if (Vector2.Distance(target.position, transform.position) <= 0.1f) {
-            pathIndex++;
+    private void FixedUpdate()
+    {
+        // Získáme index
+        int currentIndex = GetPathIndex();
 
-            if (pathIndex == LevelManager.main.path.Length) {
-                LevelManager.playerHealthReduce(hpDamage);
-                EnemySpawner.onEnemyDestroy.Invoke();
-                Destroy(gameObject);
-                return;
-            } else {
-                target = LevelManager.main.path[pathIndex];
-                RotateByDirection();
-            }
+        // Bezpečnostní kontrola
+        if (LevelManager.main == null || LevelManager.main.path == null || currentIndex >= LevelManager.main.path.Length)
+            return;
+
+        Transform currentTarget = LevelManager.main.path[currentIndex];
+
+        // Pokud by target byl stále null (např. chyba v LevelManageru), vyskočíme, aby to nespadlo
+        if (currentTarget == null) return;
+
+        Vector2 direction = (currentTarget.position - transform.position).normalized;
+        float waveOffset = Mathf.Sin(Time.time * waveFrequency) * waveAmplitude;
+
+        Vector2 finalVelocity;
+
+        // Logika osy (X vs Y)
+        if (Mathf.Abs(direction.y) > Mathf.Abs(direction.x))
+        {
+            finalVelocity = new Vector2(direction.x * spiritSpeed + waveOffset, direction.y * spiritSpeed);
         }
-    }
-    private void FixedUpdate() {
-        Vector2 direction = (target.position - transform.position).normalized;
-
-        if (pathIndex != 6) {
-            float yOffset = Mathf.Sin(Time.time * floatSpeed) * floatLength; 
-            rb.velocity = new Vector2(direction.x * moveSpeed, direction.y * moveSpeed + yOffset);
+        else
+        {
+            finalVelocity = new Vector2(direction.x * spiritSpeed, direction.y * spiritSpeed + waveOffset);
         }
-        else {
-            float yOffset = Mathf.Sin(Time.time * floatSpeed) * floatLength; 
-            rb.velocity = new Vector2(direction.x * moveSpeed + yOffset, direction.y * moveSpeed);
-        }
-    }
 
-    public void UpdateSpeed(float newSpeed) {
-            moveSpeed = newSpeed;
-    }
-
-    public void ResetSpeed() {
-        moveSpeed = baseSpeed;
-    }
-
-    private void RotateByDirection() {
-        if (pathIndex == 6) {
-            transform.rotation = Quaternion.Euler(0, 180, 0);
-        }
+        myRb.velocity = finalVelocity;
     }
 }
