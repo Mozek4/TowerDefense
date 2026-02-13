@@ -14,6 +14,7 @@ public class EnemyMovement : MonoBehaviour
     [Header("Behavior Settings")]
     [SerializeField] private bool rotationByDirection = false; // ✅ Checkbox v inspektoru
 
+    private Coroutine activeStunCoroutine;
     private Transform target;
     private int pathIndex = 0;
     private float baseSpeed;
@@ -68,16 +69,25 @@ public class EnemyMovement : MonoBehaviour
 
     public void Stun(float duration)
     {
-        StartCoroutine(StunCoroutine(duration));
+        // Pokud už jeden stun běží, zastavíme ho, aby se rychlost nevrátila předčasně
+        if (activeStunCoroutine != null)
+        {
+            StopCoroutine(activeStunCoroutine);
+        }
+        activeStunCoroutine = StartCoroutine(StunCoroutine(duration));
     }
 
     private IEnumerator StunCoroutine(float duration)
     {
-        float oldSpeed = moveSpeed;
-        moveSpeed = 0f;           // zastaví nepřítele
+        moveSpeed = 0f;
+        rb.velocity = Vector2.zero; // Okamžitě zastavíme i fyzikální pohyb
+
         yield return new WaitForSeconds(duration);
-        moveSpeed = oldSpeed;     // obnoví původní rychlost
+
+        moveSpeed = baseSpeed;
+        activeStunCoroutine = null;
     }
+
     private void RotateByFixedDirection()
     {
         if (LevelManager.main == null || LevelManager.main.path == null)
@@ -87,10 +97,7 @@ public class EnemyMovement : MonoBehaviour
 
         if (path.Length < 2)
             return;
-
         Vector2 chosenDir;
-
-        // 🔹 SPECIÁLNÍ PŘÍPAD: začátek cesty
         if (pathIndex == 0)
         {
             chosenDir = (Vector2)(path[1].position - path[0].position);
@@ -100,11 +107,8 @@ public class EnemyMovement : MonoBehaviour
             int nextIndex = pathIndex;
             if (nextIndex >= path.Length)
                 return;
-
             Vector2 dirToNext = path[nextIndex].position - transform.position;
             chosenDir = dirToNext;
-
-            // pokud je segment vertikální, koukni na další
             if (Mathf.Abs(dirToNext.y) > Mathf.Abs(dirToNext.x))
             {
                 int afterIndex = nextIndex + 1;
@@ -133,18 +137,14 @@ public class EnemyMovement : MonoBehaviour
         moveSpeed = baseSpeed;
     }
 
-    // Getter pro získání aktuálního pathIndexu
     public int GetPathIndex()
     {
         return pathIndex;
     }
 
-    // Setter pro nastavení pathIndexu (a aktualizaci cílového waypointu)
     public void SetPathIndex(int index)
     {
         pathIndex = index;
-
-        // nastav nový target podle indexu
         if (pathIndex < LevelManager.main.path.Length)
             target = LevelManager.main.path[pathIndex];
     }

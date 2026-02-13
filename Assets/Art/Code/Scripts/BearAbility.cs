@@ -13,10 +13,9 @@ public class BearAbility : Turret
     [SerializeField] private float abilityDuration = 2f;
     [SerializeField] private GameObject abilityEffectPrefab;
 
-    // Musí tam být protected override a base.Start()!
     protected override void Start()
     {
-        base.Start(); // Tímto se spustí veškerá logika z Turret (tlačítka, cílení)
+        base.Start();
 
         if (chargeSlider != null)
         {
@@ -27,10 +26,7 @@ public class BearAbility : Turret
 
     protected override void Shoot()
     {
-        // Spustí základní výstřel/útok z Turret
         base.Shoot(); 
-
-        // Získáme damage pro nabití (protože base.Shoot už damage vypočítal vnitřně)
         int damage = CalculateOutputDamage();
         AddCharge(damage);
     }
