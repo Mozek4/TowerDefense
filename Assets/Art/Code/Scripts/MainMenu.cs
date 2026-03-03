@@ -12,7 +12,7 @@ public class MainMenu : MonoBehaviour
     [SerializeField] private GameObject firstLevel;
     [SerializeField] private GameObject secondLevel;
     [SerializeField] private GameObject thirdLevel;
-
+    [SerializeField] private GameObject fourthLevel;
 
     void Update() 
     {
@@ -28,6 +28,7 @@ public class MainMenu : MonoBehaviour
         firstLevel.SetActive(false);
         secondLevel.SetActive(false);
         thirdLevel.SetActive(false);
+        fourthLevel.SetActive(false);
     }
     public void OnFirstMapButtonClicked()
     {
@@ -53,6 +54,15 @@ public class MainMenu : MonoBehaviour
     public void OnThirdMap2ButtonClicked()
     {
         SceneManager.LoadScene("MountainMap");
+    }
+
+    public void OnFourthMapButtonClicked()
+    {
+        fourthLevel.SetActive(true);
+    }
+    public void OnFourthMap2ButtonClicked()
+    {
+        SceneManager.LoadScene("DesertMap");
     }
 
     public void OnStartButtonClicked()

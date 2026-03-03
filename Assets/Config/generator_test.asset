@@ -1,0 +1,165 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9717d3b089eb03649b3075f8035f5070, type: 3}
+  m_Name: generator_test
+  m_EditorClassIdentifier: 
+  waves:
+  - delayBeforeWave: 5
+    enemiesPerSecond: 0.5
+    enemies:
+    - enemyPrefab: {fileID: 6105378301228501771, guid: 36e5f98186ee3884abc40e10f92d876a, type: 3}
+      count: 7
+  - delayBeforeWave: 5
+    enemiesPerSecond: 0.6
+    enemies:
+    - enemyPrefab: {fileID: 6105378301228501771, guid: 36e5f98186ee3884abc40e10f92d876a, type: 3}
+      count: 10
+  - delayBeforeWave: 5
+    enemiesPerSecond: 0.7
+    enemies:
+    - enemyPrefab: {fileID: 6105378301228501771, guid: 36e5f98186ee3884abc40e10f92d876a, type: 3}
+      count: 13
+  - delayBeforeWave: 5
+    enemiesPerSecond: 0.8
+    enemies:
+    - enemyPrefab: {fileID: 6105378301228501771, guid: 36e5f98186ee3884abc40e10f92d876a, type: 3}
+      count: 16
+  - delayBeforeWave: 5
+    enemiesPerSecond: 0.9
+    enemies:
+    - enemyPrefab: {fileID: 6105378301228501771, guid: 36e5f98186ee3884abc40e10f92d876a, type: 3}
+      count: 19
+  - delayBeforeWave: 5
+    enemiesPerSecond: 1
+    enemies:
+    - enemyPrefab: {fileID: 6105378301228501771, guid: 36e5f98186ee3884abc40e10f92d876a, type: 3}
+      count: 22
+  - delayBeforeWave: 5
+    enemiesPerSecond: 1.1
+    enemies:
+    - enemyPrefab: {fileID: 6105378301228501771, guid: 36e5f98186ee3884abc40e10f92d876a, type: 3}
+      count: 25
+  - delayBeforeWave: 5
+    enemiesPerSecond: 1.2
+    enemies:
+    - enemyPrefab: {fileID: 6105378301228501771, guid: 36e5f98186ee3884abc40e10f92d876a, type: 3}
+      count: 28
+  - delayBeforeWave: 5
+    enemiesPerSecond: 1.3
+    enemies:
+    - enemyPrefab: {fileID: 6105378301228501771, guid: 36e5f98186ee3884abc40e10f92d876a, type: 3}
+      count: 31
+  - delayBeforeWave: 5
+    enemiesPerSecond: 1.4
+    enemies:
+    - enemyPrefab: {fileID: 6105378301228501771, guid: 36e5f98186ee3884abc40e10f92d876a, type: 3}
+      count: 34
+  - delayBeforeWave: 5
+    enemiesPerSecond: 1.5
+    enemies:
+    - enemyPrefab: {fileID: 6105378301228501771, guid: 36e5f98186ee3884abc40e10f92d876a, type: 3}
+      count: 37
+  - delayBeforeWave: 5
+    enemiesPerSecond: 1.6
+    enemies:
+    - enemyPrefab: {fileID: 6105378301228501771, guid: 36e5f98186ee3884abc40e10f92d876a, type: 3}
+      count: 40
+  - delayBeforeWave: 5
+    enemiesPerSecond: 1.7
+    enemies:
+    - enemyPrefab: {fileID: 6105378301228501771, guid: 36e5f98186ee3884abc40e10f92d876a, type: 3}
+      count: 43
+  - delayBeforeWave: 5
+    enemiesPerSecond: 1.8000001
+    enemies:
+    - enemyPrefab: {fileID: 6105378301228501771, guid: 36e5f98186ee3884abc40e10f92d876a, type: 3}
+      count: 46
+  - delayBeforeWave: 5
+    enemiesPerSecond: 1.9
+    enemies:
+    - enemyPrefab: {fileID: 6105378301228501771, guid: 36e5f98186ee3884abc40e10f92d876a, type: 3}
+      count: 49
+  - delayBeforeWave: 5
+    enemiesPerSecond: 2
+    enemies:
+    - enemyPrefab: {fileID: 6105378301228501771, guid: 36e5f98186ee3884abc40e10f92d876a, type: 3}
+      count: 52
+  - delayBeforeWave: 5
+    enemiesPerSecond: 2.1
+    enemies:
+    - enemyPrefab: {fileID: 6105378301228501771, guid: 36e5f98186ee3884abc40e10f92d876a, type: 3}
+      count: 55
+  - delayBeforeWave: 5
+    enemiesPerSecond: 2.2
+    enemies:
+    - enemyPrefab: {fileID: 6105378301228501771, guid: 36e5f98186ee3884abc40e10f92d876a, type: 3}
+      count: 58
+  - delayBeforeWave: 5
+    enemiesPerSecond: 2.3
+    enemies:
+    - enemyPrefab: {fileID: 6105378301228501771, guid: 36e5f98186ee3884abc40e10f92d876a, type: 3}
+      count: 61
+  - delayBeforeWave: 5
+    enemiesPerSecond: 2.4
+    enemies:
+    - enemyPrefab: {fileID: 6105378301228501771, guid: 36e5f98186ee3884abc40e10f92d876a, type: 3}
+      count: 64
+  - delayBeforeWave: 5
+    enemiesPerSecond: 2.5
+    enemies:
+    - enemyPrefab: {fileID: 6105378301228501771, guid: 36e5f98186ee3884abc40e10f92d876a, type: 3}
+      count: 67
+  - delayBeforeWave: 5
+    enemiesPerSecond: 2.6000001
+    enemies:
+    - enemyPrefab: {fileID: 6105378301228501771, guid: 36e5f98186ee3884abc40e10f92d876a, type: 3}
+      count: 70
+  - delayBeforeWave: 5
+    enemiesPerSecond: 2.7
+    enemies:
+    - enemyPrefab: {fileID: 6105378301228501771, guid: 36e5f98186ee3884abc40e10f92d876a, type: 3}
+      count: 73
+  - delayBeforeWave: 5
+    enemiesPerSecond: 2.8
+    enemies:
+    - enemyPrefab: {fileID: 6105378301228501771, guid: 36e5f98186ee3884abc40e10f92d876a, type: 3}
+      count: 76
+  - delayBeforeWave: 5
+    enemiesPerSecond: 2.9
+    enemies:
+    - enemyPrefab: {fileID: 6105378301228501771, guid: 36e5f98186ee3884abc40e10f92d876a, type: 3}
+      count: 79
+  - delayBeforeWave: 5
+    enemiesPerSecond: 3
+    enemies:
+    - enemyPrefab: {fileID: 6105378301228501771, guid: 36e5f98186ee3884abc40e10f92d876a, type: 3}
+      count: 82
+  - delayBeforeWave: 5
+    enemiesPerSecond: 3.1000001
+    enemies:
+    - enemyPrefab: {fileID: 6105378301228501771, guid: 36e5f98186ee3884abc40e10f92d876a, type: 3}
+      count: 85
+  - delayBeforeWave: 5
+    enemiesPerSecond: 3.2
+    enemies:
+    - enemyPrefab: {fileID: 6105378301228501771, guid: 36e5f98186ee3884abc40e10f92d876a, type: 3}
+      count: 88
+  - delayBeforeWave: 5
+    enemiesPerSecond: 3.3
+    enemies:
+    - enemyPrefab: {fileID: 6105378301228501771, guid: 36e5f98186ee3884abc40e10f92d876a, type: 3}
+      count: 91
+  - delayBeforeWave: 5
+    enemiesPerSecond: 3.4
+    enemies:
+    - enemyPrefab: {fileID: 6105378301228501771, guid: 36e5f98186ee3884abc40e10f92d876a, type: 3}
+      count: 94
