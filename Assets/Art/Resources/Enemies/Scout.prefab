@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 2186877566385861088}
   - component: {fileID: 3703686354505697872}
   - component: {fileID: 1983737808807635367}
+  - component: {fileID: -8853825928395399911}
   m_Layer: 6
   m_Name: Scout
   m_TagString: Untagged
@@ -183,3 +184,15 @@ MonoBehaviour:
   currencyWorth: 35
   enemyScore: 20
   enemyType: 0
+--- !u!114 &-8853825928395399911
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2990371063797274941}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f84cf0881412e1b439da760dd17eeabf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

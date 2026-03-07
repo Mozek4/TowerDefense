@@ -52,12 +52,25 @@ public class GuardianTree : MonoBehaviour
         if (target == null) return;
 
         // efekt střely
+// efekt střely
         if (bulletPrefab != null)
-            Instantiate(bulletPrefab, firingPoint1.position, Quaternion.identity);
+        {
+            // použijeme vhodné firingPointy (pokud jich máš dva, vystřelíme z 1. pro target1 a z 2. pro target2)
+            Transform spawnPoint = firingPoint1; // změň logiku pokud chceš střílet z druhého bodu pro druhý target
+            GameObject bulletObj = Instantiate(bulletPrefab, spawnPoint.position, Quaternion.identity);
 
-        Health health = target.GetComponent<Health>();
-        if (health != null)
-            health.TakeDamage(baseDamage, damageType);
+            // získej komponentu Bullet a nastav payload a target
+            Bullet b = bulletObj.GetComponent<Bullet>();
+            if (b != null)
+            {
+                b.SetupBullet(baseDamage, damageType);
+                b.SetTarget(target);
+            }
+            else
+            {
+                Debug.LogWarning("Instanciovaný bulletPrefab nemá komponentu Bullet!");
+            }
+        }
     }
 
     private void FindFirstTarget()

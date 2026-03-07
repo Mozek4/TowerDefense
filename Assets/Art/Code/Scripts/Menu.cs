@@ -2,6 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using UnityEngine.EventSystems; // Nutné přidat pro práci s EventSystemem
+
 public class Menu : MonoBehaviour
 {
     [Header("References")]
@@ -13,6 +15,13 @@ public class Menu : MonoBehaviour
     public void ToggleMenu() {
         isMenuOpen = !isMenuOpen;
         anim.SetBool("MenuOpen", isMenuOpen);
+
+        // Toto vyřeší tvůj problém:
+        // Zruší výběr (focus) jakéhokoliv UI prvku, na který jsi právě klikl
+        if (EventSystem.current != null)
+        {
+            EventSystem.current.SetSelectedGameObject(null);
+        }
     }
 
     private void OnGUI() {
@@ -20,5 +29,7 @@ public class Menu : MonoBehaviour
     }
 
     public void SetSelected() {
+        // Sem můžeš v budoucnu přidat logiku pro zvýraznění konkrétního tlačítka,
+        // ale pro tvůj aktuální problém stačí SetSelectedGameObject(null) výše.
     }
 }

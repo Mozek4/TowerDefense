@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 2261787124543207248}
   - component: {fileID: 2908033122581386075}
   - component: {fileID: 3192682168167727569}
+  - component: {fileID: -1075189357202512700}
   m_Layer: 6
   m_Name: VampireBoss
   m_TagString: Untagged
@@ -163,8 +164,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hitPoints: 800
+  maxHP: 2
   currencyWorth: 200
-  death: {fileID: 8300000, guid: 7002c7c3e1ff619449bb0a16dfe93dce, type: 3}
+  enemyScore: 0
+  enemyType: 0
 --- !u!114 &3192682168167727569
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -179,3 +182,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rb: {fileID: 1797363795933848713}
   moveSpeed: 1.15
+--- !u!114 &-1075189357202512700
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3307378524656252283}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f84cf0881412e1b439da760dd17eeabf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

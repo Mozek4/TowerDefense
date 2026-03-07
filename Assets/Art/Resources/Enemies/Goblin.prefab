@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 1313460678969836528}
   - component: {fileID: 4320110983024569532}
   - component: {fileID: 1412780154438565784}
+  - component: {fileID: 8343879326738532308}
   m_Layer: 6
   m_Name: Goblin
   m_TagString: Untagged
@@ -183,3 +184,15 @@ CapsuleCollider2D:
   m_Offset: {x: 0, y: 0}
   m_Size: {x: 2, y: 3.5}
   m_Direction: 0
+--- !u!114 &8343879326738532308
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 862671043071846076}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f84cf0881412e1b439da760dd17eeabf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 1190373950363137797}
   - component: {fileID: 7259807859832038511}
   - component: {fileID: 8550972402454234135}
+  - component: {fileID: -2578869623609486966}
   m_Layer: 6
   m_Name: SkeletonBoss
   m_TagString: Untagged
@@ -115,8 +116,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hitPoints: 500
+  maxHP: 2
   currencyWorth: 120
-  death: {fileID: 8300000, guid: a458c78b184725e4a983b6a0076d5972, type: 3}
+  enemyScore: 0
+  enemyType: 0
 --- !u!50 &7259807859832038511
 Rigidbody2D:
   serializedVersion: 4
@@ -179,3 +182,15 @@ CapsuleCollider2D:
   m_Offset: {x: 0, y: 0}
   m_Size: {x: 2, y: 4.6}
   m_Direction: 0
+--- !u!114 &-2578869623609486966
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7553101948728304982}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f84cf0881412e1b439da760dd17eeabf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
