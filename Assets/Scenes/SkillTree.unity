@@ -181,7 +181,7 @@ GameObject:
   - component: {fileID: 211010014}
   - component: {fileID: 211010018}
   m_Layer: 5
-  m_Name: UpgradeRG
+  m_Name: TowerRange
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -266,11 +266,11 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 116731972}
         m_TargetAssemblyTypeName: SkillTreeManager, Assembly-CSharp
-        m_MethodName: UpgradeTowerAttackSpeed
-        m_Mode: 1
+        m_MethodName: UpgradeTowerRange
+        m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_ObjectArgument: {fileID: 211010012}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -432,7 +432,7 @@ GameObject:
   - component: {fileID: 348942252}
   - component: {fileID: 348942256}
   m_Layer: 5
-  m_Name: UpgradeRG2
+  m_Name: TowerRange2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -517,11 +517,11 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 116731972}
         m_TargetAssemblyTypeName: SkillTreeManager, Assembly-CSharp
-        m_MethodName: UpgradeTowerAttackSpeed
-        m_Mode: 1
+        m_MethodName: UpgradeTowerRange2
+        m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_ObjectArgument: {fileID: 348942250}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -711,7 +711,7 @@ GameObject:
   - component: {fileID: 835822780}
   - component: {fileID: 835822784}
   m_Layer: 5
-  m_Name: UpgradeAPS2
+  m_Name: TowerAttackSpeed2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -797,10 +797,10 @@ MonoBehaviour:
       - m_Target: {fileID: 116731972}
         m_TargetAssemblyTypeName: SkillTreeManager, Assembly-CSharp
         m_MethodName: UpgradeTowerAttackSpeed2
-        m_Mode: 1
+        m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_ObjectArgument: {fileID: 835822778}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -1012,7 +1012,7 @@ GameObject:
   - component: {fileID: 1112668155}
   - component: {fileID: 1112668159}
   m_Layer: 5
-  m_Name: UpgradeDMG2
+  m_Name: TowerDamage2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1097,11 +1097,11 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 116731972}
         m_TargetAssemblyTypeName: SkillTreeManager, Assembly-CSharp
-        m_MethodName: UpgradeTowerAttackSpeed
-        m_Mode: 1
+        m_MethodName: UpgradeTowerDamage2
+        m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_ObjectArgument: {fileID: 1112668153}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -1630,7 +1630,7 @@ GameObject:
   - component: {fileID: 1498951646}
   - component: {fileID: 1498951650}
   m_Layer: 5
-  m_Name: UpgradeAPS
+  m_Name: TowerAttackSpeed
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1716,10 +1716,10 @@ MonoBehaviour:
       - m_Target: {fileID: 116731972}
         m_TargetAssemblyTypeName: SkillTreeManager, Assembly-CSharp
         m_MethodName: UpgradeTowerAttackSpeed
-        m_Mode: 1
+        m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_ObjectArgument: {fileID: 1498951644}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -2648,7 +2648,7 @@ GameObject:
   - component: {fileID: 2126929303}
   - component: {fileID: 2126929307}
   m_Layer: 5
-  m_Name: UpgradeDMG
+  m_Name: TowerDamage
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2733,11 +2733,11 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 116731972}
         m_TargetAssemblyTypeName: SkillTreeManager, Assembly-CSharp
-        m_MethodName: UpgradeTowerAttackSpeed
-        m_Mode: 1
+        m_MethodName: UpgradeTowerDamage
+        m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_ObjectArgument: {fileID: 2126929301}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 

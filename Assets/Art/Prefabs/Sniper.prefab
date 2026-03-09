@@ -2294,6 +2294,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   shouldRotate: 1
   turretRotationPoint: {fileID: 3887691364458361538}
+  spriteFlipperPoint: {fileID: 0}
   enemyMask:
     serializedVersion: 2
     m_Bits: 64
