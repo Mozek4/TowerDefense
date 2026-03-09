@@ -33,10 +33,14 @@ public class PlayerData : MonoBehaviour
 
         foreach (string skill in unlockedSkills)
         {
-            if (skill == "TowerDamage")
-                PlayerStats.instance.towerDamageMultiplier += 0.2f;
-            else if (skill == "TowerRange")
-                PlayerStats.instance.towerRangeMultiplier += 0.1f;
+            if (skill == "TowerDamage") PlayerStats.instance.towerDamageMultiplier += 0.2f;
+            else if (skill == "TowerDamage2") PlayerStats.instance.towerDamageMultiplier += 0.3f; // CHYBĚLO
+            
+            else if (skill == "TowerRange") PlayerStats.instance.towerRangeMultiplier += 0.1f;
+            else if (skill == "TowerRange2") PlayerStats.instance.towerRangeMultiplier += 0.15f; // CHYBĚLO
+            
+            else if (skill == "TowerAttackSpeed") PlayerStats.instance.towerAttackSpeedMultiplier += 0.1f; // CHYBĚLO
+            else if (skill == "TowerAttackSpeed2") PlayerStats.instance.towerAttackSpeedMultiplier += 0.15f; // CHYBĚLO
         }
     }
 
@@ -47,6 +51,7 @@ public class PlayerData : MonoBehaviour
             instance = this;
             DontDestroyOnLoad(gameObject);
             LoadDiamonds();
+            LoadSkills();
         }
         else
         {

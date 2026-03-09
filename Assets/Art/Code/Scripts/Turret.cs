@@ -81,11 +81,8 @@ public class Turret : MonoBehaviour
     {
         UpgradeButtonsManager();
 
-        float globalRangeMult = PlayerStats.instance != null ? PlayerStats.instance.towerRangeMultiplier : 1f;
-        float globalApsMult = PlayerStats.instance != null ? PlayerStats.instance.towerAttackSpeedMultiplier : 1f;
-
-        float effectiveRange = CalculateRange() * globalRangeMult;
-        float effectiveAps = CalculateBPS() * globalApsMult;
+        float effectiveRange = CalculateRange();
+        float effectiveAps = CalculateBPS();
 
         if (target == null)
         {
@@ -229,8 +226,7 @@ public class Turret : MonoBehaviour
 
     private void DrawRangeCircle()
     {
-        float globalRangeMult = PlayerStats.instance != null ? PlayerStats.instance.towerRangeMultiplier : 1f;
-        float effectiveRange = CalculateRange() * globalRangeMult;
+        float effectiveRange = CalculateRange();
 
         int segments = 50;
         float angleStep = 360f / segments;
@@ -278,12 +274,16 @@ public class Turret : MonoBehaviour
 
     public float CalculateBPS()
     {
-        return apsBase * Mathf.Pow(bpsLevel, 0.4f);
+        float localBps = apsBase * Mathf.Pow(bpsLevel, 0.4f);
+        float globalApsMult = PlayerStats.instance != null ? PlayerStats.instance.towerAttackSpeedMultiplier : 1f;
+        return localBps * globalApsMult;
     }
 
     public float CalculateRange()
     {
-        return rangeBase * Mathf.Pow(rangeLevel, 0.15f);
+        float localRange = rangeBase * Mathf.Pow(rangeLevel, 0.15f);
+        float globalRangeMult = PlayerStats.instance != null ? PlayerStats.instance.towerRangeMultiplier : 1f;
+        return localRange * globalRangeMult;
     }
 
     private void SellTower()
@@ -309,17 +309,15 @@ public class Turret : MonoBehaviour
     {
         Gizmos.color = Color.green;
 
-        float effectiveRange = range;
-        int currentRangeLevel = rangeLevel;
+        float effectiveRange;
 
         if (Application.isPlaying)
         {
-            float globalRangeMult = PlayerStats.instance != null ? PlayerStats.instance.towerRangeMultiplier : 1f;
-            effectiveRange = CalculateRange() * globalRangeMult;
+            effectiveRange = CalculateRange();
         }
         else
         {
-            effectiveRange = range * Mathf.Pow(currentRangeLevel, 0.15f);
+            effectiveRange = range * Mathf.Pow(rangeLevel, 0.15f);
         }
 
         Gizmos.DrawWireSphere(transform.position, effectiveRange);

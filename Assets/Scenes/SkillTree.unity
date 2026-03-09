@@ -151,6 +151,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4c821cbac08e93d44903d3681ebff6d8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  btnTowerDamage: {fileID: 2126929301}
+  btnTowerDamage2: {fileID: 1112668153}
+  btnTowerRange: {fileID: 211010012}
+  btnTowerRange2: {fileID: 348942250}
+  btnTowerAttackSpeed: {fileID: 1498951644}
+  btnTowerAttackSpeed2: {fileID: 835822778}
 --- !u!4 &116731973
 Transform:
   m_ObjectHideFlags: 0
