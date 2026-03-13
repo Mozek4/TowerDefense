@@ -14809,6 +14809,7 @@ MonoBehaviour:
   VillageButton: {fileID: 219598749}
   DiamondCounter: {fileID: 127723607}
   SkillTreeButton: {fileID: 2021045239}
+  Tutorial: {fileID: 1182880643}
   Enemy1: {fileID: 944053386}
   Enemy2: {fileID: 35870788}
   Enemy3: {fileID: 1082374791}

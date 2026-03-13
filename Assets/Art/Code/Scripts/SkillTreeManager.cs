@@ -35,32 +35,46 @@ public class SkillTreeManager : MonoBehaviour
         if (unlocked.Contains("TowerAttackSpeed2") && btnTowerAttackSpeed2 != null) btnTowerAttackSpeed2.SetActive(false);
     }
 
-    // --- Zbytek tvého kódu zůstává beze změny ---
-
     IEnumerator RemoveButtonEffect(GameObject button)
-    {
-        CanvasGroup cg = button.GetComponent<CanvasGroup>();
-
-        if (cg == null)
-            cg = button.AddComponent<CanvasGroup>();
-
-        float duration = 0.4f;
-        float time = 0;
-
-        Vector3 startScale = button.transform.localScale;
-
-        while (time < duration)
         {
-            time += Time.deltaTime;
+            // Vypneme klikání, aby hráč nemohl kliknout během dvousekundové animace znovu
+            Button btnComponent = button.GetComponent<Button>();
+            if (btnComponent != null) btnComponent.interactable = false;
 
-            cg.alpha = Mathf.Lerp(1f, 0f, time / duration);
-            button.transform.localScale = Vector3.Lerp(startScale, Vector3.zero, time / duration);
+            Vector3 startScale = button.transform.localScale;
+            Vector3 peakScale = startScale * 1.2f; // Zvětšení na 120 %
 
-            yield return null;
+            // --- FÁZE 1: Tlačítko se pouze zvětšuje (žádné mizení) ---
+            float expandDuration = 1.4f; // Tvůj čas pro zvětšení (2 sekundy)
+            float time = 0;
+
+            while (time < expandDuration)
+            {
+                time += Time.deltaTime;
+                button.transform.localScale = Vector3.Lerp(startScale, peakScale, time / expandDuration);
+                yield return null;
+            }
+
+            // Pojistka přesné velikosti před další fází
+            button.transform.localScale = peakScale;
+
+            // --- FÁZE 2: Tlačítko se rychle zmenší do nuly ---
+            float shrinkDuration = 0.1f; // Velmi rychlé "vcucnutí"
+            time = 0;
+
+            while (time < shrinkDuration)
+            {
+                time += Time.deltaTime;
+                button.transform.localScale = Vector3.Lerp(peakScale, Vector3.zero, time / shrinkDuration);
+                yield return null;
+            }
+
+            // Pojistka, že je velikost na konci přesně na nule
+            button.transform.localScale = Vector3.zero;
+
+            // --- FÁZE 3: Zmizení (tlačítko se fyzicky deaktivuje) ---
+            button.SetActive(false); 
         }
-
-        button.SetActive(false); // ZMĚNA: Místo Destroy(button) použijeme jen deaktivaci
-    }
 
     public void UpgradeTowerDamage(GameObject button)
     {
